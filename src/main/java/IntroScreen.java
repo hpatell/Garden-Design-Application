@@ -71,25 +71,19 @@ public static void main(String[] args) {
 @Override
 public void start(Stage theStage) {
 	// set title for the stage
-	theStage.setTitle("VBox");
+	theStage.setTitle("Intro");
 	Button startButton  = new Button("Start"); //creates a Start Button
 	Button guide = new Button ("Guide"); //create a Guide Button
 	Button importButton = new Button("Import"); //create an import button
-    // create a VBox
+    
+	// create a VBox with spacing of 10
     VBox vbox = new VBox(10);
 
-    // set alignment
+    // aligned at the center
     vbox.setAlignment(Pos.CENTER);
     
     vbox.getChildren().addAll(startButton, guide, importButton);
     
-    // add buttons to VBox
-    /*
-    for (int i = 0; i < 5; i++)
-    {
-        vbox.getChildren().add(new Button("Button " + (int)(i + 1)));
-    }
-    */
     // create a scene
     Scene scene = new Scene(vbox, canvasWidth, canvasHeight);
 
