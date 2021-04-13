@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 public class Plant {
+	
     String scientificName, commonName;
     int lepsSupported;
     int cost;

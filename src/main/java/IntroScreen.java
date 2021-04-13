@@ -1,95 +1,66 @@
+import java.util.HashMap;
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.animation.AnimationTimer;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.paint.Color;
-import javafx.scene.transform.Rotate;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage; 
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-//import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;
+import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
 
-import java.util.ArrayList;
-
-public class IntroScreen extends Application {
-	final int canvasCount = 10;
-    int picInd = 0;
-    double xloc = 0;
-    double yloc = 0;
-    final double xIncr = 8;
-    final double yIncr = 0;
-    final static int canvasWidth = 500;
-    final static int canvasHeight = 300;
-    final static int imgWidth = 165;
-    final static int imgHeight = 165;
-    
-    //Image introScreenImage;
-	//stage.setTitle("Intro");
-/*	
-	public void startButton(){
-		Button bs = new Button("Start"); //creates a button called Start
-		
-	}
-	public void guideButton(){
-		Button bg = new Button("Guide"); //creates a button called Guide
-	}
-	public void importButton(){
-		Button bi = new Button("Import"); //creates a button called Import
-	}
-	public void settingsButton(){
-		Button bset = new Button("Settings"); //creates a button called Settings
-		//add gear image
+public class IntroScreen extends Screen {
+	
+	Scene introscene;
+	
+	Image introScreenImage;
+	Button forwardButton = new Button("Click Me!");
+	Button backButton = new Button();
+	boolean forwardBoolean = false;
+	boolean backBoolean = false;
+	View view;
+	Stage Introstage;
+	PagesEnum screen = PagesEnum.IntroScreen;
+	
+	
+	
+	public IntroScreen() {
+    	StackPane layout = new StackPane();
+    	layout.getChildren().add(forwardButton);	
+    	Scene scene = new Scene(layout, 300, 500);
+    	//use enum to fetch the new scene
+    	//the button gets the scene from another screen and tells it change to this
+    	forwardButton.setOnAction(e -> view.currentstage.setScene(scene));
+    	introscene = scene;
 	}
 	
-	public static void main(String[] args) {
-        launch(args);
-    }
-}
-*/
+	public PagesEnum newScreen() {
+		// returns enum indicating what screen it is
+		return screen;
+	}
+	
+	public void startButton() {
+		
+	}
+	
+	public void guideButton() {
+		
+	}
+	
+	public void importButton() {
+		
+	}
+	
+	public void settingsButton() {
+		
+	}
+	
+	public Scene getScene() {
+		
+		return introscene;
+	}
 
-Image introScreenImage;
-
-
-public static void main(String[] args) {
-    launch(args);
-    }
-
-
-@Override
-public void start(Stage theStage) {
-	// set title for the stage
-	theStage.setTitle("Intro");
-	Button startButton  = new Button("Start"); //creates a Start Button
-	Button guide = new Button ("Guide"); //create a Guide Button
-	Button importButton = new Button("Import"); //create an import button
-    
-	// create a VBox with spacing of 10
-    VBox vbox = new VBox(10);
-
-    // aligned at the center
-    vbox.setAlignment(Pos.CENTER);
-    
-    vbox.getChildren().addAll(startButton, guide, importButton);
-    
-    // create a scene
-    Scene scene = new Scene(vbox, canvasWidth, canvasHeight);
-
-    // set the scene
-    theStage.setScene(scene);
-
-    theStage.show();
-}
 }

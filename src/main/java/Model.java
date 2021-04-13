@@ -1,42 +1,56 @@
+
 public class Model {
-    public Model() {
 
-    }
-
-    public void updateLocation() {
-
-    }
-
-    public int calculateLeps(String plantname) {
+	public Model() {
+		
+	}
+	
+    public static int calculateLeps(String plantname) {
         return 0;
     }
 
-    public int calculatebudget(int currentBudget) {
-        return 5;
+    public static int calculateBudget(int currentBudget) {
+        return 0;
     }
 
-    public boolean checkCompatability(String name) {
+    public static boolean checkCompatability(String name) {
         return false;
     }
 
-    public void calcUniqueplants() {
+    public static int calcUniqueplants() {
+    	return 0;
+    }
+
+    public static void readSettings() {
 
     }
 
-    public void readSettings() {
+    public static void writeSettings() {
 
     }
 
-    public void writeSettings() {
+    public static void readGradenFile() {
 
     }
 
-    public void readGradenFile() {
-
-    }
-
-    public void writeGardenFile() {
+    public static void writeGardenFile() {
         
     }
+    
+    public static double getX() {
+		return 0;
+	}
+
+	public static void setX(double x) {
+		
+	}
+
+	public static double getY() {
+		return 0;
+	}
+
+	public static void setY(double y) {
+		
+	}
 
 }
