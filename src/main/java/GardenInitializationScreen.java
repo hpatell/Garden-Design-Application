@@ -15,22 +15,6 @@ public class GardenInitializationScreen extends Screen {
     	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
 	}
 	
-	public Scene getScene() {
-		return scene;
-	}
-	
-	public void backButton() {
-		
-	}
-	
-	public void nextButton() {
-		
-	}
-	
-	public void submitButton() {
-		
-	}
-	
 	public void gardenNameTF() {
 		
 	}

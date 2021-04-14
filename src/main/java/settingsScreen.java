@@ -5,12 +5,10 @@ import javafx.scene.layout.StackPane;
 
 public class settingsScreen extends Screen {
 	
-	Button exitButton = new Button("Import Garden");
-	
 	public settingsScreen(View v) {
 		super(v);
     	StackPane layout = new StackPane();
-    	layout.getChildren().addAll(exitButton);	
+    	layout.getChildren().addAll();	
     	scene = new Scene(layout, 500, 800);
 	}
 	
