@@ -1,3 +1,5 @@
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 
 public class BudgetScreen extends Screen {
 
@@ -8,13 +10,14 @@ public class BudgetScreen extends Screen {
 	int quantity;
 	String[] plantName;
 	
-	public BudgetScreen() 
-	{
-		
+	public BudgetScreen(View v) {
+		super(v);
+    	StackPane layout = new StackPane();
+    	layout.getChildren();	
+    	scene = new Scene(layout, 500, 800);
 	}
 	
-	public void budgetBar()
-	{
+	public void budgetBar() {
 		
 	}
 	

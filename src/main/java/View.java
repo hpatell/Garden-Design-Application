@@ -16,18 +16,72 @@ public class View extends Application {
 	
     Image plant;
     Image importedImage;
-    //Collection screens;
-    //Image Collection<> plantImages;
+    
     int canvasHeight, canvasWidth;
     double imgWidth, imgHeight;
     double x, y, xloc, yloc;
     int lepsSupported;
 	Stage currentstage;
-    //HashMap<String> Conditions;
-	Screen screen;
-
+	
+	IntroScreen intro;
+	ImportGardenScreen importgarden;
+	GuideScreen guide;
+	GardenInitializationScreen gardeninit;
+	ModifyPlotScreen modify;
+	PresentationModeScreen present;
+	faunaScreen fauna;
+	SummaryScreen summary;
+	BudgetScreen budget;
+	settingsScreen settings;
+	
+	PagesEnum PE = PagesEnum.IntroScreen;
+	
     public View() {
-
+    	intro = new IntroScreen(this);
+    	importgarden = new ImportGardenScreen(this);
+    	guide = new GuideScreen(this);
+    	gardeninit = new GardenInitializationScreen(this);
+    	modify = new ModifyPlotScreen(this);
+    	present = new PresentationModeScreen(this);
+    	fauna = new faunaScreen(this);	
+    	summary = new SummaryScreen(this);
+    	budget = new BudgetScreen(this);
+    	settings = new settingsScreen(this);
+    }
+    
+    public void switchPage(PagesEnum PE) {
+    	switch(PE) {
+    	case IntroScreen:
+    		currentstage.setScene(intro.getScene());
+    		break;
+    	case ImportScreen:
+    		currentstage.setScene(importgarden.getScene());
+    		break;
+    	case GuideScreen:
+    		currentstage.setScene(guide.getScene());
+    		break;
+    	case InitializationScreen:
+    		currentstage.setScene(gardeninit.getScene());
+    		break;
+    	case ModifyPlotScreen:
+    		currentstage.setScene(modify.getScene());
+    		break;
+    	case PresentationModeScreen:
+    		currentstage.setScene(present.getScene());
+    		break;
+    	case FaunaScreen:
+    		currentstage.setScene(fauna.getScene());
+    		break;
+    	case SummaryScreen:
+    		currentstage.setScene(summary.getScene());
+    		break;
+    	case BudgetScreen:
+    		currentstage.setScene(budget.getScene());
+    		break;
+    	case SettingsScreen:
+    		currentstage.setScene(settings.getScene());
+    		break;
+    	}
     }
 
     public Image createImage() {
@@ -53,16 +107,13 @@ public class View extends Application {
 
     @Override
     public void start(Stage stage) {
-    	
     	currentstage = stage;
-    	
     	
     	StackPane layout = new StackPane();
     	layout.getChildren();	
+    	Scene scene = new Scene(layout, 500, 800);
     	
-    	Scene scene = new Scene(layout, 1000, 1000);
-    	
-    	currentstage.setScene(scene);
+    	currentstage.setScene(intro.getScene());
     	currentstage.setTitle("Garden Application");
     	currentstage.show();
     }

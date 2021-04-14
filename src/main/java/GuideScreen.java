@@ -17,11 +17,13 @@ public class GuideScreen extends Screen {
 	
 	PagesEnum screen = PagesEnum.IntroScreen; 
 	
-	public void createScreen() {
+	public GuideScreen(View v) {
+		super(v);
     	StackPane layout = new StackPane();
     	layout.getChildren().addAll(importSCbutton, createGardenButton);	
-    	Scene scene = new Scene(layout, 500, 800);
-    	createGardenButton.setOnAction(e -> view.currentstage.setScene(gardeninitSC.getScene()));
+    	scene = new Scene(layout, 500, 800);
+    	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
+    	importSCbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
 	}
 	
 	public Scene getScene() {

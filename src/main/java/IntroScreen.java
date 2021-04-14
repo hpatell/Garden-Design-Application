@@ -14,40 +14,19 @@ import javafx.event.EventHandler;
 
 public class IntroScreen extends Screen {
 	
-	GuideScreen guideSC;
-	ImportGardenScreen importSC;
-	GardenInitializationScreen gardeninitSC;
-	settingsScreen settingsSC;
-	
-	View view; 
-	Scene scene;
-	Image introScreenImage;
-	
 	Button importSCbutton = new Button("Import Garden");
 	Button guideButton = new Button("Guide");
 	Button createGardenButton = new Button("Create Garden");
 	Button settingsButton = new Button("Create Garden");
 	
-	PagesEnum screen = PagesEnum.IntroScreen;
-	
-	public IntroScreen() {
+	public IntroScreen(View v) {
+		super(v);
     	StackPane layout = new StackPane();
     	layout.getChildren().addAll(importSCbutton, guideButton, createGardenButton, settingsButton);	
-    	Scene scene = new Scene(layout, 500, 800);
-    	importSCbutton.setOnAction(e -> view.currentstage.setScene(importSC.getScene()));
-    	guideButton.setOnAction(e -> view.currentstage.setScene(guideSC.getScene()));
-    	createGardenButton.setOnAction(e -> view.currentstage.setScene(gardeninitSC.getScene()));
-    	settingsButton.setOnAction(e -> view.currentstage.setScene(settingsSC.getScene()));
+    	scene = new Scene(layout, 500, 800);
+    	importSCbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
+    	guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
+    	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
+    	settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
 	}
-	
-	public PagesEnum getScreen() {
-		// returns enum indicating what screen it is
-		return screen;
-	}
-
-	
-	public Scene getScene() {
-		return scene;
-	}
-
 }

@@ -16,26 +16,20 @@ import javafx.event.EventHandler;
 
 public class ImportGardenScreen extends Screen {
 	
-	Scene scene;
-	IntroScreen intro;
 	
 	Button modifyPlotButton = new Button("Import Screen Test");
-	
-	PagesEnum screen = PagesEnum.IntroScreen; 
 	
 	JFileChooser chooser;
 	File file;
 	
-	public ImportGardenScreen() {
-		StackPane layout = new StackPane();
-		layout.getChildren().add(modifyPlotButton);
-		Scene scene = new Scene(layout, 500, 800);
-		modifyPlotButton.setOnAction(e -> view.currentstage.setScene(intro.getScene()));
+	public ImportGardenScreen(View v) {
+		super(v);
+    	StackPane layout = new StackPane();
+    	layout.getChildren().addAll(modifyPlotButton);	
+    	scene = new Scene(layout, 500, 800);
+    	modifyPlotButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
 	}
 	
-	public Scene getScene() {
-		return scene;
-	}
 	
 	public void checkForm() {
 		

@@ -1,11 +1,17 @@
 import java.util.Collection;
-import javafx.scene.image.Image;
 
-public class ModifyPlotScreen {
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+
+public class ModifyPlotScreen extends Screen {
     Collection<Image> plantImages;
     
-    public ModifyPlotScreen() {
-    	
+    public ModifyPlotScreen(View v) {
+		super(v);
+    	StackPane layout = new StackPane();
+    	layout.getChildren();	
+    	scene = new Scene(layout, 500, 800);
     }
 
     public void settingsbutton() {

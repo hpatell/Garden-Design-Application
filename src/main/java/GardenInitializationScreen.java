@@ -5,17 +5,14 @@ import javafx.scene.layout.StackPane;
 
 public class GardenInitializationScreen extends Screen {
 	
-	View view; 
-	Scene scene;
-	Image introScreenImage;
-	
 	Button createGardenButton = new Button("Import Garden");
 	
-	public GardenInitializationScreen() {
+	public GardenInitializationScreen(View v) {
+		super(v);
     	StackPane layout = new StackPane();
     	layout.getChildren().add(createGardenButton);	
-    	Scene scene = new Scene(layout, 500, 800);
-    	createGardenButton.setOnAction(e -> view.currentstage.setScene(scene));
+    	scene = new Scene(layout, 500, 800);
+    	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
 	}
 	
 	public Scene getScene() {

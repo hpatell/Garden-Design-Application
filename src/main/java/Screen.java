@@ -11,25 +11,26 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
 
-public class Screen {
+public abstract class Screen {
 	
-	Button forwardButton;
-	Button backwardButton;
+	Image backgroundImage;
 	View view;
-	PagesEnum currentscreen = PagesEnum.IntroScreen;
-	IntroScreen intro;
+	Scene scene;
 	
-	public Screen() {
-		
+	PagesEnum page = PagesEnum.IntroScreen;
+	
+	public Screen(View v) {
+		view = v;
 	}
+
 	
-	public void SwitchScreen() {
-		view.currentstage.setScene(intro.scene);
+	public PagesEnum getScreen() {
+		return page;
 	}
+
 	
-	public void performAction() {
-		
+	public Scene getScene() {
+		return scene;
 	}
-	
 	
 }
