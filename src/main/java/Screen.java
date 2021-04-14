@@ -17,10 +17,15 @@ public abstract class Screen {
 	View view;
 	Scene scene;
 	
+	double canvasWidth;
+	double canvasHeight;
+	
 	PagesEnum page = PagesEnum.IntroScreen;
 	
 	public Screen(View v) {
 		view = v;
+		canvasWidth = 800;
+		canvasHeight = 800;
 	}
 
 	

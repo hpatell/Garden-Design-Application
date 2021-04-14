@@ -22,26 +22,36 @@ public class IntroScreen extends Screen {
 	Button importSCbutton = new Button("Import Garden");
 	Button guideButton = new Button("Guide");
 	Button createGardenButton = new Button("Create Garden");
-	Button settingsButton = new Button("Create Garden");
-	Button modifySC = new Button("modify shortcut");
-
+	Button settingsButton = new Button("Settings");
+	Image backgroundimg = new Image(getClass().getResourceAsStream("/download.png"));
+	ImageView backgroundimgview = new ImageView(backgroundimg);
 	
 	public IntroScreen(View v) {
 		super(v);
-    	BorderPane layout = new BorderPane();
-    	StackPane layout2 = new StackPane();
     	
-    	Label label = new Label("intro");
-    	layout.setCenter(layout2);
-    	layout2.getChildren().addAll(guideButton, importSCbutton, createGardenButton, settingsButton, modifySC, label);
+    	importSCbutton.setTranslateX(0);
+    	importSCbutton.setTranslateY(100);
     	
-    	layout.setTop(label);
+    	createGardenButton.setTranslateX(0);
+    	createGardenButton.setTranslateY(50);
     	
-    	scene = new Scene(layout, 500, 800);
+    	guideButton.setTranslateX(0);
+    	guideButton.setTranslateY(150);
+    	
+    	settingsButton.setTranslateX(350);
+    	settingsButton.setTranslateY(-375);
+    	
+    	
+    	StackPane layout = new StackPane();
+    	layout.setMaxHeight(canvasHeight);
+    	layout.setMaxWidth(canvasHeight);
+    	layout.getChildren().addAll(backgroundimgview, guideButton, importSCbutton, createGardenButton, settingsButton);
+    	layout.setBackground(null);
+    	scene = new Scene(layout, canvasWidth, canvasHeight);
+    	
     	importSCbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
     	guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
     	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
     	settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
-    	modifySC.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
 	}
 }
