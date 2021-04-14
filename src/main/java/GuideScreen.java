@@ -6,20 +6,26 @@ import javafx.stage.Stage;
 
 public class GuideScreen extends Screen {
 	
+	GardenInitializationScreen gardeninitSC;
+	
+	View view; 
+	Scene scene;
 	Image introScreenImage;
-	Button forwardButton = new Button();
-	Button backButton = new Button();
-	boolean forwardBoolean = false;
-	boolean backBoolean = false;
-	View view;
-	Stage Introstage;
-	PagesEnum screen = PagesEnum.IntroScreen;
+	
+	Button importSCbutton = new Button("Import Garden");
+	Button createGardenButton = new Button("Create Garden");
+	
+	PagesEnum screen = PagesEnum.IntroScreen; 
 	
 	public void createScreen() {
     	StackPane layout = new StackPane();
-    	layout.getChildren().add(forwardButton);	
-    	Scene scene = new Scene(layout, 300, 500);
-    	forwardButton.setOnAction(e -> {});
+    	layout.getChildren().addAll(importSCbutton, createGardenButton);	
+    	Scene scene = new Scene(layout, 500, 800);
+    	createGardenButton.setOnAction(e -> view.currentstage.setScene(gardeninitSC.getScene()));
+	}
+	
+	public Scene getScene() {
+		return scene;
 	}
 	
 	public void nextButton() {

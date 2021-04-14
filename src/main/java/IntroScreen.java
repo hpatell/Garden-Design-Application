@@ -14,53 +14,40 @@ import javafx.event.EventHandler;
 
 public class IntroScreen extends Screen {
 	
-	Scene introscene;
+	GuideScreen guideSC;
+	ImportGardenScreen importSC;
+	GardenInitializationScreen gardeninitSC;
+	settingsScreen settingsSC;
 	
+	View view; 
+	Scene scene;
 	Image introScreenImage;
-	Button forwardButton = new Button("Click Me!");
-	Button backButton = new Button();
-	boolean forwardBoolean = false;
-	boolean backBoolean = false;
-	View view;
-	Stage Introstage;
+	
+	Button importSCbutton = new Button("Import Garden");
+	Button guideButton = new Button("Guide");
+	Button createGardenButton = new Button("Create Garden");
+	Button settingsButton = new Button("Create Garden");
+	
 	PagesEnum screen = PagesEnum.IntroScreen;
-	
-	
 	
 	public IntroScreen() {
     	StackPane layout = new StackPane();
-    	layout.getChildren().add(forwardButton);	
-    	Scene scene = new Scene(layout, 300, 500);
-    	//use enum to fetch the new scene
-    	//the button gets the scene from another screen and tells it change to this
-    	forwardButton.setOnAction(e -> view.currentstage.setScene(scene));
-    	introscene = scene;
+    	layout.getChildren().addAll(importSCbutton, guideButton, createGardenButton, settingsButton);	
+    	Scene scene = new Scene(layout, 500, 800);
+    	importSCbutton.setOnAction(e -> view.currentstage.setScene(importSC.getScene()));
+    	guideButton.setOnAction(e -> view.currentstage.setScene(guideSC.getScene()));
+    	createGardenButton.setOnAction(e -> view.currentstage.setScene(gardeninitSC.getScene()));
+    	settingsButton.setOnAction(e -> view.currentstage.setScene(settingsSC.getScene()));
 	}
 	
-	public PagesEnum newScreen() {
+	public PagesEnum getScreen() {
 		// returns enum indicating what screen it is
 		return screen;
 	}
-	
-	public void startButton() {
-		
-	}
-	
-	public void guideButton() {
-		
-	}
-	
-	public void importButton() {
-		
-	}
-	
-	public void settingsButton() {
-		
-	}
+
 	
 	public Scene getScene() {
-		
-		return introscene;
+		return scene;
 	}
 
 }

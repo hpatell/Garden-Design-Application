@@ -50,30 +50,17 @@ public class View extends Application {
 
     }
 
-    public void changePage() {
-    }
 
     @Override
     public void start(Stage stage) {
     	
     	currentstage = stage;
-    	/*
-    	Button button = new Button();
-    	button.setText("Click me!");
-    	Button button2 = new Button();
-    	button.setText("next screen");
-    	*/
+    	
+    	
     	StackPane layout = new StackPane();
     	layout.getChildren();	
-    	//StackPane layout2 = new StackPane();
-    	//layout2.getChildren().add(button2);
     	
-    	//Scene scene2 = new Scene(layout2, 300, 500);
     	Scene scene = new Scene(layout, 1000, 1000);
-    	
-    	//button.setOnAction(e -> currentstage.setScene(scene2));
-    	//button2.setOnAction(e -> currentstage.setScene(scene));
-    
     	
     	currentstage.setScene(scene);
     	currentstage.setTitle("Garden Application");

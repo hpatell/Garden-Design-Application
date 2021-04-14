@@ -24,7 +24,7 @@ public class Screen {
 	}
 	
 	public void SwitchScreen() {
-		view.currentstage.setScene(intro.introscene);
+		view.currentstage.setScene(intro.scene);
 	}
 	
 	public void performAction() {
