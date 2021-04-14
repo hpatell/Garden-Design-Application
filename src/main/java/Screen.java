@@ -11,31 +11,29 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
 
-public abstract class Screen {
-	
-	Image backgroundImage;
-	View view;
-	Scene scene;
-	
-	double canvasWidth;
-	double canvasHeight;
-	
-	PagesEnum page = PagesEnum.IntroScreen;
-	
-	public Screen(View v) {
-		view = v;
-		canvasWidth = 800;
-		canvasHeight = 800;
-	}
+public class Screen {
 
-	
-	public PagesEnum getScreen() {
-		return page;
-	}
+    Image backgroundImage;
+    View view;
+    Scene scene;
+    double canvasWidth;
+    double canvasHeight;
 
-	
-	public Scene getScene() {
-		return scene;
-	}
-	
+    PagesEnum page = PagesEnum.IntroScreen;
+
+    public Screen(View v) {
+        view = v;
+        canvasWidth = 800;
+        canvasHeight = 800;
+    }
+
+    public PagesEnum getScreen() {
+        return page;
+    }
+
+
+    public Scene getScene() {
+        return scene;
+    }
+
 }

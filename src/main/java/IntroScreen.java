@@ -46,7 +46,6 @@ public class IntroScreen extends Screen {
     	layout.setMaxHeight(canvasHeight);
     	layout.setMaxWidth(canvasHeight);
     	layout.getChildren().addAll(backgroundimgview, guideButton, importSCbutton, createGardenButton, settingsButton);
-    	layout.setBackground(null);
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	
     	importSCbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));

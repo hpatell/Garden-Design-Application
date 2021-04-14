@@ -35,6 +35,7 @@ public class View extends Application {
 	settingsScreen settings;
 	
 	PagesEnum PE = PagesEnum.IntroScreen;
+	PagesEnum previouspage = PagesEnum.IntroScreen;
 	
     public View() {
     	intro = new IntroScreen(this);
@@ -53,46 +54,58 @@ public class View extends Application {
     	switch(PE) {
     	case IntroScreen:
     		currentstage.setScene(intro.getScene());
-    		System.out.println("intro");
+    		previouspage = PagesEnum.IntroScreen;
     		break;
     	case ImportScreen:
     		currentstage.setScene(importgarden.getScene());
+    		previouspage = PagesEnum.ImportScreen;
     		System.out.println("import");
     		break;
     	case GuideScreen:
     		currentstage.setScene(guide.getScene());
+    		previouspage = PagesEnum.GuideScreen;
     		System.out.println("guide");
     		break;
     	case InitializationScreen:
     		currentstage.setScene(gardeninit.getScene());
+    		previouspage = PagesEnum.InitializationScreen;
     		System.out.println("init");
     		break;
     	case ModifyPlotScreen:
     		currentstage.setScene(modify.getScene());
+    		previouspage = PagesEnum.ModifyPlotScreen;
     		System.out.println("modify");
     		break;
     	case PresentationModeScreen:
     		currentstage.setScene(present.getScene());
+    		previouspage = PagesEnum.PresentationModeScreen;
     		System.out.println("present");
     		break;
     	case FaunaScreen:
     		currentstage.setScene(fauna.getScene());
+    		previouspage = PagesEnum.FaunaScreen;
     		System.out.println("fauna");
     		break;
     	case SummaryScreen:
     		currentstage.setScene(summary.getScene());
+    		previouspage = PagesEnum.SummaryScreen;
     		System.out.println("summary");
     		break;
     	case BudgetScreen:
     		currentstage.setScene(budget.getScene());
+    		previouspage = PagesEnum.BudgetScreen;
     		System.out.println("budget");
     		break;
     	case SettingsScreen:
     		currentstage.setScene(settings.getScene());
     		System.out.println("settings");
     		break;
+    	case PreviousScreen:
+    		switchPage(previouspage);
+    		break;
     	default:
     		currentstage.setScene(intro.getScene());
+    		previouspage = PagesEnum.IntroScreen;
     		System.out.println("intro");
     		break;
     	}
