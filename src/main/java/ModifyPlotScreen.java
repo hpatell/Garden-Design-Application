@@ -1,61 +1,135 @@
-import javafx.geometry.Pos;
+import java.util.Collection;
+
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
 
-public class GardenInitializationScreen extends Screen {
-
-    Button createGardenButton = new Button("Import Garden");
-
-    public GardenInitializationScreen(View v) {
-        super(v);
-        StackPane layout = new StackPane();
-        layout.getChildren().add(createGardenButton);
-        scene = new Scene(layout, 500, 800);
-        createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
+public class ModifyPlotScreen extends Screen {
+	
+    Collection<Image> plantImages;
+	Button summary = new Button("Test");
+	
+	Image im1 = new Image(getClass().getResourceAsStream("/commonMilkweed.png"));
+	private ImageView iv1;
+	
+	TilePane tilePane = new TilePane();
+	FlowPane flowPane = new FlowPane();
+	BorderPane borderPane = new BorderPane();
+	
+	private Controller imc;
+	
+    public ModifyPlotScreen(View v) {
+		super(v);
+		imc = new Controller(this);
+		iv1 = new ImageView();
+		
+		iv1.setImage(im1);
+    	iv1.setPreserveRatio(true);
+    	iv1.setFitHeight(100);
+    	
+    	DragAndDrop();
+		
+		Label label = new Label("Modify Plot Screen");
+		
+		//TilePane tilePane = new TilePane();
+    	tilePane.setHgap(20);
+    	tilePane.setMinWidth(200);
+    	tilePane.setPrefColumns(4);
+    	tilePane.getChildren().add(iv1);
+    	tilePane.setStyle("-fx-background-color: #add8e6;");
+		
+    	//FlowPane flowPane = new FlowPane();
+    	flowPane.setVgap(8);
+    	flowPane.setHgap(4);
+    	flowPane.setMinWidth(200);
+    	flowPane.setStyle("-fx-background-color: #deb887;");
+    	
+    	//BorderPane borderPane = new BorderPane();
+    	borderPane.setLeft(tilePane);
+    	borderPane.setCenter(flowPane); 
+    	borderPane.setTop(label);
+    	
+    	scene = new Scene(borderPane, 1000, 1000);
+    	summary.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
     }
 
-    public void gardenNameTF() {
-        Label name = new Label("Garden Name: ");
-        TextField tf = new TextField();
-        HBox hb = new HBox();
-        hb.getChildren().addAll(name, tf);
-        hb.setSpacing(10);
+    public void DragAndDrop()
+    {
+    	iv1.setOnDragDetected(new EventHandler <MouseEvent>() {
+    		public void handle(MouseEvent event) 
+    		{		
+    			Dragboard db = iv1.startDragAndDrop(TransferMode.ANY);
+    			ClipboardContent content = new ClipboardContent();
+    			content.putImage(iv1.getImage());
+    			db.setContent(content);
+    			event.consume();
+    		}
+    	});
+    	
+    	flowPane.setOnDragOver(new EventHandler<DragEvent>() {
+    		public void handle(DragEvent event) 
+    		{
+    			if (event.getGestureSource() != flowPane &&
+    					event.getDragboard().hasImage()) {
+    				event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+    			}
+    			event.consume();
+    		}
+    	});
+    	
+    	flowPane.setOnDragDropped(new EventHandler<DragEvent>() {
+    		public void handle(DragEvent event) 
+    		{
+    			Dragboard db = event.getDragboard();
+    			boolean success = false;
+    			if(db.hasImage()) 
+    			{
+    				ImageView iv2 = new ImageView(db.getImage());
+    				iv2.setFitHeight(100);
+    				iv2.setPreserveRatio(true);
+    				iv2.setOnMouseDragged((event1) -> imc.drag(event1));
+    				flowPane.getChildren().add(iv2);
+    				success = true;
+    			}
+    			event.setDropCompleted(success);
+    			event.consume();
+    		}
+    	});
+    }
+    
+    public void settingsbutton() {
+
     }
 
-    public void budgetTF() {
-        Label budget = new Label("Budget: ");
-        TextField tf2 = new TextField();
-        HBox hb2 = new HBox();
-        hb2.getChildren().addAll(budget, tf2);
-        hb2.setSpacing(10);
+    public void presentationModeButton() {
+
+    }
+    
+    public void budgetButton() {
+
     }
 
-    public void WeatherDropDown() {
-        ComboBox weather = new ComboBox();
-        weather.getItems().add("Choice 1");
-        weather.getItems().add("Choice 2");
-        weather.getItems().add("Choice 3");
+    public void faunabutton() {
+
     }
 
-    public void soilDropDown() {
-        ComboBox soil = new ComboBox();
-        soil.getItems().add("Choice 1");
-        soil.getItems().add("Choice 2");
-        soil.getItems().add("Choice 3");
+    public void searchTF() {
+
     }
 
-    public void moistureDropDown() {
-        ComboBox moisture = new ComboBox();
-        moisture.getItems().add("Choice 1");
-        moisture.getItems().add("Choice 2");
-        moisture.getItems().add("Choice 3");
+    public void plantNameText() {
+        
     }
-
+    
 }
