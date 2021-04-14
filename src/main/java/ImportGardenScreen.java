@@ -30,7 +30,6 @@ public class ImportGardenScreen extends Screen {
     	modifyPlotButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
 	}
 	
-	
 	public void checkForm() {
 		
 	}

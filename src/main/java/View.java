@@ -22,6 +22,7 @@ public class View extends Application {
     double x, y, xloc, yloc;
     int lepsSupported;
 	Stage currentstage;
+	int test = 0;
 	
 	IntroScreen intro;
 	ImportGardenScreen importgarden;
@@ -81,6 +82,9 @@ public class View extends Application {
     	case SettingsScreen:
     		currentstage.setScene(settings.getScene());
     		break;
+    	default:
+    		currentstage.setScene(intro.getScene());
+    		break;
     	}
     }
 
@@ -110,10 +114,13 @@ public class View extends Application {
     	currentstage = stage;
     	
     	StackPane layout = new StackPane();
-    	layout.getChildren();	
+    	layout.getChildren();
     	Scene scene = new Scene(layout, 500, 800);
     	
-    	currentstage.setScene(intro.getScene());
+    	if(test == 0) {
+        	currentstage.setScene(intro.scene);
+        	test++;
+    	}
     	currentstage.setTitle("Garden Application");
     	currentstage.show();
     }

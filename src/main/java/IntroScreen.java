@@ -22,7 +22,7 @@ public class IntroScreen extends Screen {
 	public IntroScreen(View v) {
 		super(v);
     	StackPane layout = new StackPane();
-    	layout.getChildren().addAll(importSCbutton, guideButton, createGardenButton, settingsButton);	
+    	layout.getChildren().addAll(guideButton, importSCbutton, createGardenButton, settingsButton);	
     	scene = new Scene(layout, 500, 800);
     	importSCbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
     	guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
