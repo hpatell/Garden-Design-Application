@@ -22,7 +22,6 @@ public class View extends Application {
     double x, y, xloc, yloc;
     int lepsSupported;
 	Stage currentstage;
-	int test = 0;
 	
 	IntroScreen intro;
 	ImportGardenScreen importgarden;
@@ -54,36 +53,47 @@ public class View extends Application {
     	switch(PE) {
     	case IntroScreen:
     		currentstage.setScene(intro.getScene());
+    		System.out.println("intro");
     		break;
     	case ImportScreen:
     		currentstage.setScene(importgarden.getScene());
+    		System.out.println("import");
     		break;
     	case GuideScreen:
     		currentstage.setScene(guide.getScene());
+    		System.out.println("guide");
     		break;
     	case InitializationScreen:
     		currentstage.setScene(gardeninit.getScene());
+    		System.out.println("init");
     		break;
     	case ModifyPlotScreen:
     		currentstage.setScene(modify.getScene());
+    		System.out.println("modify");
     		break;
     	case PresentationModeScreen:
     		currentstage.setScene(present.getScene());
+    		System.out.println("present");
     		break;
     	case FaunaScreen:
     		currentstage.setScene(fauna.getScene());
+    		System.out.println("fauna");
     		break;
     	case SummaryScreen:
     		currentstage.setScene(summary.getScene());
+    		System.out.println("summary");
     		break;
     	case BudgetScreen:
     		currentstage.setScene(budget.getScene());
+    		System.out.println("budget");
     		break;
     	case SettingsScreen:
     		currentstage.setScene(settings.getScene());
+    		System.out.println("settings");
     		break;
     	default:
     		currentstage.setScene(intro.getScene());
+    		System.out.println("intro");
     		break;
     	}
     }
@@ -113,14 +123,12 @@ public class View extends Application {
     public void start(Stage stage) {
     	currentstage = stage;
     	
-    	StackPane layout = new StackPane();
-    	layout.getChildren();
-    	Scene scene = new Scene(layout, 500, 800);
+    	switchPage(PE);
     	
-    	if(test == 0) {
-        	currentstage.setScene(intro.scene);
-        	test++;
-    	}
+    	StackPane layout = new StackPane();
+    	layout.getChildren();	
+    	
+    	currentstage.setScene(intro.scene);
     	currentstage.setTitle("Garden Application");
     	currentstage.show();
     }

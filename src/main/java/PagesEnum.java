@@ -10,7 +10,8 @@ public enum PagesEnum {
     FaunaScreen("fauna"),
     SummaryScreen("summary"),
 	BudgetScreen("budget"),
-	SettingsScreen("settings");
+	SettingsScreen("settings"),
+	PreviousScreen("Previous");
 	
 	private String name = null;
 	

@@ -7,15 +7,15 @@ import javafx.scene.layout.StackPane;
 
 public class ModifyPlotScreen extends Screen {
     Collection<Image> plantImages;
-	Button test = new Button("Test");
+	Button summary = new Button("Test");
 	
     
     public ModifyPlotScreen(View v) {
 		super(v);
     	StackPane layout = new StackPane();
-    	layout.getChildren().addAll(test);	
+    	layout.getChildren().addAll(summary);	
     	scene = new Scene(layout, 500, 800);
-    	test.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
+    	summary.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
     }
 
     public void settingsbutton() {
