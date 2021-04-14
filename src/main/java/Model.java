@@ -1,6 +1,9 @@
 
 public class Model {
 
+	private double x = 100;
+	private double y = 200;
+	
 	public Model() {
 		
 	}
@@ -37,20 +40,20 @@ public class Model {
         
     }
     
-    public static double getX() {
-		return 0;
+    public double getX() {
+		return x;
 	}
 
-	public static void setX(double x) {
-		
+	public void setX(double x) {
+		this.x = x;
 	}
 
-	public static double getY() {
-		return 0;
+	public double getY() {
+		return y;
 	}
 
-	public static void setY(double y) {
-		
+	public void setY(double y) {
+		this.y = y;
 	}
 
 }

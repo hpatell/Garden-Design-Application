@@ -16,24 +16,29 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
 
 public class ModifyPlotScreen extends Screen {
+	
     Collection<Image> plantImages;
 	Button summary = new Button("Test");
 	
 	Image im1 = new Image(getClass().getResourceAsStream("/commonMilkweed.png"));
-	private ImageView iv1 = new ImageView();
+	private ImageView iv1;
 	
 	TilePane tilePane = new TilePane();
 	FlowPane flowPane = new FlowPane();
 	BorderPane borderPane = new BorderPane();
 	
+	private Controller imc;
+	
     public ModifyPlotScreen(View v) {
 		super(v);
-		
-		DragAndDrop();
+		imc = new Controller(this);
+		iv1 = new ImageView();
 		
 		iv1.setImage(im1);
     	iv1.setPreserveRatio(true);
     	iv1.setFitHeight(100);
+    	
+    	DragAndDrop();
 		
 		Label label = new Label("Modify Plot Screen");
 		
@@ -93,7 +98,7 @@ public class ModifyPlotScreen extends Screen {
     				ImageView iv2 = new ImageView(db.getImage());
     				iv2.setFitHeight(100);
     				iv2.setPreserveRatio(true);
-    				//iv2.setOnMouseDragged((event1) -> imc.drag(event1));
+    				iv2.setOnMouseDragged((event1) -> imc.drag(event1));
     				flowPane.getChildren().add(iv2);
     				success = true;
     			}
