@@ -26,7 +26,7 @@ public class GardenInitializationScreen extends Screen {
 	ComboBox<String> soil = new ComboBox<String>();
 	ComboBox<String> moisture = new ComboBox<String>();
 	
-	Image initBackgroundImg = new Image(getClass().getResourceAsStream("/gardenInitImg.PNG"));
+	Image initBackgroundImg = new Image(getClass().getResourceAsStream("/gardenImg.PNG"));
 	ImageView initBackgroundImgview = new ImageView(initBackgroundImg);
 	
 	public GardenInitializationScreen(View v) {
