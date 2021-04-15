@@ -40,7 +40,7 @@ public class IntroScreen extends Screen {
 		
     	layout.setMaxHeight(canvasHeight);
     	layout.setMaxWidth(canvasHeight);
-    	
+    	layout.setStyle("-fx-background-color: #3cb371;");
     	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
 	

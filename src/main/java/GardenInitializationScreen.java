@@ -26,8 +26,8 @@ public class GardenInitializationScreen extends Screen {
 	ComboBox<String> soil = new ComboBox<String>();
 	ComboBox<String> moisture = new ComboBox<String>();
 	
-	Image initBackgroundImg = new Image(getClass().getResourceAsStream("/gardenImg.PNG"));
-	ImageView initBackgroundImgview = new ImageView(initBackgroundImg);
+	//Image initBackgroundImg = new Image(getClass().getResourceAsStream("/gardenImg.PNG"));
+	//ImageView initBackgroundImgview = new ImageView(initBackgroundImg);
 	
 	public GardenInitializationScreen(View v) {
 		super(v);
@@ -86,7 +86,8 @@ public class GardenInitializationScreen extends Screen {
 		moisture.setMinWidth(0);
 		
 		StackPane layout = new StackPane();
-    	layout.getChildren().addAll(initBackgroundImgview, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
+		layout.setStyle("-fx-background-color: #3cb371;");
+    	layout.getChildren().addAll(name, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	
     	createGardenButton.setOnAction(e -> {
