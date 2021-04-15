@@ -65,13 +65,14 @@ public class SummaryScreen extends Screen {
     	HelianthusSunflowerlep.setTranslateX(75);
     	HelianthusSunflowerlep.setTranslateY(0);
     	
-    	FragariaStrawberry.setTranslateX(-150);
-    	FragariaStrawberry.setTranslateY(50);
+    	SalixWillow.setTranslateX(-150);
+    	SalixWillow.setTranslateY(50);
     	
     	SalixWillowlep.setTranslateX(75);
     	SalixWillowlep.setTranslateY(50);
     	
-    	layout.getChildren().addAll(back, save, budgetbar, budgettext, plantstext, lepstext, FragariaStrawberry, FragariaStrawberrylep);
+    	layout.getChildren().addAll(back, save, budgetbar, budgettext, plantstext, 
+    			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
     	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
