@@ -71,8 +71,6 @@ public class SummaryScreen extends Screen {
     	SalixWillowlep.setTranslateX(75);
     	SalixWillowlep.setTranslateY(50);
     	
-    	back.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
-    	
     	layout.getChildren().addAll(back, save, budgetbar, budgettext, plantstext, 
     			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
     	
