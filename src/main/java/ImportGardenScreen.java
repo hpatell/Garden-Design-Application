@@ -17,7 +17,7 @@ import javafx.event.EventHandler;
 public class ImportGardenScreen extends Screen {
 	
 	
-	Button modifyPlotButton = new Button("Import Screen Test");
+	Button exit = new Button("Exit");
 	
 	JFileChooser chooser;
 	File file;
@@ -25,9 +25,10 @@ public class ImportGardenScreen extends Screen {
 	public ImportGardenScreen(View v) {
 		super(v);
     	StackPane layout = new StackPane();
-    	layout.getChildren().addAll(modifyPlotButton);	
-    	scene = new Scene(layout, 500, 800);
-    	modifyPlotButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
+    	layout.setStyle("-fx-background-color: #3cb371;");
+    	layout.getChildren().addAll(exit);	
+    	scene = new Scene(layout, canvasWidth, canvasHeight);
+    	exit.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));
 	}
 	
 	public void checkForm() {

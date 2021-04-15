@@ -13,7 +13,7 @@ public class BudgetScreen extends Screen {
 	Button back = new Button("Return to Plot");
 	
 	Text plantstext = new Text("Plants In Garden");
-	Text lepstext = new Text("Leps In Garden");
+	Text lepstext = new Text("Cost of Plant");
 	Text plantsimgtext = new Text("Image of Plants In Garden");
 	
 	Text FragariaStrawberry = new Text("Fragaria (Strawberry)");
