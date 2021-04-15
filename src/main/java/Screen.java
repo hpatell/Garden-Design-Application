@@ -16,6 +16,7 @@ public class Screen {
     Image backgroundImage;
     View view;
     Scene scene;
+    String theme; 
     double canvasWidth;
     double canvasHeight;
 	String gardenname;
@@ -27,6 +28,15 @@ public class Screen {
         view = v;
         canvasWidth = 1000;
         canvasHeight = 790;
+        theme = "-fx-background-color: #FFFFFF;";
+    }
+    
+    public void changeTheme(String s) {
+    	if(s == "dark") {
+    		theme = "-fx-background-color: #000000;";
+    	} else {
+    		theme = "-fx-background-color: #FFFFFF;";
+    	}
     }
     
     public void setGardenName(String s) {

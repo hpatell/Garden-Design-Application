@@ -3,18 +3,15 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+import javafx.scene.shape.*;
 
 public class GuideScreen extends Screen {
-	
-	GardenInitializationScreen gardeninitSC;
-	
-	View view; 
-	Scene scene;
-	Image introScreenImage;
-	
+
 	Button importSCbutton = new Button("Import Garden");
 	Button createGardenButton = new Button("Create Garden");
+	
+	Rectangle rectangle = new Rectangle(100, 100);
+	
 	
 	Image backgroundimg = new Image(getClass().getResourceAsStream("/HowToImage.png"));
 	ImageView backgroundimgview = new ImageView(backgroundimg);
@@ -28,23 +25,22 @@ public class GuideScreen extends Screen {
 		backgroundimgview.setFitHeight(1200);
 		backgroundimgview.setFitWidth(1000);
 		
+    	importSCbutton.setTranslateX(75);
+    	importSCbutton.setTranslateY(380);
+    	
+    	rectangle.setTranslateX(0);
+    	rectangle.setTranslateY(0);
+    	
+    	createGardenButton.setTranslateX(-75);
+    	createGardenButton.setTranslateY(380);
+		
     	StackPane layout = new StackPane();
-    	layout.getChildren().addAll(backgroundimgview, importSCbutton, createGardenButton);	
+    	layout.setMaxHeight(canvasHeight);
+    	layout.setMaxWidth(canvasHeight);
+    	layout.getChildren().addAll(new Circle(0, 0, 10), backgroundimgview, importSCbutton, createGardenButton);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
+    	
     	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
     	importSCbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
 	}
-	
-	public Scene getScene() {
-		return scene;
-	}
-	
-	public void nextButton() {
-		
-	}
-	
-	public void backButton() {
-		
-	}
 }
-//test2
