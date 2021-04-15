@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -24,7 +25,10 @@ public class GardenInitializationScreen extends Screen {
 	ComboBox<String> weather = new ComboBox<String>();
 	ComboBox<String> soil = new ComboBox<String>();
 	ComboBox<String> moisture = new ComboBox<String>();
-
+	
+	Image initBackgroundImg = new Image(getClass().getResourceAsStream("/gardenInitImg.PNG"));
+	ImageView initBackgroundImgview = new ImageView(initBackgroundImg);
+	
 	public GardenInitializationScreen(View v) {
 		super(v);
 		
@@ -82,7 +86,7 @@ public class GardenInitializationScreen extends Screen {
 		moisture.setMinWidth(0);
 		
 		StackPane layout = new StackPane();
-    	layout.getChildren().addAll(name, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
+    	layout.getChildren().addAll(initBackgroundImgview, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	
     	createGardenButton.setOnAction(e -> {
