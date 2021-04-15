@@ -8,6 +8,9 @@ public class SummaryScreen extends Screen {
 	int totalLeps;
 	int totalPlants;
 
+	
+	
+	
 	public SummaryScreen(View v) {
 		super(v);
     	StackPane layout = new StackPane();
