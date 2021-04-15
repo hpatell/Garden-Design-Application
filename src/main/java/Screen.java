@@ -23,8 +23,8 @@ public class Screen {
 
     public Screen(View v) {
         view = v;
-        canvasWidth = 800;
-        canvasHeight = 800;
+        canvasWidth = 1000;
+        canvasHeight = 790;
     }
 
     public PagesEnum getScreen() {

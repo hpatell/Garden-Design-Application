@@ -38,7 +38,7 @@ public class IntroScreen extends Screen {
     	guideButton.setTranslateX(0);
     	guideButton.setTranslateY(150);
     	
-    	settingsButton.setTranslateX(350);
+    	settingsButton.setTranslateX(450);
     	settingsButton.setTranslateY(-375);
     	
     	

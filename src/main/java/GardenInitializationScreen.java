@@ -60,7 +60,7 @@ public class GardenInitializationScreen extends Screen {
     	createGardenButton.setTranslateX(0);
     	createGardenButton.setTranslateY(150);
     	
-    	settingsButton.setTranslateX(350);
+    	settingsButton.setTranslateX(450);
     	settingsButton.setTranslateY(-375);
 		
 		soil.setTranslateX(0);
@@ -85,7 +85,7 @@ public class GardenInitializationScreen extends Screen {
     	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
     	settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
     	//gardenname = name.getText();
-    	///gardenbudget = Integer.parseInt(budget.getText());
+    	//gardenbudget = Integer.parseInt(budget.getText());
 	}
 
 } 
