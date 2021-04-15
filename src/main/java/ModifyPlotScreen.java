@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -18,7 +19,6 @@ import javafx.scene.layout.TilePane;
 public class ModifyPlotScreen extends Screen {
 	
     Collection<Image> plantImages;
-	Button summary = new Button("Test");
 	
 	Image im1 = new Image(getClass().getResourceAsStream("/commonMilkweed.png"));
 	private ImageView iv1;
@@ -26,6 +26,8 @@ public class ModifyPlotScreen extends Screen {
 	TilePane tilePane = new TilePane();
 	FlowPane flowPane = new FlowPane();
 	BorderPane borderPane = new BorderPane();
+	TilePane tilePane2 = new TilePane();
+	TilePane tilePane3 = new TilePane();
 	
 	private Controller imc;
 	
@@ -39,8 +41,6 @@ public class ModifyPlotScreen extends Screen {
     	iv1.setFitHeight(100);
     	
     	DragAndDrop();
-		
-		Label label = new Label("Modify Plot Screen");
 		
 		//TilePane tilePane = new TilePane();
     	tilePane.setHgap(20);
@@ -58,10 +58,17 @@ public class ModifyPlotScreen extends Screen {
     	//BorderPane borderPane = new BorderPane();
     	borderPane.setLeft(tilePane);
     	borderPane.setCenter(flowPane); 
-    	borderPane.setTop(label);
+    	borderPane.setTop(tilePane2);
+    	borderPane.setBottom(tilePane3);
+    	
+    	label();
+    	settingsbutton();
+    	presentationModeButton();
+    	budgetButton();
+    	faunabutton();
     	
     	scene = new Scene(borderPane, 1000, 1000);
-    	summary.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
+    	//summary.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
     }
 
     public void DragAndDrop()
@@ -108,24 +115,50 @@ public class ModifyPlotScreen extends Screen {
     	});
     }
     
-    public void settingsbutton() {
-
+    public void label()
+    {
+    	Label label = new Label("Modify Plot Screen");
+    	label.setTranslateX(450);
+    	label.setTranslateY(0);
+    	tilePane2.getChildren().add(label);
+    }
+    
+    public void settingsbutton() 
+    {
+    	Button settings = new Button("Settings");
+    	settings.setTranslateX(-120);
+    	settings.setTranslateY(0);
+    	settings.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
+    	tilePane2.getChildren().add(settings);
     }
 
     public void presentationModeButton() {
-
+    	
+    	Button fullscreen = new Button("Full Screen");
+    	fullscreen.setTranslateX(700);
+    	fullscreen.setTranslateY(0);
+    	fullscreen.setOnAction(e -> view.switchPage(PagesEnum.PresentationModeScreen));
+    	tilePane2.getChildren().add(fullscreen);
     }
     
     public void budgetButton() {
-
+    	Button budget = new Button("Budget");
+    	budget.setTranslateX(5);
+    	budget.setTranslateY(0);
+    	budget.setOnAction(e -> view.switchPage(PagesEnum.BudgetScreen));
+    	tilePane3.getChildren().add(budget);
     }
 
     public void faunabutton() {
-
+    	Button fauna = new Button("Fauna");
+    	fauna.setTranslateX(880);
+    	fauna.setTranslateY(0);
+    	fauna.setOnAction(e -> view.switchPage(PagesEnum.FaunaScreen));
+    	tilePane3.getChildren().add(fauna);
     }
 
     public void searchTF() {
-
+    	
     }
 
     public void plantNameText() {
