@@ -18,6 +18,8 @@ public class Screen {
     Scene scene;
     double canvasWidth;
     double canvasHeight;
+	String gardenname;
+	double gardenbudget;
 
     PagesEnum page = PagesEnum.IntroScreen;
 
@@ -26,7 +28,15 @@ public class Screen {
         canvasWidth = 1000;
         canvasHeight = 790;
     }
+    
+    public void setGardenName(String s) {
+    	gardenname = s;
+    }
 
+    public String getGardenName() {
+    	return gardenname;
+    }
+    
     public PagesEnum getScreen() {
         return page;
     }
@@ -35,5 +45,12 @@ public class Screen {
     public Scene getScene() {
         return scene;
     }
-
+    
+    public String getgardenname() {
+    	return gardenname;
+    }
+    
+    public double getgardenbudget() {
+    	return gardenbudget;
+    }
 }

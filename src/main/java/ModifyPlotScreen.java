@@ -117,6 +117,7 @@ public class ModifyPlotScreen extends Screen {
     public void label()
     {
     	Label label = new Label("Modify Your Garden");
+    	//Label label = new Label(gardenname);
     	label.setTranslateX(450);
     	label.setTranslateY(0);
     	tilePaneTop.getChildren().add(label);

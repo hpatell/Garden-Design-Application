@@ -14,9 +14,6 @@ public class GardenInitializationScreen extends Screen {
 	String weathers[] = {"Sunny","Rainny","Cloudy"};
 	String moistures[] = {"Dry","Medium","Moist"};
 	String soils[] = {"Dirt", "Clay", "Rock"};
-	
-	String gardenname;
-	double gardenbudget;
 
 	Button createGardenButton = new Button("Finished");
 	Button settingsButton = new Button("Settings");
@@ -82,10 +79,14 @@ public class GardenInitializationScreen extends Screen {
     	layout.getChildren().addAll(name, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	
-    	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
+    	createGardenButton.setOnAction(e -> {
+    		view.switchPage(PagesEnum.ModifyPlotScreen);
+    		setGardenName((nametf.getText()));
+    	});
     	settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
-    	//gardenname = name.getText();
+    	gardenname = name.getText();
     	//gardenbudget = Integer.parseInt(budget.getText());
 	}
+	
 
 } 
