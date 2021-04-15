@@ -10,52 +10,82 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.ComboBox;
 
 public class GardenInitializationScreen extends Screen {
+	
+	String weathers[] = {"Sunny","Rainny","Cloudy"};
+	String moistures[] = {"Dry","Medium","Moist"};
+	String soils[] = {"Dirt", "Clay", "Rock"};
+	
+	String gardenname;
+	double gardenbudget;
 
-	Button createGardenButton = new Button("Import Garden");
+	Button createGardenButton = new Button("Finished");
+	Button settingsButton = new Button("Settings");
+	Label name = new Label("Garden Name: ");
+	TextField nametf = new TextField();
+	Label budget = new Label("Budget:               ");
+	TextField budgettf = new TextField();
+	ComboBox<String> weather = new ComboBox<String>();
+	ComboBox<String> soil = new ComboBox<String>();
+	ComboBox<String> moisture = new ComboBox<String>();
 
 	public GardenInitializationScreen(View v) {
 		super(v);
+		
+		weather.getItems().add(weathers[0]);
+		weather.getItems().add(weathers[1]);
+		weather.getItems().add(weathers[2]);
+		soil.getItems().add(moistures[0]);
+		soil.getItems().add(moistures[1]);
+		soil.getItems().add(moistures[2]);
+		moisture.getItems().add(soils[0]);
+		moisture.getItems().add(soils[1]);
+		moisture.getItems().add(soils[2]);
+		
+		name.setTranslateX(-150);
+		name.setTranslateY(-250);
+    	
+		nametf.setTranslateX(0);
+		nametf.setTranslateY(-250);
+    	
+		nametf.setMaxWidth(100);
+		
+		budget.setTranslateX(-150);
+		budget.setTranslateY(-200);
+    	
+		budgettf.setTranslateX(0);
+		budgettf.setTranslateY(-200);
+		
+		budgettf.setMaxWidth(100);
+		
+    	createGardenButton.setTranslateX(0);
+    	createGardenButton.setTranslateY(150);
+    	
+    	settingsButton.setTranslateX(350);
+    	settingsButton.setTranslateY(-375);
+		
+		soil.setTranslateX(0);
+		soil.setTranslateY(-50);
+		
+		soil.setMinWidth(100);
+		
+		weather.setTranslateX(0);
+		weather.setTranslateY(0);
+		
+		weather.setMinWidth(100);
+		
+		moisture.setTranslateX(0);
+		moisture.setTranslateY(50);
+		
+		moisture.setMinWidth(0);
+		
 		StackPane layout = new StackPane();
-    	layout.getChildren().add(createGardenButton);	
-    	scene = new Scene(layout, 500, 800);
+    	layout.getChildren().addAll(name, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
+    	scene = new Scene(layout, canvasWidth, canvasHeight);
+    	
     	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
-	}
-
-	public void gardenNameTF() {
-		Label name = new Label("Garden Name: ");
-		TextField tf = new TextField();
-		HBox hb = new HBox();
-		hb.getChildren().addAll(name, tf);
-		hb.setSpacing(10);
-	}
-
-	public void budgetTF() {
-		Label budget = new Label("Budget: ");
-		TextField tf2 = new TextField();
-		HBox hb2 = new HBox();
-		hb2.getChildren().addAll(budget, tf2);
-		hb2.setSpacing(10);
-	}
-
-	public void WeatherDropDown() {
-		ComboBox weather = new ComboBox();
-		weather.getItems().add("Choice 1");
-		weather.getItems().add("Choice 2");
-		weather.getItems().add("Choice 3");
-	}
-
-	public void soilDropDown() {
-		ComboBox soil = new ComboBox();
-		soil.getItems().add("Choice 1");
-		soil.getItems().add("Choice 2");
-		soil.getItems().add("Choice 3");
-	}
-
-	public void moistureDropDown() {
-		ComboBox moisture = new ComboBox();
-		moisture.getItems().add("Choice 1");
-		moisture.getItems().add("Choice 2");
-		moisture.getItems().add("Choice 3");
+    	settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
+    	//gardenname = name.getText();
+    	///gardenbudget = Integer.parseInt(budget.getText());
 	}
 
 } 
