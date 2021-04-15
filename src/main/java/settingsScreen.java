@@ -14,13 +14,14 @@ public class settingsScreen extends Screen {
     public settingsScreen(View v) {
         super(v);
 
-        Label title = new Label("Settings");
-        title.setMinWidth(100);
-        title.setMinHeight(100);
-        title.setTranslateX(0);
-        title.setTranslateY(-200);
-        title.setMaxSize(100, 100);
-        layout.getChildren().add(title);
+//        Label title = new Label("Settings");
+//        title.setMinWidth(100);
+//        title.setMinHeight(100);
+//        title.setTranslateX(0);
+//        title.setTranslateY(-200);
+//        title.setMaxSize(100, 100);
+//        layout.getChildren().add(title);
+        layout.setStyle("-fx-background-color: #3cb371;");
         
         exitButton();
         adjBudgetTF();
@@ -35,12 +36,12 @@ public class settingsScreen extends Screen {
     public void exitButton() 
     {
     	Button exitButton = new Button("Exit");
-    	Image gear = new Image(getClass().getResourceAsStream("/gear.png"));
-    	ImageView gearIV = new ImageView(gear);
-    	gearIV.setPreserveRatio(true);
-    	gearIV.setFitHeight(20);
-    	gearIV.setFitWidth(20);
-    	exitButton.setGraphic(gearIV);
+    	//Image gear = new Image(getClass().getResourceAsStream("/gear.png"));
+    	//ImageView gearIV = new ImageView(gear);
+    	//gearIV.setPreserveRatio(true);
+    	//gearIV.setFitHeight(20);
+    	//gearIV.setFitWidth(20);
+    	//exitButton.setGraphic(gearIV);
     	exitButton.setTranslateX(450);
         exitButton.setTranslateY(-375);
         exitButton.setOnAction(e -> view.switchPage(PagesEnum.PreviousScreen));
