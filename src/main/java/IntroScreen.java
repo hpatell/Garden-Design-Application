@@ -23,7 +23,7 @@ public class IntroScreen extends Screen {
 	Button guideButton = new Button("Guide");
 	Button createGardenButton = new Button("Create Garden");
 	Button settingsButton = new Button("Settings");
-	Image backgroundimg = new Image(getClass().getResourceAsStream("/download.png"));
+	Image backgroundimg = new Image(getClass().getResourceAsStream("/introbackground.PNG"));
 	ImageView backgroundimgview = new ImageView(backgroundimg);
 	
 	public IntroScreen(View v) {
