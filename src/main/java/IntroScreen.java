@@ -55,7 +55,7 @@ public class IntroScreen extends Screen {
 	
 	public void guideButton()
 	{
-		Button guideButton = new Button("Create Garden");
+		Button guideButton = new Button("Guide");
 		guideButton.setTranslateX(0);
 	    guideButton.setTranslateY(150);
 	    guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
