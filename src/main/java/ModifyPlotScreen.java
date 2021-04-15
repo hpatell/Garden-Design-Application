@@ -65,6 +65,7 @@ public class ModifyPlotScreen extends Screen {
     	presentationModeButton();
     	budgetButton();
     	faunabutton();
+    	summarybutton();
     	
     	scene = new Scene(borderPane, canvasWidth, canvasHeight);
     }
@@ -153,7 +154,7 @@ public class ModifyPlotScreen extends Screen {
     public void faunabutton() 
     {
     	Button fauna = new Button("Fauna");
-    	fauna.setTranslateX(880);
+    	fauna.setTranslateX(855);
     	fauna.setTranslateY(0);
     	fauna.setOnAction(e -> view.switchPage(PagesEnum.FaunaScreen));
     	tilePaneBottom.getChildren().add(fauna);
@@ -165,6 +166,14 @@ public class ModifyPlotScreen extends Screen {
 
     public void plantNameText() {
         
+    }
+    
+    public void summarybutton() {
+    	Button summary = new Button("Summary");
+    	summary.setTranslateX(340);
+    	summary.setTranslateY(0);
+    	summary.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
+    	tilePaneBottom.getChildren().add(summary);
     }
     
     public ImageView createImage(String png) 
