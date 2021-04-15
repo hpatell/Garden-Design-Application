@@ -91,6 +91,9 @@ public class faunaScreen extends Screen {
 		StackPane layout = new StackPane();	
 		layout.getChildren().addAll(back, HelianthusSunflowerimg, SalixWillowimg, FragariaStrawberryimg, plantstext, 
     			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
+		
+		layout.setStyle("-fx-background-color: #3cb371;");
+		
 		scene = new Scene(layout, canvasWidth, canvasHeight);
 		
 		back.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));

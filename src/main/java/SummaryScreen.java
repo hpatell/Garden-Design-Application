@@ -74,6 +74,10 @@ public class SummaryScreen extends Screen {
     	layout.getChildren().addAll(back, save, budgetbar, budgettext, plantstext, 
     			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
     	
+    	layout.setStyle("-fx-background-color: #3cb371;");
+    	
+    	back.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
+    	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
 }
