@@ -12,7 +12,10 @@ public class BudgetScreen extends Screen {
 	
 	public BudgetScreen(View v) {
 		super(v);
-    	StackPane layout = new StackPane();
+    	
+		
+		
+		StackPane layout = new StackPane();
     	layout.getChildren();	
     	scene = new Scene(layout, 500, 800);
 	}
