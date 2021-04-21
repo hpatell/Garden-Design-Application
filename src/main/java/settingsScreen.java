@@ -85,9 +85,10 @@ public class settingsScreen extends Screen {
     
     public void finish()
     {
-    	Button finishButton = new Button("Finish Garden");
+    	Button finishButton = new Button("Return To Menu");
     	finishButton.setTranslateX(125);
     	finishButton.setTranslateY(150);
+    	finishButton.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));
         layout.getChildren().add(finishButton);
     }
     
