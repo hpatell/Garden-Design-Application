@@ -25,7 +25,7 @@ public class BudgetScreen extends Screen {
 	Text SalixWillowcost = new Text("$6");
 	
 	public BudgetScreen(View v) {
-		super(v);
+		super(v, PagesEnum.BudgetScreen);
 		
     	budgetbar.setTranslateX(0);
     	budgetbar.setTranslateY(-250);
@@ -66,7 +66,7 @@ public class BudgetScreen extends Screen {
     	SalixWillowcost.setTranslateX(75);
     	SalixWillowcost.setTranslateY(50);
 		
-		StackPane layout = new StackPane();
+		layout = new StackPane();
     	layout.getChildren();	
     	layout.getChildren().addAll(back, budgetbar, plantstext, 
     			lepstext, budgettext, FragariaStrawberry, FragariaStrawberrycost, HelianthusSunflower, HelianthusSunflowercost, SalixWillowcost, SalixWillow);

@@ -34,7 +34,7 @@ public class faunaScreen extends Screen {
 	ImageView SalixWillowimg = new ImageView(img3);
 	
 	public faunaScreen(View v) {
-		super(v);
+		super(v, PagesEnum.FaunaScreen);
 		
 		FragariaStrawberryimg.setPreserveRatio(true);
 		HelianthusSunflowerimg.setPreserveRatio(true);
@@ -88,7 +88,7 @@ public class faunaScreen extends Screen {
     	SalixWillowlep.setTranslateX(75);
     	SalixWillowlep.setTranslateY(50);
 		
-		StackPane layout = new StackPane();	
+		layout = new StackPane();	
 		layout.getChildren().addAll(back, HelianthusSunflowerimg, SalixWillowimg, FragariaStrawberryimg, plantstext, 
     			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
 		

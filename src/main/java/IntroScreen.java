@@ -22,10 +22,10 @@ public class IntroScreen extends Screen {
 	Image backgroundIMG = new Image(getClass().getResourceAsStream("/introbackground.png"));
 	ImageView backgroundIV = new ImageView(backgroundIMG);
 	
-	StackPane layout = new StackPane();
 	
 	public IntroScreen(View v) {
-		super(v);
+		super(v, PagesEnum.IntroScreen);
+    	layout = new StackPane();
     	
 		backgroundIV.setPreserveRatio(true);
 		backgroundIV.setFitHeight(canvasHeight);
@@ -40,7 +40,7 @@ public class IntroScreen extends Screen {
 		
     	layout.setMaxHeight(canvasHeight);
     	layout.setMaxWidth(canvasHeight);
-    	layout.setStyle("-fx-background-color: #3cb371;");
+    	layout.setStyle(theme);
     	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
 	

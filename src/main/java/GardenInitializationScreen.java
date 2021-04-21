@@ -30,7 +30,7 @@ public class GardenInitializationScreen extends Screen {
 	//ImageView initBackgroundImgview = new ImageView(initBackgroundImg);
 	
 	public GardenInitializationScreen(View v) {
-		super(v);
+		super(v, PagesEnum.InitializationScreen);
 		
 		weather.getItems().add(weathers[0]);
 		weather.getItems().add(weathers[1]);
@@ -85,7 +85,7 @@ public class GardenInitializationScreen extends Screen {
 		
 		moisture.setMinWidth(0);
 		
-		StackPane layout = new StackPane();
+		layout = new StackPane();
 		layout.setStyle("-fx-background-color: #3cb371;");
     	layout.getChildren().addAll(name, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);

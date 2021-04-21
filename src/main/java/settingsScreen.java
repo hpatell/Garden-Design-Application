@@ -8,11 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class settingsScreen extends Screen {
-	
-	StackPane layout = new StackPane();
+
 
     public settingsScreen(View v) {
-        super(v);
+        super(v, PagesEnum.SettingsScreen);
+    	layout = new StackPane();
 
 //        Label title = new Label("Settings");
 //        title.setMinWidth(100);
@@ -21,14 +21,13 @@ public class settingsScreen extends Screen {
 //        title.setTranslateY(-200);
 //        title.setMaxSize(100, 100);
 //        layout.getChildren().add(title);
-        layout.setStyle("-fx-background-color: #3cb371;");
         
         exitButton();
         adjBudgetTF();
         changeTheme();
         saveButton();
         finish();
-        
+    	layout.setStyle(theme);
         //layout.getChildren().addAll(exitButton, saveButton, adjBudget, adjBudjgettf, theme, lightButton, darkButton);
         scene = new Scene(layout, canvasWidth, canvasHeight);
     }
@@ -44,7 +43,7 @@ public class settingsScreen extends Screen {
     	//exitButton.setGraphic(gearIV);
     	exitButton.setTranslateX(450);
         exitButton.setTranslateY(-375);
-        exitButton.setOnAction(e -> view.switchPage(PagesEnum.PreviousScreen));
+        exitButton.setOnAction(e -> view.switchPage(view.previouspage));
         layout.getChildren().add(exitButton);
     }
     
@@ -62,17 +61,29 @@ public class settingsScreen extends Screen {
 
     public void changeTheme()
     {
-    	Label theme = new Label("Change Theme:");
-    	theme.setTranslateX(-150);
-        theme.setTranslateY(0);
-        ComboBox<String> themeDL = new ComboBox<String>();
-        themeDL.getItems().add("Dark Mode");
-        themeDL.getItems().add("Light Mode");
-        themeDL.setPromptText("Theme");
-        themeDL.setMinWidth(100);
-        themeDL.setTranslateX(0);
-        themeDL.setTranslateY(0);
-        layout.getChildren().addAll(theme, themeDL);
+    	Label themelbl = new Label("Change Theme:");
+    	themelbl.setTranslateX(-150);
+    	themelbl.setTranslateY(0);
+        Button dchangeThemebutton = new Button("Dark");
+        Button lchangeThemebutton = new Button("Light");
+        dchangeThemebutton.setMinWidth(100);
+        dchangeThemebutton.setTranslateX(0);
+        dchangeThemebutton.setTranslateY(0);
+        dchangeThemebutton.setOnAction(e -> applyTheme("dark"));
+        
+        lchangeThemebutton.setMinWidth(100);
+        lchangeThemebutton.setTranslateX(75);
+        lchangeThemebutton.setTranslateY(0);
+        lchangeThemebutton.setOnAction(e -> applyTheme("light"));
+        layout.getChildren().addAll(dchangeThemebutton, lchangeThemebutton, themelbl);
+    }
+    
+    public void applyTheme(String s) {
+    	System.out.println("apply theme");
+    	view.nameToScreenMap.forEach((name, screen) -> {
+        	System.out.println(name);
+    		screen.changeTheme(s);
+    	});
     }
 
     public void saveButton() 

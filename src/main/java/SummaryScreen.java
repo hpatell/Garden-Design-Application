@@ -28,9 +28,9 @@ public class SummaryScreen extends Screen {
 	Text SalixWillowlep = new Text("292");
 	
 	public SummaryScreen(View v) {
-		super(v);
+		super(v, PagesEnum.SummaryScreen);
 		
-    	StackPane layout = new StackPane();
+    	layout = new StackPane();
     	
     	budgetbar.setTranslateX(0);
     	budgetbar.setTranslateY(-250);

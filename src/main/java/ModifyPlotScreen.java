@@ -26,12 +26,11 @@ public class ModifyPlotScreen extends Screen {
 	
 	TilePane tilePane = new TilePane();
 	FlowPane flowPane = new FlowPane();
-	BorderPane borderPane = new BorderPane();
 	TilePane tilePaneTop = new TilePane();
 	TilePane tilePaneBottom = new TilePane();
 	
     public ModifyPlotScreen(View v) {
-		super(v);
+		super(v, PagesEnum.ModifyPlotScreen);
 		imc = new Controller(this);
     	
 		//ImageView iv1 = createImage("/commonMilkweed.png");
@@ -51,6 +50,9 @@ public class ModifyPlotScreen extends Screen {
     	flowPane.setHgap(4);
     	flowPane.setMinWidth(200);
     	flowPane.setStyle("-fx-background-color: #d2b48c;");
+    	
+    	BorderPane borderPane = new BorderPane();
+    	layout = borderPane;
     	
     	// BorderPane
     	borderPane.setLeft(tilePane);

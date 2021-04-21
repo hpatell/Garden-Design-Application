@@ -18,7 +18,7 @@ public class GuideScreen extends Screen {
 	PagesEnum screen = PagesEnum.IntroScreen; 
 	
 	public GuideScreen(View v) {
-		super(v);
+		super(v, PagesEnum.GuideScreen);
 		
 		backgroundimgview.setPreserveRatio(true);
 		backgroundimgview.setFitHeight(1200);
@@ -30,7 +30,7 @@ public class GuideScreen extends Screen {
     	createGardenButton.setTranslateX(-75);
     	createGardenButton.setTranslateY(380);
 		
-    	StackPane layout = new StackPane();
+    	layout = new StackPane();
     	layout.setMaxHeight(canvasHeight);
     	layout.setMaxWidth(canvasHeight);
     	layout.getChildren().addAll(backgroundimgview, importSCbutton, createGardenButton);	

@@ -23,8 +23,8 @@ public class ImportGardenScreen extends Screen {
 	File file;
 	
 	public ImportGardenScreen(View v) {
-		super(v);
-    	StackPane layout = new StackPane();
+		super(v, PagesEnum.ImportScreen);
+    	layout = new StackPane();
     	layout.setStyle("-fx-background-color: #3cb371;");
     	layout.getChildren().addAll(exit);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);

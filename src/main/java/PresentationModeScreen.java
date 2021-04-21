@@ -4,8 +4,8 @@ import javafx.scene.layout.StackPane;
 public class PresentationModeScreen extends Screen {
 	
 	public PresentationModeScreen(View v) {
-		super(v);
-    	StackPane layout = new StackPane();
+		super(v, PagesEnum.PresentationModeScreen);
+    	layout = new StackPane();
     	layout.getChildren();	
     	scene = new Scene(layout, 500, 800);
 	}
