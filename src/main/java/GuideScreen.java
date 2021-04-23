@@ -15,7 +15,8 @@ public class GuideScreen extends Screen {
 	Image backgroundimg = new Image(getClass().getResourceAsStream("/NewHowTo.png"));
 	ImageView backgroundimgview = new ImageView(backgroundimg);
 	
-	PagesEnum screen = PagesEnum.IntroScreen; 
+	PagesEnum screen = PagesEnum.IntroScreen;
+	// testing git branch
 	
 	public GuideScreen(View v) {
 		super(v, PagesEnum.GuideScreen);
