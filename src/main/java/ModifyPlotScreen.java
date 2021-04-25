@@ -149,7 +149,7 @@ public class ModifyPlotScreen extends Screen {
     	Button budget = new Button("Budget");
     	budget.setTranslateX(5);
     	budget.setTranslateY(0);
-    	budget.setOnAction(e -> view.switchPage(PagesEnum.BudgetScreen));
+    	//budget.setOnAction(e -> view.switchPage(PagesEnum.BudgetScreen));
     	tilePaneBottom.getChildren().add(budget);
     }
 
