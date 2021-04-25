@@ -24,8 +24,8 @@ public class ImportGardenScreen extends Screen {
 	
 	public ImportGardenScreen(View v) {
 		super(v, PagesEnum.ImportScreen);
-    	layout = new StackPane();
-    	layout.setStyle("-fx-background-color: #3cb371;");
+   		layout = new StackPane();
+    	layout.setStyle(theme);
     	layout.getChildren().addAll(exit);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	exit.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));

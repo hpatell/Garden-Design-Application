@@ -86,7 +86,7 @@ public class GardenInitializationScreen extends Screen {
 		moisture.setMinWidth(0);
 		
 		layout = new StackPane();
-		layout.setStyle("-fx-background-color: #3cb371;");
+		layout.setStyle(theme);
     	layout.getChildren().addAll(name, nametf, budget, budgettf, createGardenButton, weather, soil, moisture, settingsButton);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	
