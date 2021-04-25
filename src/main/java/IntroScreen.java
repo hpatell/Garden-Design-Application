@@ -19,71 +19,31 @@ import javafx.event.EventHandler;
 
 public class IntroScreen extends Screen {
 	
-	Image backgroundIMG = new Image(getClass().getResourceAsStream("/introbackground.png"));
-	ImageView backgroundIV = new ImageView(backgroundIMG);
+	Image backgroundIMG;
+	ImageView backgroundIV;
 	
 	
 	public IntroScreen(View v) {
 		super(v, PagesEnum.IntroScreen);
     	layout = new StackPane();
     	
+    	backgroundIMG = new Image(getClass().getResourceAsStream("/introbackground.png"));
+    	backgroundIV = new ImageView(backgroundIMG);
+    	
 		backgroundIV.setPreserveRatio(true);
 		backgroundIV.setFitHeight(canvasHeight);
 		backgroundIV.setFitWidth(canvasWidth);
 		
-		layout.getChildren().add(backgroundIV);
+		layout.getChildren().addAll(backgroundIV, settingsButton, createGardenButton, guideButton, importButton);
 		
-		startButton();
-		guideButton();
-		importButton();
-		settingsButton();
+		createSettingsButton();
+		createGardenButton();
+		createGuideButton();
+		createImportButton();
 		
     	layout.setMaxHeight(canvasHeight);
     	layout.setMaxWidth(canvasHeight);
     	layout.setStyle(theme);
     	scene = new Scene(layout, canvasWidth, canvasHeight);
-	}
-	
-	public void startButton()
-	{
-		 Button createGardenButton = new Button("Create Garden");
-		 createGardenButton.setTranslateX(0);
-	     createGardenButton.setTranslateY(50);
-	     createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
-	     layout.getChildren().add(createGardenButton);
-	}
-	
-	public void guideButton()
-	{
-		Button guideButton = new Button("Guide");
-		guideButton.setTranslateX(0);
-	    guideButton.setTranslateY(150);
-	    guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
-	    layout.getChildren().add(guideButton);
-	}
-	 
-	public void importButton()
-	{
-		Button importbutton = new Button("Import Garden");
-		importbutton.setTranslateX(0);
-		importbutton.setTranslateY(100);
-		importbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
-		layout.getChildren().add(importbutton);
-	}
-	 
-	public void settingsButton() 
-	{
-		Button settingsButton = new Button("Settings");
-	    Image gear = new Image(getClass().getResourceAsStream("/gear.png"));
-	    ImageView gearIV = new ImageView(gear);
-	    gearIV.setPreserveRatio(true);
-	    gearIV.setFitHeight(20);
-	    gearIV.setFitWidth(20);
-	    settingsButton.setGraphic(gearIV);
-	    settingsButton.setTranslateX(450);
-	    settingsButton.setTranslateY(-375);
-	    settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
-	    layout.getChildren().add(settingsButton);
-    }
-	
+	}	
 }

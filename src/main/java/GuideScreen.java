@@ -8,15 +8,11 @@ import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 
 public class GuideScreen extends Screen {
-
-	Button importSCbutton = new Button("Import Garden");
-	Button createGardenButton = new Button("Create Garden");
 	
 	Image backgroundimg = new Image(getClass().getResourceAsStream("/NewHowTo.png"));
 	ImageView backgroundimgview = new ImageView(backgroundimg);
 	
 	PagesEnum screen = PagesEnum.IntroScreen;
-	// testing git branch
 	
 	public GuideScreen(View v) {
 		super(v, PagesEnum.GuideScreen);
@@ -24,20 +20,23 @@ public class GuideScreen extends Screen {
 		backgroundimgview.setPreserveRatio(true);
 		backgroundimgview.setFitHeight(1200);
 		backgroundimgview.setFitWidth(1000);
+		
+		createSettingsButton();
+		createGardenButton();
+		createGuideButton();
+		createImportButton();
 
-    	importSCbutton.setTranslateX(75);
-    	importSCbutton.setTranslateY(380);
+		importButton.setTranslateX(75);
+		importButton.setTranslateY(380);
     	
-    	createGardenButton.setTranslateX(-75);
-    	createGardenButton.setTranslateY(380);
+		createGardenButton.setTranslateX(-75);
+		createGardenButton.setTranslateY(380);
 		
     	layout = new StackPane();
     	layout.setMaxHeight(canvasHeight);
     	layout.setMaxWidth(canvasHeight);
-    	layout.getChildren().addAll(backgroundimgview, importSCbutton, createGardenButton);	
+    	layout.getChildren().addAll(backgroundimgview, createGardenButton, importButton);	
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	
-    	createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
-    	importSCbutton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
 	}
 }

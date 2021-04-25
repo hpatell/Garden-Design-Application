@@ -12,7 +12,6 @@ public class SummaryScreen extends Screen {
 	
 	ProgressBar budgetbar = new ProgressBar(.40);
 	
-	Button back = new Button("Return to Plot");
 	Button save = new Button("Save");
 	
 	Text budgettext = new Text("Budget");
@@ -32,6 +31,18 @@ public class SummaryScreen extends Screen {
 		
     	layout = new StackPane();
     	
+    	alignText();
+    	createReturnToPlotButton();
+		createSettingsButton();
+    	
+    	layout.getChildren().addAll(save, settingsButton, returnToPlotButton, budgetbar, budgettext, plantstext, 
+    			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
+    	
+    	layout.setStyle(theme);
+    	scene = new Scene(layout, canvasWidth, canvasHeight);
+	}
+	
+	public void alignText() {
     	budgetbar.setTranslateX(0);
     	budgetbar.setTranslateY(-250);
     	
@@ -43,9 +54,6 @@ public class SummaryScreen extends Screen {
     	
     	save.setTranslateX(150);
     	save.setTranslateY(200);
-    	
-    	back.setTranslateX(-50);
-    	back.setTranslateY(200);
     	
     	plantstext.setTranslateX(-150);
     	plantstext.setTranslateY(-100);
@@ -70,14 +78,5 @@ public class SummaryScreen extends Screen {
     	
     	SalixWillowlep.setTranslateX(75);
     	SalixWillowlep.setTranslateY(50);
-    	
-    	layout.getChildren().addAll(back, save, budgetbar, budgettext, plantstext, 
-    			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
-    	
-    	layout.setStyle(theme);
-    	
-    	back.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
-    	
-    	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
 }

@@ -64,7 +64,6 @@ public class ModifyPlotScreen extends Screen {
     	
     	label();
     	settingsbutton();
-    	//presentationModeButton();
     	budgetButton();
     	faunabutton();
     	summarybutton();

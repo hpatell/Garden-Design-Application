@@ -24,6 +24,14 @@ public class Screen {
     double canvasHeight;
 	String gardenname;
 	double gardenbudget;
+	
+	Button settingsButton;
+    Image gear;
+    ImageView gearIV;
+	Button createGardenButton;
+	Button guideButton;
+	Button importButton;
+	Button returnToPlotButton;
 
     PagesEnum page;
 
@@ -33,7 +41,48 @@ public class Screen {
         canvasWidth = 1000;
         canvasHeight = 790;
         theme = "-fx-background-color: #FFFFFF;";
-        view.nameToScreenMap.put(pe, this);
+        view.nameToScreenMap.put(pe, this);  
+        settingsButton = new Button("Settings");
+        gear = new Image(getClass().getResourceAsStream("/gear.png"));
+        gearIV = new ImageView(gear);
+        createGardenButton = new Button("Create Garden");
+		guideButton = new Button("Guide");
+		importButton = new Button("Import Garden");
+		returnToPlotButton = new Button("Return to Plot");
+    }
+    
+	public void createGardenButton() {
+		 createGardenButton.setTranslateX(0);
+	     createGardenButton.setTranslateY(50);
+	     createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
+	}  
+	 
+	public void createSettingsButton() {
+	    gearIV.setPreserveRatio(true);
+	    gearIV.setFitHeight(20);
+	    gearIV.setFitWidth(20);
+	    settingsButton.setGraphic(gearIV);
+	    settingsButton.setTranslateX(450);
+	    settingsButton.setTranslateY(-375);
+	    settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
+   }
+	
+	public void createGuideButton() {
+		guideButton.setTranslateX(0);
+	    guideButton.setTranslateY(150);
+	    guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
+	}
+	
+	public void createImportButton() {
+		importButton.setTranslateX(0);
+		importButton.setTranslateY(100);
+		importButton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
+	}
+	
+    public void createReturnToPlotButton() {
+    	returnToPlotButton.setTranslateX(-50);
+    	returnToPlotButton.setTranslateY(200);
+    	returnToPlotButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
     }
     
     public void changeTheme(String s) {
@@ -56,7 +105,6 @@ public class Screen {
     public PagesEnum getScreen() {
         return page;
     }
-
 
     public Scene getScene() {
         return scene;

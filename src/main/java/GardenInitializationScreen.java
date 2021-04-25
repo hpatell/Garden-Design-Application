@@ -26,9 +26,6 @@ public class GardenInitializationScreen extends Screen {
 	ComboBox<String> soil = new ComboBox<String>();
 	ComboBox<String> moisture = new ComboBox<String>();
 	
-	//Image initBackgroundImg = new Image(getClass().getResourceAsStream("/gardenImg.PNG"));
-	//ImageView initBackgroundImgview = new ImageView(initBackgroundImg);
-	
 	public GardenInitializationScreen(View v) {
 		super(v, PagesEnum.InitializationScreen);
 		
@@ -96,7 +93,6 @@ public class GardenInitializationScreen extends Screen {
     	});
     	settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
     	gardenname = name.getText();
-    	
     	//gardenbudget = Integer.parseInt(budget.getText());
 	}
 	

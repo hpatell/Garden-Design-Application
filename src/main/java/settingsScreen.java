@@ -13,14 +13,6 @@ public class settingsScreen extends Screen {
     public settingsScreen(View v) {
         super(v, PagesEnum.SettingsScreen);
     	layout = new StackPane();
-
-//        Label title = new Label("Settings");
-//        title.setMinWidth(100);
-//        title.setMinHeight(100);
-//        title.setTranslateX(0);
-//        title.setTranslateY(-200);
-//        title.setMaxSize(100, 100);
-//        layout.getChildren().add(title);
         
         exitButton();
         adjBudgetTF();
@@ -28,7 +20,6 @@ public class settingsScreen extends Screen {
         saveButton();
         finish();
     	layout.setStyle(theme);
-        //layout.getChildren().addAll(exitButton, saveButton, adjBudget, adjBudjgettf, theme, lightButton, darkButton);
         scene = new Scene(layout, canvasWidth, canvasHeight);
     }
     

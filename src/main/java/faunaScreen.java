@@ -11,8 +11,6 @@ import javafx.scene.image.Image;
 
 public class faunaScreen extends Screen {
 	
-	Button back = new Button("Return to Plot");
-	
 	Text plantstext = new Text("Plants In Garden");
 	Text lepstext = new Text("Leps");
 	Text plantsimgtext = new Text("Image of Plants In Garden");
@@ -36,6 +34,18 @@ public class faunaScreen extends Screen {
 	public faunaScreen(View v) {
 		super(v, PagesEnum.FaunaScreen);
 		
+		alignText();
+		createSettingsButton();
+		createReturnToPlotButton();
+		
+		layout = new StackPane();	
+		layout.getChildren().addAll(settingsButton, returnToPlotButton, HelianthusSunflowerimg, SalixWillowimg, FragariaStrawberryimg, plantstext, 
+    			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);	
+		layout.setStyle(theme);	
+		scene = new Scene(layout, canvasWidth, canvasHeight);
+	}
+	
+	public void alignText() {
 		FragariaStrawberryimg.setPreserveRatio(true);
 		HelianthusSunflowerimg.setPreserveRatio(true);
 		SalixWillowimg.setPreserveRatio(true);
@@ -57,9 +67,6 @@ public class faunaScreen extends Screen {
 		
 		SalixWillowimg.setTranslateX(-250);
 		SalixWillowimg.setTranslateY(50);
-		
-    	back.setTranslateX(-50);
-    	back.setTranslateY(200);
     	
     	plantsimgtext.setTranslateX(-200);
     	plantsimgtext.setTranslateY(-100);
@@ -87,15 +94,5 @@ public class faunaScreen extends Screen {
     	
     	SalixWillowlep.setTranslateX(75);
     	SalixWillowlep.setTranslateY(50);
-		
-		layout = new StackPane();	
-		layout.getChildren().addAll(back, HelianthusSunflowerimg, SalixWillowimg, FragariaStrawberryimg, plantstext, 
-    			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
-		
-		layout.setStyle("-fx-background-color: #3cb371;");
-		
-		scene = new Scene(layout, canvasWidth, canvasHeight);
-		
-		back.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
 	}
 }
