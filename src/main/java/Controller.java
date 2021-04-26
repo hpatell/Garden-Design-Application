@@ -3,6 +3,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -40,5 +42,16 @@ public class Controller {
     public void getOnPageHander() {
 
     }
+    
+    public EventHandler<DragEvent> getOnGardenDragDropped()
+    {
+    	return new EventHandler<DragEvent>() {
+    		public void handle(DragEvent event) 
+    		{
+    			ModifyPlotScreen.onGardenDragDropped(event);
+    		}
+    	};
+    }
+
 
 }

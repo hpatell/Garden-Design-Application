@@ -11,6 +11,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
@@ -24,8 +25,10 @@ public class ModifyPlotScreen extends Screen {
 	
 	private Controller imc;
 	
+	BorderPane borderPane = new BorderPane();
 	TilePane tilePane = new TilePane();
-	FlowPane flowPane = new FlowPane();
+	//FlowPane flowPane = new FlowPane();
+	AnchorPane anchorPane = new AnchorPane();
 	TilePane tilePaneTop = new TilePane();
 	TilePane tilePaneBottom = new TilePane();
 	
@@ -46,17 +49,22 @@ public class ModifyPlotScreen extends Screen {
     	tilePane.setStyle("-fx-background-color: #add8e6;");
 		
     	// FlowPane
-    	flowPane.setVgap(8);
-    	flowPane.setHgap(4);
-    	flowPane.setMinWidth(200);
-    	flowPane.setStyle("-fx-background-color: #d2b48c;");
+    	//anchorPane.setVgap(8);
+    	//anchorPane.setHgap(4);
+    	anchorPane.setMinWidth(200);
+    	anchorPane.setStyle("-fx-background-color: #d2b48c;");
     	
-    	BorderPane borderPane = new BorderPane();
+    	//anchorPane.setMinWidth(200);
+    	//anchorPane.setStyle("-fx-background-color: #d2b48c;");
+    	//anchorPane.setTopAnchor(, 0.0);
+    	//anchorPane.setLeftAnchor(, 0.0);
+    	
+    	//BorderPane borderPane = new BorderPane();
     	layout = borderPane;
     	
     	// BorderPane
     	borderPane.setLeft(tilePane);
-    	borderPane.setCenter(flowPane); 
+    	borderPane.setCenter(anchorPane); 
     	borderPane.setTop(tilePaneTop);
     	borderPane.setBottom(tilePaneBottom);
     	tilePaneTop.setStyle("-fx-background-color: #8fbc8f;");
@@ -84,10 +92,10 @@ public class ModifyPlotScreen extends Screen {
     		}
     	});
     	
-    	flowPane.setOnDragOver(new EventHandler<DragEvent>() {
+    	anchorPane.setOnDragOver(new EventHandler<DragEvent>() {
     		public void handle(DragEvent event) 
     		{
-    			if (event.getGestureSource() != flowPane &&
+    			if (event.getGestureSource() != anchorPane &&
     					event.getDragboard().hasImage()) {
     				event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
     			}
@@ -95,26 +103,31 @@ public class ModifyPlotScreen extends Screen {
     		}
     	});
     	
-    	flowPane.setOnDragDropped(new EventHandler<DragEvent>() {
-    		public void handle(DragEvent event) 
-    		{
-    			Dragboard db = event.getDragboard();
-    			boolean success = false;
-    			if(db.hasImage()) 
-    			{
-    				ImageView newIV = new ImageView(db.getImage());
-    				newIV.setFitHeight(imgHeight);
-    				newIV.setFitWidth(imgWidth);
-    				newIV.setPreserveRatio(true);
-    				newIV.setOnMouseDragged((event1) -> imc.drag(event1));
-    				flowPane.getChildren().add(newIV);
-    				success = true;
-    			}
-    			event.setDropCompleted(success);
-    			event.consume();
-    		}
-    	});
+    	anchorPane.setOnDragDropped(imc.getOnGardenDragDropped());
     }
+    
+    public void onGardenDragDropped(DragEvent event)
+    {
+    	Dragboard db = event.getDragboard();
+		boolean success = false;
+		if(db.hasImage()) 
+		{
+			ImageView newIV = new ImageView(db.getImage());
+			newIV.setFitHeight(imgHeight);
+			newIV.setFitWidth(imgWidth);
+			newIV.setPreserveRatio(true);
+			newIV.setOnMouseDragged((event1) -> imc.drag(event1));
+			//anchorPane.getChildren().add(newIV);
+			newIV.setTranslateX(newIV.getTranslateX() + event.getX());
+			newIV.setTranslateY(newIV.getTranslateY() + event.getY());
+			anchorPane.getChildren().add(newIV);
+			success = true;
+		}
+		event.setDropCompleted(success);
+		event.consume();
+    }
+    
+    
     
     public void label()
     {
@@ -148,7 +161,7 @@ public class ModifyPlotScreen extends Screen {
     	Button budget = new Button("Budget");
     	budget.setTranslateX(5);
     	budget.setTranslateY(0);
-    	//budget.setOnAction(e -> view.switchPage(PagesEnum.BudgetScreen));
+    	budget.setOnAction(e -> view.switchPage(PagesEnum.BudgetScreen));
     	tilePaneBottom.getChildren().add(budget);
     }
 
