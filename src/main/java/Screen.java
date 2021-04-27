@@ -20,8 +20,10 @@ public class Screen {
     View view;
     Scene scene;
     String theme; 
+    
     double canvasWidth;
     double canvasHeight;
+    
 	String gardenname;
 	double gardenbudget;
 	
@@ -52,8 +54,6 @@ public class Screen {
     }
     
 	public void createGardenButton() {
-		 createGardenButton.setTranslateX(0);
-	     createGardenButton.setTranslateY(50);
 	     createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
 	}  
 	 
@@ -62,26 +62,18 @@ public class Screen {
 	    gearIV.setFitHeight(20);
 	    gearIV.setFitWidth(20);
 	    settingsButton.setGraphic(gearIV);
-	    settingsButton.setTranslateX(450);
-	    settingsButton.setTranslateY(-375);
 	    settingsButton.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
    }
 	
 	public void createGuideButton() {
-		guideButton.setTranslateX(0);
-	    guideButton.setTranslateY(150);
 	    guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
 	}
 	
 	public void createImportButton() {
-		importButton.setTranslateX(0);
-		importButton.setTranslateY(100);
 		importButton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
 	}
 	
     public void createReturnToPlotButton() {
-    	returnToPlotButton.setTranslateX(-50);
-    	returnToPlotButton.setTranslateY(200);
     	returnToPlotButton.setOnAction(e -> view.switchPage(PagesEnum.ModifyPlotScreen));
     }
     
