@@ -3,7 +3,11 @@ import java.util.Collection;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -14,7 +18,9 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 
 public class ModifyPlotScreen extends Screen {
 	
@@ -30,6 +36,9 @@ public class ModifyPlotScreen extends Screen {
 	AnchorPane anchorPane = new AnchorPane();
 	TilePane tilePaneTop = new TilePane();
 	TilePane tilePaneBottom = new TilePane();
+	ScrollPane scrollPane = new ScrollPane();
+	VBox vBoxImages = new VBox();
+	VBox vBox = new VBox();
 	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
@@ -39,14 +48,46 @@ public class ModifyPlotScreen extends Screen {
 		ImageView iv1 = createImage("/FragariaStrawberry.png");
 		ImageView iv2 = createImage("/HelianthusSunflower.png");
 		ImageView iv3 = createImage("/SalixWillow.png");
+		ImageView iv4 = createImage("/SalixWillow.png");
+		ImageView iv5 = createImage("/SalixWillow.png");
+		ImageView iv6 = createImage("/SalixWillow.png");
+		ImageView iv7 = createImage("/SalixWillow.png");
+		ImageView iv8 = createImage("/SalixWillow.png");
+		ImageView iv9 = createImage("/SalixWillow.png");
+		ImageView iv10 = createImage("/SalixWillow.png");
 		
 		// TilePane
-    	tilePane.setHgap(20);
-    	tilePane.setMinWidth(200);
-    	tilePane.setPrefColumns(4);
-    	tilePane.getChildren().addAll(iv1, iv2, iv3);
-    	tilePane.setStyle("-fx-background-color: #add8e6;");
-		
+//    	tilePane.setHgap(20);
+//    	tilePane.setMinWidth(200);
+//    	tilePane.setPrefColumns(4);
+//    	tilePane.getChildren().addAll(iv1, iv2, iv3);
+//    	tilePane.setStyle("-fx-background-color: #add8e6;");
+    	
+		// Search Bar
+    	TextField textField = new TextField();
+        textField.setPromptText("Search:");
+    	
+        // Check Boxes
+        CheckBox woody = new CheckBox("Woody");
+        CheckBox herbaceous = new CheckBox("Herbaceous");
+        
+        HBox hbox = new HBox(24);
+        hbox.getChildren().addAll(woody, herbaceous);
+        
+    	// VBoxImages
+    	//vBox.setMinWidth(200);
+        vBoxImages.getChildren().addAll(iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10);
+        vBoxImages.setStyle("-fx-background-color: #add8e6;");
+    	
+    	// ScrollPane
+    	scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
+    	scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+    	scrollPane.setMinWidth(200);
+    	scrollPane.setContent(vBoxImages);
+    	
+    	// VBox
+    	vBox.getChildren().addAll(textField, hbox, scrollPane);
+    	
     	// AnchorPane
     	anchorPane.setMinWidth(200);
     	anchorPane.setStyle("-fx-background-color: #d2b48c;");
@@ -56,7 +97,7 @@ public class ModifyPlotScreen extends Screen {
     	layout = borderPane;
     	
     	// BorderPane
-    	borderPane.setLeft(tilePane);
+    	borderPane.setLeft(vBox);
     	borderPane.setCenter(anchorPane); 
     	borderPane.setTop(tilePaneTop);
     	borderPane.setBottom(tilePaneBottom);
