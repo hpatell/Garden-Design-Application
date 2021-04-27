@@ -1,6 +1,8 @@
 import java.util.Collection;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -19,8 +21,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class ModifyPlotScreen extends Screen {
 	
@@ -32,13 +37,15 @@ public class ModifyPlotScreen extends Screen {
 	private Controller imc;
 	
 	BorderPane borderPane = new BorderPane();
-	TilePane tilePane = new TilePane();
+	//TilePane tilePane = new TilePane();
 	AnchorPane anchorPane = new AnchorPane();
-	TilePane tilePaneTop = new TilePane();
-	TilePane tilePaneBottom = new TilePane();
+	StackPane stackPaneTop = new StackPane();
+	StackPane stackPaneBottom = new StackPane();
+	//TilePane tilePaneBottom = new TilePane();
 	ScrollPane scrollPane = new ScrollPane();
 	VBox vBoxImages = new VBox();
 	VBox vBox = new VBox();
+	HBox hBoxBottom = new HBox();
 	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
@@ -70,6 +77,8 @@ public class ModifyPlotScreen extends Screen {
         // Check Boxes
         CheckBox woody = new CheckBox("Woody");
         CheckBox herbaceous = new CheckBox("Herbaceous");
+        woody.setSelected(true);
+        herbaceous.setSelected(true);
         
         HBox hbox = new HBox(24);
         hbox.getChildren().addAll(woody, herbaceous);
@@ -94,21 +103,28 @@ public class ModifyPlotScreen extends Screen {
     	//anchorPane.setTopAnchor(, 0.0);
     	//anchorPane.setLeftAnchor(, 0.0);
     	
+    	// HboxBottom
+    	hBoxBottom.setAlignment(Pos.CENTER);
+    	hBoxBottom.setSpacing(400);
+    	
     	layout = borderPane;
     	
     	// BorderPane
     	borderPane.setLeft(vBox);
     	borderPane.setCenter(anchorPane); 
-    	borderPane.setTop(tilePaneTop);
-    	borderPane.setBottom(tilePaneBottom);
-    	tilePaneTop.setStyle("-fx-background-color: #8fbc8f;");
-    	tilePaneBottom.setStyle("-fx-background-color: #8fbc8f;");
+    	borderPane.setTop(stackPaneTop);
+    	borderPane.setBottom(stackPaneBottom);
+    	stackPaneTop.setStyle("-fx-background-color: #8fbc8f;");
+    	stackPaneTop.setMinHeight(45);
+    	stackPaneBottom.setStyle("-fx-background-color: #8fbc8f;");
+    	stackPaneBottom.setMinHeight(45);
+    	stackPaneBottom.getChildren().add(hBoxBottom);
     	
     	label();
     	settingsbutton();
     	budgetButton();
-    	faunabutton();
     	summarybutton();
+    	faunabutton();
     	
     	scene = new Scene(borderPane, canvasWidth, canvasHeight);
     }
@@ -163,62 +179,71 @@ public class ModifyPlotScreen extends Screen {
     public void label()
     {
     	Label label = new Label("Modify Your Garden");
-    	//Label label = new Label(gardenname);
-    	label.setTranslateX(450);
-    	label.setTranslateY(0);
-    	tilePaneTop.getChildren().add(label);
+    	label.setFont(new Font("Arial", 30));
+    	HBox hBoxLabel = new HBox();
+    	hBoxLabel.setAlignment(Pos.CENTER);
+    	//hBoxLabel.setPadding(new Insets(5, 0, 5, 0));
+    	hBoxLabel.getChildren().add(label);
+    	stackPaneTop.getChildren().add(hBoxLabel);
     }
     
     public void settingsbutton() 
     {
     	Button settings = new Button("Settings");
-    	settings.setTranslateX(-125);
-    	settings.setTranslateY(0);
     	settings.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
-    	tilePaneTop.getChildren().add(settings);
+    	HBox hBoxSettings = new HBox();
+    	hBoxSettings.setAlignment(Pos.CENTER_LEFT);
+    	hBoxSettings.setPadding(new Insets(0, 0, 0, 10));
+    	hBoxSettings.getChildren().add(settings);
+    	stackPaneTop.getChildren().add(hBoxSettings);
     }
 
     public void presentationModeButton() 
     {	
     	Button fullscreen = new Button("Full Screen");
-    	fullscreen.setTranslateX(680);
-    	fullscreen.setTranslateY(0);
+    	//fullscreen.setTranslateX(680);
+    	//fullscreen.setTranslateY(0);
     	fullscreen.setOnAction(e -> view.switchPage(PagesEnum.PresentationModeScreen));
-    	tilePaneTop.getChildren().add(fullscreen);
+    	//hBoxTop.getChildren().add(fullscreen);
     }
     
     public void budgetButton() 
     {
     	Button budget = new Button("Budget");
-    	budget.setTranslateX(5);
-    	budget.setTranslateY(0);
     	budget.setOnAction(e -> view.switchPage(PagesEnum.BudgetScreen));
-    	tilePaneBottom.getChildren().add(budget);
+    	//HBox hBoxBudget = new HBox();
+    	//hBoxBudget.setAlignment(Pos.CENTER_LEFT);
+    	//hBoxBudget.setPadding(new Insets(0, 0, 0, 10));
+    	hBoxBottom.getChildren().add(budget);
+    	//stackPaneBottom.getChildren().add(hBoxBudget);
     }
 
     public void faunabutton() 
     {
     	Button fauna = new Button("Fauna");
-    	fauna.setTranslateX(855);
-    	fauna.setTranslateY(0);
     	fauna.setOnAction(e -> view.switchPage(PagesEnum.FaunaScreen));
-    	tilePaneBottom.getChildren().add(fauna);
+    	//HBox hBoxFauna = new HBox();
+    	//hBoxFauna.setAlignment(Pos.CENTER_RIGHT);
+    	//hBoxFauna.setPadding(new Insets(0, 10, 0, 0));
+    	hBoxBottom.getChildren().add(fauna);
+    	//stackPaneBottom.getChildren().add(hBoxFauna);
     }
-
+    
+    public void summarybutton() {
+    	Button summary = new Button("Summary");
+    	summary.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
+    	//HBox hBoxSummary = new HBox();
+    	//hBoxSummary.setAlignment(Pos.CENTER);
+    	hBoxBottom.getChildren().add(summary);
+    	//stackPaneBottom.getChildren().add(hBoxSummary);
+    }
+    
     public void searchTF() {
     	
     }
 
     public void plantNameText() {
         
-    }
-    
-    public void summarybutton() {
-    	Button summary = new Button("Summary");
-    	summary.setTranslateX(340);
-    	summary.setTranslateY(0);
-    	summary.setOnAction(e -> view.switchPage(PagesEnum.SummaryScreen));
-    	tilePaneBottom.getChildren().add(summary);
     }
     
     public ImageView createImage(String png) 
