@@ -12,6 +12,8 @@ import javafx.event.EventHandler;
 
 public class Controller {
 
+	double imgHeight = 100;
+	double imgWidth = 100;
 	private final boolean DEBUG = true;
     Model model;
     View view;
@@ -24,6 +26,10 @@ public class Controller {
     	model = new Model();
     	if (DEBUG) System.out.println("ic created");
     }
+    
+    public void getOnPageHander() {
+
+    }
 
     public void drag(MouseEvent event) {
     	
@@ -31,16 +37,33 @@ public class Controller {
 		if (DEBUG) System.out.println("ic mouse drag tx: " + n.getTranslateX() + ", ex: " + event.getX() );
 		model.setX(model.getX() + event.getX()); //event.getX() is the amount of horiz drag
 		model.setY(model.getY() + event.getY());
-		n.setTranslateX(n.getTranslateX() + event.getX());
-		n.setTranslateY(n.getTranslateY() + event.getY());
+		n.setTranslateX(n.getTranslateX() + event.getX() - imgWidth/2);
+		n.setTranslateY(n.getTranslateY() + event.getY() - imgHeight/2);
     }
 
-    public void getHandlerForDrag() {
-
+    public EventHandler<MouseEvent> getDragHandler()
+    {
+    	return event -> drag((MouseEvent) event);
     }
 
-    public void getOnPageHander() {
-
+    public EventHandler<MouseEvent> getOnGardenDragDetected(ImageView iv)
+    {
+    	return new EventHandler<MouseEvent>() {
+    		public void handle(MouseEvent event)
+    		{
+    			ModifyPlotScreen.onGardenDragDetected(event, iv);
+    		}
+    	};
+    }
+    
+    public EventHandler<DragEvent> getOnGardenDragOver()
+    {
+    	return new EventHandler<DragEvent>() {
+    		public void handle(DragEvent event)
+    		{
+    			ModifyPlotScreen.onGardenDragOver(event);
+    		}
+    	};
     }
     
     public EventHandler<DragEvent> getOnGardenDragDropped()
@@ -52,6 +75,5 @@ public class Controller {
     		}
     	};
     }
-
 
 }

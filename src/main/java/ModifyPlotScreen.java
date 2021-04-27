@@ -27,7 +27,6 @@ public class ModifyPlotScreen extends Screen {
 	
 	BorderPane borderPane = new BorderPane();
 	TilePane tilePane = new TilePane();
-	//FlowPane flowPane = new FlowPane();
 	AnchorPane anchorPane = new AnchorPane();
 	TilePane tilePaneTop = new TilePane();
 	TilePane tilePaneBottom = new TilePane();
@@ -48,18 +47,12 @@ public class ModifyPlotScreen extends Screen {
     	tilePane.getChildren().addAll(iv1, iv2, iv3);
     	tilePane.setStyle("-fx-background-color: #add8e6;");
 		
-    	// FlowPane
-    	//anchorPane.setVgap(8);
-    	//anchorPane.setHgap(4);
+    	// AnchorPane
     	anchorPane.setMinWidth(200);
     	anchorPane.setStyle("-fx-background-color: #d2b48c;");
-    	
-    	//anchorPane.setMinWidth(200);
-    	//anchorPane.setStyle("-fx-background-color: #d2b48c;");
     	//anchorPane.setTopAnchor(, 0.0);
     	//anchorPane.setLeftAnchor(, 0.0);
     	
-    	//BorderPane borderPane = new BorderPane();
     	layout = borderPane;
     	
     	// BorderPane
@@ -81,29 +74,27 @@ public class ModifyPlotScreen extends Screen {
 
     public void DragAndDrop(ImageView iv)
     {
-    	iv.setOnDragDetected(new EventHandler <MouseEvent>() {
-    		public void handle(MouseEvent event) 
-    		{		
-    			Dragboard db = iv.startDragAndDrop(TransferMode.ANY);
-    			ClipboardContent content = new ClipboardContent();
-    			content.putImage(iv.getImage());
-    			db.setContent(content);
-    			event.consume();
-    		}
-    	});
-    	
-    	anchorPane.setOnDragOver(new EventHandler<DragEvent>() {
-    		public void handle(DragEvent event) 
-    		{
-    			if (event.getGestureSource() != anchorPane &&
-    					event.getDragboard().hasImage()) {
-    				event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-    			}
-    			event.consume();
-    		}
-    	});
-    	
+		iv.setOnDragDetected(imc.getOnGardenDragDetected(iv));
+    	anchorPane.setOnDragOver(imc.getOnGardenDragOver());
     	anchorPane.setOnDragDropped(imc.getOnGardenDragDropped());
+    }
+    
+    public void onGardenDragDetected(MouseEvent event, ImageView iv)
+    {
+    	Dragboard db = iv.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putImage(iv.getImage());
+		db.setContent(content);
+		event.consume();
+    }
+    
+    public void onGardenDragOver(DragEvent event)
+    {
+    	if (event.getGestureSource() != anchorPane &&
+				event.getDragboard().hasImage()) {
+			event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+		}
+		event.consume();
     }
     
     public void onGardenDragDropped(DragEvent event)
@@ -116,10 +107,9 @@ public class ModifyPlotScreen extends Screen {
 			newIV.setFitHeight(imgHeight);
 			newIV.setFitWidth(imgWidth);
 			newIV.setPreserveRatio(true);
-			newIV.setOnMouseDragged((event1) -> imc.drag(event1));
-			//anchorPane.getChildren().add(newIV);
-			newIV.setTranslateX(newIV.getTranslateX() + event.getX());
-			newIV.setTranslateY(newIV.getTranslateY() + event.getY());
+			newIV.setOnMouseDragged(imc.getDragHandler());
+			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - imgWidth/2);
+			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
 			anchorPane.getChildren().add(newIV);
 			success = true;
 		}
