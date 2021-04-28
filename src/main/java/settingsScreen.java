@@ -1,97 +1,87 @@
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class settingsScreen extends Screen {
-
+	
+	BorderPane borderPane;
+	StackPane hstackPane;	
+	StackPane vstackPane;
+	
+	VBox vbox;
+	HBox hbox;
+	
+	Button exitButton;
+	Button dchangeThemebutton;
+    Button lchangeThemebutton;
+    Button returnToMenuButton;
+	
 
     public settingsScreen(View v) {
-        super(v, PagesEnum.SettingsScreen);
-    	layout = new StackPane();
+        super(v, PagesEnum.SettingsScreen);	
+    	
+		borderPane = new BorderPane();	
+    	hstackPane = new StackPane();	
+    	vstackPane = new StackPane();	
+
+    	borderPane.setTop(hstackPane);
+    	borderPane.setCenter(vstackPane);
+    	
+    	vbox = new VBox(10);
+    	hbox = new HBox();
         
         exitButton();
-        adjBudgetTF();
         changeTheme();
-        saveButton();
-        finish();
-    	layout.setStyle(theme);
+        returnToMenuButton();
+        
+		hbox.setAlignment(Pos.TOP_RIGHT);
+		hbox.setPadding(new Insets(10, 10, 0, 0));
+		hbox.getChildren().addAll(exitButton);
+		
+		vbox.setAlignment(Pos.CENTER);
+        vbox.getChildren().addAll(dchangeThemebutton, lchangeThemebutton, returnToMenuButton);
+        
+		hstackPane.getChildren().addAll(hbox);
+		vstackPane.getChildren().addAll(vbox);
+		
+		borderPane.setMaxHeight(canvasHeight);
+		borderPane.setMaxWidth(canvasHeight);
+		borderPane.setStyle(theme);
+		
+        layout = borderPane;
         scene = new Scene(layout, canvasWidth, canvasHeight);
     }
     
-    public void exitButton() 
-    {
-    	Button exitButton = new Button("Exit");
-    	//Image gear = new Image(getClass().getResourceAsStream("/gear.png"));
-    	//ImageView gearIV = new ImageView(gear);
-    	//gearIV.setPreserveRatio(true);
-    	//gearIV.setFitHeight(20);
-    	//gearIV.setFitWidth(20);
-    	//exitButton.setGraphic(gearIV);
-    	exitButton.setTranslateX(450);
-        exitButton.setTranslateY(-375);
+    public void exitButton() {
+    	exitButton = new Button("Exit");
         exitButton.setOnAction(e -> view.switchPage(view.previouspage));
-        layout.getChildren().add(exitButton);
-    }
-    
-    public void adjBudgetTF()
-    {
-    	Label adjBudget = new Label("Adjust Budget:");
-    	adjBudget.setTranslateX(-150);
-        adjBudget.setTranslateY(-50);
-    	TextField adjBudjgettf = new TextField();
-    	adjBudjgettf.setTranslateX(0);
-        adjBudjgettf.setTranslateY(-50);
-        adjBudjgettf.setMaxWidth(100);
-        layout.getChildren().addAll(adjBudget, adjBudjgettf);
     }
 
-    public void changeTheme()
-    {
-    	Label themelbl = new Label("Change Theme:");
-    	themelbl.setTranslateX(-150);
-    	themelbl.setTranslateY(0);
-        Button dchangeThemebutton = new Button("Dark");
-        Button lchangeThemebutton = new Button("Light");
-        dchangeThemebutton.setMinWidth(100);
-        dchangeThemebutton.setTranslateX(0);
-        dchangeThemebutton.setTranslateY(0);
+    public void changeTheme() {
+        dchangeThemebutton = new Button("Dark");
+        lchangeThemebutton = new Button("Light");
         dchangeThemebutton.setOnAction(e -> applyTheme("dark"));
-        
-        lchangeThemebutton.setMinWidth(100);
-        lchangeThemebutton.setTranslateX(75);
-        lchangeThemebutton.setTranslateY(0);
         lchangeThemebutton.setOnAction(e -> applyTheme("light"));
-        layout.getChildren().addAll(dchangeThemebutton, lchangeThemebutton, themelbl);
     }
     
     public void applyTheme(String s) {
-    	System.out.println("apply theme");
     	view.nameToScreenMap.forEach((name, screen) -> {
-        	System.out.println(name);
     		screen.changeTheme(s);
     	});
     }
-
-    public void saveButton() 
-    {
-    	Button saveButton = new Button("Save Settings");
-    	saveButton.setTranslateX(-125);
-        saveButton.setTranslateY(150);
-        layout.getChildren().add(saveButton);
-    }
     
-    public void finish()
-    {
-    	Button finishButton = new Button("Return To Menu");
-    	finishButton.setTranslateX(125);
-    	finishButton.setTranslateY(150);
-    	finishButton.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));
-        layout.getChildren().add(finishButton);
-    }
-    
+    public void returnToMenuButton() {
+    	returnToMenuButton = new Button("Return To Menu");
+    	returnToMenuButton.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));
+    } 
 }
