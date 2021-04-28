@@ -67,7 +67,7 @@ public class GardenInitializationScreen extends Screen {
 		budgettf.setMaxWidth(canvasHeight/2);
 			
     	createGardenButton.setOnAction(e -> {
-    		if((budgettf.getText() != null) && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null)) {
+    		if((budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null)) {
     			view.switchPage(PagesEnum.ModifyPlotScreen);
     			gardenname = nametf.getText();
     		}
