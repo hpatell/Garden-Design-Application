@@ -72,7 +72,6 @@ public class GardenInitializationScreen extends Screen {
     			gardenname = nametf.getText();
     		}
     	});
-    	createGardenButton.setOnAction(e-> view.switchPage(PagesEnum.ModifyPlotScreen));
     	
     	
 		hbox.setAlignment(Pos.TOP_RIGHT);
