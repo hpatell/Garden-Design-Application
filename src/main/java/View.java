@@ -144,9 +144,6 @@ public class View extends Application {
     	
     	switchPage(firstPage);
     	
-    	StackPane layout = new StackPane();
-    	layout.getChildren();	
-    	
     	currentstage.setScene(intro.scene);
     	currentstage.setTitle("Garden Application");
     	currentstage.show();

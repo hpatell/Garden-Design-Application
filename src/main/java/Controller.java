@@ -18,11 +18,11 @@ public class Controller {
     Model model;
     View view;
     Scene theScene;
-    ModifyPlotScreen ModifyPlotScreen;
+    //ModifyPlotScreen ModifyPlotScreen;
 
-    public Controller(ModifyPlotScreen ModifyPlotScreen) {
+    public Controller(View view) {
     	
-    	this.ModifyPlotScreen = ModifyPlotScreen;
+    	this.view = view;
     	model = new Model();
     	if (DEBUG) System.out.println("ic created");
     }
@@ -51,7 +51,7 @@ public class Controller {
     	return new EventHandler<MouseEvent>() {
     		public void handle(MouseEvent event)
     		{
-    			ModifyPlotScreen.onGardenDragDetected(event, iv);
+    			view.modify.onGardenDragDetected(event, iv);
     		}
     	};
     }
@@ -61,7 +61,7 @@ public class Controller {
     	return new EventHandler<DragEvent>() {
     		public void handle(DragEvent event)
     		{
-    			ModifyPlotScreen.onGardenDragOver(event);
+    			view.modify.onGardenDragOver(event);
     		}
     	};
     }
@@ -71,7 +71,7 @@ public class Controller {
     	return new EventHandler<DragEvent>() {
     		public void handle(DragEvent event) 
     		{
-    			ModifyPlotScreen.onGardenDragDropped(event);
+    			view.modify.onGardenDragDropped(event);
     		}
     	};
     }

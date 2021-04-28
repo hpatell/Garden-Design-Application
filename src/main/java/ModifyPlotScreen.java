@@ -49,7 +49,7 @@ public class ModifyPlotScreen extends Screen {
 	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
-		imc = new Controller(this);
+		imc = new Controller(v);
     	
 		//ImageView iv1 = createImage("/commonMilkweed.png");
 		ImageView iv1 = createImage("/FragariaStrawberry.png");
@@ -105,7 +105,7 @@ public class ModifyPlotScreen extends Screen {
     	
     	// HboxBottom
     	hBoxBottom.setAlignment(Pos.CENTER);
-    	hBoxBottom.setSpacing(400);
+    	hBoxBottom.setSpacing(850);
     	
     	layout = borderPane;
     	
@@ -214,7 +214,7 @@ public class ModifyPlotScreen extends Screen {
     	//HBox hBoxBudget = new HBox();
     	//hBoxBudget.setAlignment(Pos.CENTER_LEFT);
     	//hBoxBudget.setPadding(new Insets(0, 0, 0, 10));
-    	hBoxBottom.getChildren().add(budget);
+    	//hBoxBottom.getChildren().add(budget);
     	//stackPaneBottom.getChildren().add(hBoxBudget);
     }
 
