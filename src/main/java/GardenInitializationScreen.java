@@ -59,7 +59,7 @@ public class GardenInitializationScreen extends Screen {
 		moisture.setPromptText("Moisture Type");
 		soil.setPromptText("Soil Type");
 		
-		weather.getItems().addAll("Sunny", "Rainny", "Cloudy");	
+		weather.getItems().addAll("Sunny", "Rainy", "Cloudy");
 		soil.getItems().addAll("Dry", "Medium", "Moist");		
 		moisture.getItems().addAll("Decent", "Medium", "Good");
 		

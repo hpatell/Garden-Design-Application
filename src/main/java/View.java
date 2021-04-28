@@ -14,6 +14,8 @@ import javafx.event.EventHandler;
 
 public class View extends Application {
 	
+	HashMap<String, String> plantPNG = new HashMap<>();
+	
     Image plant;
     Image importedImage;
     
@@ -53,70 +55,29 @@ public class View extends Application {
     	settings = new settingsScreen(this);
     }
     
-    public void switchPage(PagesEnum PE) {
+    public void switchPage(PagesEnum PE) 
+    {
     	currentstage.setScene(nameToScreenMap.get(PE).getScene());
     	previouspage = currentPage;
     	currentPage = PE;
-    	//switch(PE) {
-//    	case IntroScreen:
-//    		currentstage.setScene(intro.getScene());
-//    		previouspage = PagesEnum.IntroScreen;
-//    		break;
-//    	case ImportScreen:
-//    		currentstage.setScene(importgarden.getScene());
-//    		previouspage = PagesEnum.ImportScreen;
-//    		System.out.println("import");
-//    		break;
-//    	case GuideScreen:
-//    		currentstage.setScene(guide.getScene());
-//    		previouspage = PagesEnum.GuideScreen;
-//    		System.out.println("guide");
-//    		break;
-//    	case InitializationScreen:
-//    		currentstage.setScene(gardeninit.getScene());
-//    		previouspage = PagesEnum.InitializationScreen;
-//    		System.out.println("init");
-//    		break;
-//    	case ModifyPlotScreen:
-//    		currentstage.setScene(modify.getScene());
-//    		previouspage = PagesEnum.ModifyPlotScreen;
-//    		System.out.println("modify");
-//    		break;
-//    	case PresentationModeScreen:
-//    		currentstage.setScene(present.getScene());
-//    		previouspage = PagesEnum.PresentationModeScreen;
-//    		System.out.println("present");
-//    		break;
-//    	case FaunaScreen:
-//    		currentstage.setScene(fauna.getScene());
-//    		previouspage = PagesEnum.FaunaScreen;
-//    		System.out.println("fauna");
-//    		break;
-//    	case SummaryScreen:
-//    		currentstage.setScene(summary.getScene());
-//    		previouspage = PagesEnum.SummaryScreen;
-//    		System.out.println("summary");
-//    		break;
-//    	case BudgetScreen:
-//    		currentstage.setScene(budget.getScene());
-//    		previouspage = PagesEnum.BudgetScreen;
-//    		System.out.println("budget");
-//    		break;
-//    	case SettingsScreen:
-//    		currentstage.setScene(settings.getScene());
-//    		System.out.println("settings");
-//    		break;
-//    	case PreviousScreen:
-//    		switchPage(previouspage);
-//    		break;
-//    	default:
-//    		currentstage.setScene(intro.getScene());
-//    		previouspage = PagesEnum.IntroScreen;
-//    		System.out.println("intro");
-//    		break;
-//    	}
     }
-
+    
+    public void setPlantPNG()
+    {
+    	plantPNG.put("Fragaria", "/FragariaStrawberry.png");
+    	plantPNG.put("Helianthus", "/HelianthusSunflower.png");
+    	plantPNG.put("Salix", "/SalixWillow.png");
+    	
+    	plantPNG.put("a", "/FragariaStrawberry.png");
+    	plantPNG.put("b", "/FragariaStrawberry.png");
+    	plantPNG.put("c", "/HelianthusSunflower.png");
+    	plantPNG.put("d", "/HelianthusSunflower.png");
+    	plantPNG.put("e", "/SalixWillow.png");
+    	plantPNG.put("f", "/SalixWillow.png");
+    }
+    
+    
+    
     public Image createImage() {
         return plant;
     }

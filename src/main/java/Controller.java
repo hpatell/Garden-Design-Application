@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -8,6 +10,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class Controller {
@@ -72,6 +75,16 @@ public class Controller {
     		public void handle(DragEvent event) 
     		{
     			view.modify.onGardenDragDropped(event);
+    		}
+    	};
+    }
+    
+    public EventHandler<ActionEvent> getCheckboxHandler(HashMap<String, ImageView> imageViews)
+    {
+    	return new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event)
+    		{
+    			view.modify.checkbox(event, imageViews);
     		}
     	};
     }
