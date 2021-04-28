@@ -48,8 +48,8 @@ public class ModifyPlotScreen extends Screen {
 	VBox vBox = new VBox();
 	HBox hBoxBottom = new HBox();
 	
-	CheckBox woody = new CheckBox("Woody");
-	CheckBox herbaceous = new CheckBox("Herbaceous");
+	CheckBox woody;
+	CheckBox herbaceous;
 	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
@@ -81,10 +81,10 @@ public class ModifyPlotScreen extends Screen {
         textField.setPromptText("Search:");
     	
         // Check Boxes
-        CheckBox woody = new CheckBox("Woody");
-        CheckBox herbaceous = new CheckBox("Herbaceous");
-        //woody.setSelected(true);
-        //herbaceous.setSelected(true);
+        woody = new CheckBox("Woody");
+        herbaceous = new CheckBox("Herbaceous");
+        woody.setSelected(true);
+        herbaceous.setSelected(true);
         
         woody.setOnAction(imc.getCheckboxHandler(plantIVs));
         herbaceous.setOnAction(imc.getCheckboxHandler(plantIVs));
@@ -185,6 +185,8 @@ public class ModifyPlotScreen extends Screen {
     
     public void checkbox(ActionEvent event, HashMap<String, ImageView> imageViews)
     {  	
+    	vBoxImages.getChildren().clear();
+    	
     	for (Entry<String, ImageView> mapElement : imageViews.entrySet()) 
     	{
             String key = (String)mapElement.getKey();
@@ -193,36 +195,27 @@ public class ModifyPlotScreen extends Screen {
             
             if(woody.isSelected() && herbaceous.isSelected())
     		{
-            	//vBoxImages.getChildren().clear();
-            	vBoxImages.getChildren().remove(value);
     			vBoxImages.getChildren().add(value);
     		}
             else if(woody.isSelected() == false && herbaceous.isSelected() == false)
             {
             	vBoxImages.getChildren().remove(value);
             }
-            else if(woody.isSelected() == true && herbaceous.isSelected() == false)
+            else if(woody.isSelected() && herbaceous.isSelected() == false)
             {
             	if(key == "Salix")
             	{
-            		//vBoxImages.getChildren().clear();
-            		vBoxImages.getChildren().remove(value);
             		vBoxImages.getChildren().add(value);
             	}
             }
-            else if(herbaceous.isSelected() == true && woody.isSelected() == false)
+            else if(herbaceous.isSelected() && woody.isSelected() == false)
             {
             	if(key == "Fragaria" || key == "Helianthus")
             	{
-            		//vBoxImages.getChildren().clear();
-            		vBoxImages.getChildren().remove(value);
             		vBoxImages.getChildren().add(value);
             	}
             }
             
-        	//vBoxImages.getChildren().add(value);
-        	//plantIVs.put(key, value);
-        	
         	//woody.setOnAction(imc.getCheckboxHandler(plantIVs));
             //herbaceous.setOnAction(imc.getCheckboxHandler(plantIVs));
     	}
@@ -334,8 +327,7 @@ public class ModifyPlotScreen extends Screen {
         	
         	plantIVs.put(key, imageV);
     	}
-    	//woody.setOnAction(imc.getCheckboxHandler(plantIVs));
-        //herbaceous.setOnAction(imc.getCheckboxHandler(plantIVs));
+    	
     	return plantIVs;
     }
     
