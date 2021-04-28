@@ -13,8 +13,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.ComboBox;
 
 public class GardenInitializationScreen extends Screen {
-
-	public void updatePage(){}
 	
 	Button createGardenButton;
 	
@@ -78,9 +76,11 @@ public class GardenInitializationScreen extends Screen {
     		if((budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null)) {
     			view.switchPage(PagesEnum.ModifyPlotScreen);
     			gardenname = nametf.getText();
-    			
-    			view.modify.label.setText(gardenname);
-    			//System.out.print(gardenname);
+    	    	gardenbudget = budgettf.getText();
+    	    	gardenWeatherCondition = weather.getValue();
+    	    	gardenSoilCondition = soil.getValue();
+    	    	gardenMoistureCondition = moisture.getValue();
+    			updatePage();
     		}
     	});
     	
@@ -94,8 +94,6 @@ public class GardenInitializationScreen extends Screen {
 		
 		hstackPane.getChildren().addAll(hbox);
 		vstackPane.getChildren().addAll(vbox);
-    	
-    	//gardenbudget = Integer.parseInt(budget.getText());
 
 		borderPane.setMaxHeight(canvasHeight);
 		borderPane.setMaxWidth(canvasHeight);
@@ -104,4 +102,12 @@ public class GardenInitializationScreen extends Screen {
     	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
 	
+
+	public void updatePage() {
+		view.modify.gardenNameLabel.setText(gardenname);
+		view.modify.gardenBudgetLabel.setText(gardenbudget);
+		view.modify.gardenWeatherConditionLabel.setText(gardenWeatherCondition);
+		view.modify.gardenSoilConditionLabel.setText(gardenSoilCondition);
+		view.modify.gardenMoistureConditionLabel.setText(gardenMoistureCondition);
+	}	
 } 

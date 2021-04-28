@@ -25,7 +25,10 @@ public abstract class Screen {
     double canvasHeight;
     
 	String gardenname;
-	double gardenbudget;
+	String gardenbudget;
+	String gardenWeatherCondition;
+	String gardenSoilCondition;
+	String gardenMoistureCondition;
 	
 	Button settingsButton;
     Image gear;
@@ -108,7 +111,7 @@ public abstract class Screen {
     	return gardenname;
     }
     
-    public double getgardenbudget() {
+    public String getgardenbudget() {
     	return gardenbudget;
     }
 }

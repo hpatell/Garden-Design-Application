@@ -57,6 +57,7 @@ public class View extends Application {
     
     public void switchPage(PagesEnum PE) 
     {
+    	//nameToScreenMap.get(PE).updatePage();
     	currentstage.setScene(nameToScreenMap.get(PE).getScene());
     	previouspage = currentPage;
     	currentPage = PE;

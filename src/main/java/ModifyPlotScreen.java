@@ -53,7 +53,11 @@ public class ModifyPlotScreen extends Screen {
 	CheckBox woody;
 	CheckBox herbaceous;
 	
-	Label label;
+	Label gardenNameLabel;
+	Label gardenBudgetLabel;
+	Label gardenWeatherConditionLabel;
+	Label gardenSoilConditionLabel;
+	Label gardenMoistureConditionLabel;
 	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
@@ -229,13 +233,16 @@ public class ModifyPlotScreen extends Screen {
     
     public void label()
     {
-    	label = new Label(gardenname);
-    	System.out.println(gardenname);
-    	label.setFont(new Font("Arial", 30));
-    	HBox hBoxLabel = new HBox();
+    	gardenNameLabel = new Label(gardenname);
+    	gardenNameLabel.setFont(new Font("Arial", 30));
+    	gardenBudgetLabel = new Label(gardenbudget);
+    	gardenWeatherConditionLabel = new Label(gardenWeatherCondition);
+    	gardenSoilConditionLabel = new Label(gardenSoilCondition);
+    	gardenMoistureConditionLabel = new Label(gardenMoistureCondition);
+    	HBox hBoxLabel = new HBox(10);
     	hBoxLabel.setAlignment(Pos.CENTER);
     	//hBoxLabel.setPadding(new Insets(5, 0, 5, 0));
-    	hBoxLabel.getChildren().add(label);
+    	hBoxLabel.getChildren().addAll(gardenNameLabel, gardenBudgetLabel, gardenWeatherConditionLabel, gardenSoilConditionLabel, gardenMoistureConditionLabel);
     	stackPaneTop.getChildren().add(hBoxLabel);
     }
     
