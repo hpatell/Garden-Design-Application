@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
 
-public class Screen {
+public abstract class Screen {
 	
 	Pane layout;
 
@@ -52,6 +52,8 @@ public class Screen {
 		importButton = new Button("Import Garden");
 		returnToPlotButton = new Button("Return to Plot");
     }
+    
+    public abstract void updatePage();
     
 	public void createGardenButton() {
 	     createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));

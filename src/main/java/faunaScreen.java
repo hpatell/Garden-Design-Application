@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 
 public class faunaScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	Text plantstext = new Text("Plants In Garden");
 	Text lepstext = new Text("Leps");
 	Text plantsimgtext = new Text("Image of Plants In Garden");

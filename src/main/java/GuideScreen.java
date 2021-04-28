@@ -9,6 +9,8 @@ import javafx.scene.text.Text;
 
 public class GuideScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	Image backgroundimg = new Image(getClass().getResourceAsStream("/NewHowTo.png"));
 	ImageView backgroundimgview = new ImageView(backgroundimg);
 	

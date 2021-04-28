@@ -6,6 +6,8 @@ import javafx.scene.text.Text;
 
 public class BudgetScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	ProgressBar budgetbar = new ProgressBar(.40);
 	
 	Text budgettext = new Text("Budget");

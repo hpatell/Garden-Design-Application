@@ -21,6 +21,8 @@ import javafx.geometry.Pos;
 
 public class IntroScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	Image backgroundIMG;
 	ImageView backgroundIV;
 	VBox vbox;

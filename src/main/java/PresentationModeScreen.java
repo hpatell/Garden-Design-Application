@@ -3,6 +3,8 @@ import javafx.scene.layout.StackPane;
 
 public class PresentationModeScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	public PresentationModeScreen(View v) {
 		super(v, PagesEnum.PresentationModeScreen);
     	layout = new StackPane();

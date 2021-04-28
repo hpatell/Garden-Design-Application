@@ -37,6 +37,8 @@ public class ModifyPlotScreen extends Screen {
 	
     //Collection<Image> plantImages;
 	
+	public void updatePage(){}
+	
 	private Controller imc;
 	
 	BorderPane borderPane = new BorderPane();
@@ -50,6 +52,8 @@ public class ModifyPlotScreen extends Screen {
 	
 	CheckBox woody;
 	CheckBox herbaceous;
+	
+	Label label;
 	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
@@ -189,9 +193,9 @@ public class ModifyPlotScreen extends Screen {
     	
     	for (Entry<String, ImageView> mapElement : imageViews.entrySet()) 
     	{
-            String key = (String)mapElement.getKey();
+            String key = mapElement.getKey();
             
-            ImageView value = (ImageView)mapElement.getValue();
+            ImageView value = mapElement.getValue();
             
             if(woody.isSelected() && herbaceous.isSelected())
     		{
@@ -225,7 +229,8 @@ public class ModifyPlotScreen extends Screen {
     
     public void label()
     {
-    	Label label = new Label("Modify Your Garden");
+    	label = new Label(gardenname);
+    	System.out.println(gardenname);
     	label.setFont(new Font("Arial", 30));
     	HBox hBoxLabel = new HBox();
     	hBoxLabel.setAlignment(Pos.CENTER);

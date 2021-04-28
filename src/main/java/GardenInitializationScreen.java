@@ -14,6 +14,8 @@ import javafx.scene.control.ComboBox;
 
 public class GardenInitializationScreen extends Screen {
 
+	public void updatePage(){}
+	
 	Button createGardenButton;
 	
 	Label name;
@@ -30,8 +32,14 @@ public class GardenInitializationScreen extends Screen {
 	StackPane hstackPane;	
 	StackPane vstackPane;
 	
+	ModifyPlotScreen MPS;
+	View view;
+	
 	public GardenInitializationScreen(View v) {
 		super(v, PagesEnum.InitializationScreen);
+		
+		MPS = new ModifyPlotScreen(v);
+		view = v;
 		
 		borderPane = new BorderPane();
     	hstackPane = new StackPane();	
@@ -70,6 +78,9 @@ public class GardenInitializationScreen extends Screen {
     		if((budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null)) {
     			view.switchPage(PagesEnum.ModifyPlotScreen);
     			gardenname = nametf.getText();
+    			
+    			view.modify.label.setText(gardenname);
+    			//System.out.print(gardenname);
     		}
     	});
     	

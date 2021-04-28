@@ -10,6 +10,8 @@ import javafx.scene.control.ProgressBar;
 
 public class SummaryScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	ProgressBar budgetbar = new ProgressBar(.40);
 	
 	Button save = new Button("Save");

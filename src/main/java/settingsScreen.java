@@ -14,6 +14,8 @@ import javafx.scene.control.TextField;
 
 public class settingsScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	BorderPane borderPane;
 	StackPane hstackPane;	
 	StackPane vstackPane;

@@ -21,6 +21,8 @@ import javafx.event.EventHandler;
 
 public class ImportGardenScreen extends Screen {
 	
+	public void updatePage(){}
+	
 	Button fileOpenerButton;
 	
 	public ImportGardenScreen(View v) {
