@@ -20,6 +20,8 @@ public class GardenInitializationScreen extends Screen {
 	TextField nametf;
 	Label budget;
 	TextField budgettf;
+	Label dimensionslabel;
+	TextField dimensionstf;
 	ComboBox<String> weather;
 	ComboBox<String> soil;
 	ComboBox<String> moisture;
@@ -30,13 +32,11 @@ public class GardenInitializationScreen extends Screen {
 	StackPane hstackPane;	
 	StackPane vstackPane;
 	
-	ModifyPlotScreen MPS;
 	View view;
 	
 	public GardenInitializationScreen(View v) {
 		super(v, PagesEnum.InitializationScreen);
 		
-		MPS = new ModifyPlotScreen(v);
 		view = v;
 		
 		borderPane = new BorderPane();
@@ -56,6 +56,8 @@ public class GardenInitializationScreen extends Screen {
 		nametf = new TextField();
 		budget = new Label("Budget: ");
 		budgettf = new TextField();
+		dimensionslabel = new Label("Dimensions (Width x Height): ");
+		dimensionstf = new TextField();
 		weather = new ComboBox<String>();
 		soil = new ComboBox<String>();
 		moisture = new ComboBox<String>();
@@ -71,15 +73,17 @@ public class GardenInitializationScreen extends Screen {
 		
 		nametf.setMaxWidth(canvasHeight/2);
 		budgettf.setMaxWidth(canvasHeight/2);
+		dimensionstf.setMaxWidth(canvasHeight/2);
 			
     	createGardenButton.setOnAction(e -> {
-    		if((budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null)) {
+    		if((budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null) && (dimensionstf != null)) {
     			view.switchPage(PagesEnum.ModifyPlotScreen);
     			gardenname = nametf.getText();
     	    	gardenbudget = budgettf.getText();
     	    	gardenWeatherCondition = weather.getValue();
     	    	gardenSoilCondition = soil.getValue();
     	    	gardenMoistureCondition = moisture.getValue();
+    	    	gardenDimensions = dimensionstf.getText();
     			updatePage();
     		}
     	});
@@ -89,7 +93,7 @@ public class GardenInitializationScreen extends Screen {
 		hbox.setPadding(new Insets(10, 10, 0, 0));
 		hbox.getChildren().addAll(settingsButton);
 		
-		vbox.getChildren().addAll(name, nametf, budget, budgettf, weather, soil, moisture, createGardenButton);
+		vbox.getChildren().addAll(name, nametf, budget, budgettf, dimensionslabel, dimensionstf, weather, soil, moisture, createGardenButton);
 		vbox.setAlignment(Pos.CENTER);
 		
 		hstackPane.getChildren().addAll(hbox);
@@ -109,5 +113,6 @@ public class GardenInitializationScreen extends Screen {
 		view.modify.gardenWeatherConditionLabel.setText("Weather Condition: " + gardenWeatherCondition);
 		view.modify.gardenSoilConditionLabel.setText("Soil Condition: " + gardenSoilCondition);
 		view.modify.gardenMoistureConditionLabel.setText("Moisture Condition: " + gardenMoistureCondition);
+		view.modify.gardenDimensionsLabel.setText("Dimensions: " + gardenDimensions + "x" + gardenDimensions + "m");
 	}	
 } 

@@ -58,6 +58,7 @@ public class ModifyPlotScreen extends Screen {
 	Label gardenWeatherConditionLabel;
 	Label gardenSoilConditionLabel;
 	Label gardenMoistureConditionLabel;
+	Label gardenDimensionsLabel;
 	
 	Label gardenBudgetRemainingLabel;
 	Label gardenTotalLeps;
@@ -252,6 +253,9 @@ public class ModifyPlotScreen extends Screen {
     	gardenTotalLeps = new Label("Total Leps: ");
     	gardenTotalLeps.setFont(new Font("Arial", 16));
     	
+    	gardenDimensionsLabel = new Label("Dimensions: ");
+    	gardenDimensionsLabel.setFont(new Font("Arial", 16));
+    	
     	VBox vBoxRight = new VBox();
     	vBoxRight.setAlignment(Pos.CENTER_RIGHT);
     	vBoxRight.setPadding(new Insets(0, 20, 0, 0));
@@ -270,7 +274,7 @@ public class ModifyPlotScreen extends Screen {
     	VBox vBoxLeft = new VBox();
     	vBoxLeft.setAlignment(Pos.CENTER_LEFT);
     	vBoxLeft.setPadding(new Insets(0, 0, 0, 20));
-    	vBoxLeft.getChildren().addAll(gardenWeatherConditionLabel, gardenSoilConditionLabel, gardenMoistureConditionLabel);
+    	vBoxLeft.getChildren().addAll(gardenWeatherConditionLabel, gardenSoilConditionLabel, gardenMoistureConditionLabel, gardenDimensionsLabel);
     	stackPaneTop.getChildren().add(vBoxLeft);
     }
     

@@ -26,6 +26,7 @@ public abstract class Screen {
     
 	String gardenname;
 	String gardenbudget;
+	String gardenDimensions;
 	String gardenWeatherCondition;
 	String gardenSoilCondition;
 	String gardenMoistureCondition;
