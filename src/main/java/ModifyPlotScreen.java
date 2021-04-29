@@ -51,9 +51,12 @@ public class ModifyPlotScreen extends Screen {
 	StackPane stackPaneBottom = new StackPane();
 	ScrollPane scrollPane = new ScrollPane();
 	VBox vBoxImages = new VBox();
+	VBox vBoxNames = new VBox();
 	VBox vBox = new VBox();
 	VBox vBoxRight;
 	HBox hBoxBottom = new HBox();
+	
+	Label plantNames;
 	
 	CheckBox woody;
 	CheckBox herbaceous;
@@ -122,21 +125,27 @@ public class ModifyPlotScreen extends Screen {
         herbaceous.setOnAction(imc.getCheckboxHandler(plantIVs));
         
         HBox hbox = new HBox(24);
+        //hbox.setAlignment(Pos.CENTER);
         hbox.getChildren().addAll(woody, herbaceous);
         
     	// VBoxImages
     	//vBox.setMinWidth(200);
         //vBoxImages.getChildren().addAll(iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10);
         vBoxImages.setStyle("-fx-background-color: #add8e6;");
+        vBoxImages.setAlignment(Pos.CENTER);
+        
+        // VBoxNames
+        //vBoxNames.getChildren().addAll(v.plantPNG.key);
     	
     	// ScrollPane
     	scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
     	scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
     	scrollPane.setMinWidth(200);
     	scrollPane.setContent(vBoxImages);
+    	//scrollPane.setContent(vBoxNames);
     	
     	// VBox
-    	vBox.getChildren().addAll(textField, hbox, scrollPane);
+    	vBox.getChildren().addAll(hbox, scrollPane);
     	
     	// AnchorPane
     	anchorPane.setMinWidth(200);
@@ -237,11 +246,14 @@ public class ModifyPlotScreen extends Screen {
     	{
             String key = mapElement.getKey();
             
+            plantNames = new Label(key);
+            plantNames.setFont(new Font("Arial", 22));
+            
             ImageView value = mapElement.getValue();
             
             if(woody.isSelected() && herbaceous.isSelected())
     		{
-    			vBoxImages.getChildren().add(value);
+    			vBoxImages.getChildren().addAll(plantNames, value);
     		}
             else if(woody.isSelected() == false && herbaceous.isSelected() == false)
             {
@@ -251,14 +263,14 @@ public class ModifyPlotScreen extends Screen {
             {
             	if(model.plants.get(key).plantType == "woody")
             	{
-            		vBoxImages.getChildren().add(value);
+            		vBoxImages.getChildren().addAll(plantNames, value);
             	}
             }
             else if(herbaceous.isSelected() && woody.isSelected() == false)
             {
             	if(model.plants.get(key).plantType == "herbaceous")
             	{
-            		vBoxImages.getChildren().add(value);
+            		vBoxImages.getChildren().addAll(plantNames, value);
             	}
             }
             
@@ -419,7 +431,12 @@ public class ModifyPlotScreen extends Screen {
         	imageV.setFitWidth(imgWidth);
         	DragAndDrop(imageV);
         	
-        	vBoxImages.getChildren().add(imageV);
+        	plantNames = new Label(key);
+        	plantNames.setFont(new Font("Arial", 22));
+        	
+        	vBoxImages.getChildren().addAll(plantNames, imageV);
+        	
+        	//vBoxNames.getChildren().addAll(plantNames);
         	
         	plantIVsCopy.put(key, imageV);
     	}
