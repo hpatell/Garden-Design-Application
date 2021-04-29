@@ -1,34 +1,43 @@
-# CISC275-project-template
+About this Project: This project is a software application designed for simulating an interactive garden where the user decides what native plants are most supported by the lepadotris through the input of the conditions of the garden the user modifies and how much the user's budget is. 
 
-Note: to run with gradle you must use the directory structure `src/main/java/` and `src/main/resources/`. So you can have multiple projects in this repo. So it could look like `project1/src/main/java` and `project2/src/main/java`. Just make sure to place a `build.gradle` file inside each of the projects root under `project1/` and `project2`.
+Design Method: This project uses a java language using eclipse IDE with the javaFX design process to enhance the UI for the user to manipulate.
 
-# Things to place in README and repo
-- UMLs
-- everything related to your project
-- rename this README file and create another one named `README.md` that describes your project in detail. Update it as your project progresses
+Screens:
+Intro: The first screen the user sees. The user has buttions options to create garden, import preexisting gardern, go to a guide, and go to settings.
+Garden Initialization: The user will determine their name, their desired budget amount, and the conditions for the garden (Weather type, Soil Type, and Moisture Type)
+Guide: The guide will go through how to manipulate the garden application.
+Import: This will import the preexisting files in the folder system to edit.
+Modify Plot: The main use of the program. The user will manipulate a garden, with the garden conditions and the desired budget, by dragging the plant options (woody or herbaceous) to the plot. The user will then, after placing the plants, visualize the amount of leps as well as the budget given.
+Fauna: 
+Presentation Mode: This will let the user see their garden without manipulating it.
+Settings: The user will manipulate the features of their garden application by changing it into dark or light mode.
+Summary: The user will see the statistical model of their application by visualizing each of plants and how many leps support it. The user will also see their budget met and check if it is lower than the budget desired. 
 
-### Github Actions (Optional but good thing to have)
+Programming Methods and Features:
+Model:
+View:
+Controller:
+Database Script:
+Garden Plot:
+Pages Enum:
+Plant:
+Screen:
+Save:
 
-This is a great feature that will allow us to compile and run our code on Github.com. We could even run unit tests -- see lab1 `build.gradle`
+How To Use:
+1. The user will first be introduced to create garden, go to a guide, import a preexisting garden, and settings.
+  a. If the user wants to know how to manipulate the application, the guide will be used.
+  b. If the user wants to edit their saved garden, the import garden will be used.
+  c. If the user wants to change their garden theme, the settings will be used.
+2. The user will start by going to create garden.
+3. The user will be inputting their name, amount of budget desired, and the conditions for the garden.
+  a. The conditions contain Weather (options: sunny, rainy, cloudy), Soil Type (options: dry, medium, moist), and Moisture Type (options: Decent, Medium, Good)
+4. The user will start modifying their garden by going to "Create Garden".
+5. The user will start modifying their garden.
+  a. The user will drag the native plants (woody or herbaceous) to the plot.
+  b. There are no limits in how many plants in the garden as long as the budget that is met is not over the budget that is desired.
+  c. The user will see how many leps are there in the plot.
+6. The user have options to extend their screen to seen the garden, find the fauna, and summary of their garden.
+7. The user can save their garden by going to the summary of the garden.
 
-Note: We only compile JavaFX code because it needs a display to run which servers don't have
 
-The `yml` or yaml file in `.github/workflows/gradle.yml` specifies when, where, and how to compile/run. Github looks for a yml file in `.github/workflows` so it can be named anything you want.
-
-In `gradle.yaml`, we specify the OS of the server and what Java version we want. We also specify the command we want the server to run once all the required software is installed.
-
-To run JavaFx, we use Gradle(build automation tool). Gradle needs `build.gradle` where we specify the JavaFX version, the modules we need, and our main class.
-
-#### Note: gradle needs our main class to be located at `src/main/java/` and all the classes main needs relative to that path. And we put any resources we use at `src/main/resources/`
-
-Note that this is how we will setup all projects going forward. Especially your main projects.
-
-Even with all these changes, you should still be able to import your projects into Eclipse like you normally do.
-
-#### Why run code on Github actions?
-
-You can configure it to automatically compile/run your code on every push. It should make it easy to see when/where your project breaks
-
-Once you do this you can see your code compiling under the Actions tab after each push. Some you may have to enable Actions and then make a push.  
-
-See [documentation](https://docs.github.com/en/free-pro-team@latest/actions) on Github actions
