@@ -100,6 +100,10 @@ public abstract class Screen {
     	return gardenname;
     }
     
+    public void setGardenBudget(String s) {
+    	gardenbudget = s;
+    }
+    
     public PagesEnum getScreen() {
         return page;
     }

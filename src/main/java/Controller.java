@@ -24,18 +24,24 @@ public class Controller {
     //ModifyPlotScreen ModifyPlotScreen;
 
     public Controller(View view) {
-    	
     	this.view = view;
     	model = new Model();
     	if (DEBUG) System.out.println("ic created");
     }
     
-    public void getOnPageHander() {
-
+    public void update() {
+    	//view.modify.getWoody(model.checkWoody());
+    	//view.modify.getHerb(model.checkWoody());
+    	model.setCurrentBudget(Integer.parseInt(view.gardeninit.gardenbudgetlocal));
+    	model.calculateLeps(view.modify.getCommonName());
+    	model.calculateBudget(view.modify.getCommonName());
+       	view.modify.setRemainingBudget(String.valueOf(model.remainingBudget));
+    	view.modify.setTotalLeps(String.valueOf(model.leps));
+    	view.modify.update();
+    	model.setCommonName(view.modify.getCommonName());
     }
 
-    public void drag(MouseEvent event) {
-    	
+    public void drag(MouseEvent event) {   	
     	Node n = (Node)event.getSource();
 		if (DEBUG) System.out.println("ic mouse drag tx: " + n.getTranslateX() + ", ex: " + event.getX() );
 		model.setX(model.getX() + event.getX()); //event.getX() is the amount of horiz drag
@@ -75,7 +81,7 @@ public class Controller {
     		public void handle(DragEvent event) 
     		{
     			view.modify.onGardenDragDropped(event);
-    			
+    			update();
     		}
     	};
     }

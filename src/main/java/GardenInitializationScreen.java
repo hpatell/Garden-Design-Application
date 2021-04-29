@@ -26,6 +26,8 @@ public class GardenInitializationScreen extends Screen {
 	ComboBox<String> soil;
 	ComboBox<String> moisture;
 	
+	String gardenbudgetlocal;
+	
 	VBox vbox;
 	HBox hbox;
 	BorderPane borderPane;
@@ -84,10 +86,10 @@ public class GardenInitializationScreen extends Screen {
     	    	gardenSoilCondition = soil.getValue();
     	    	gardenMoistureCondition = moisture.getValue();
     	    	gardenDimensions = dimensionstf.getText();
+    	    	gardenbudgetlocal = gardenbudget;
     			updatePage();
     		}
     	});
-    	
     	
 		hbox.setAlignment(Pos.TOP_RIGHT);
 		hbox.setPadding(new Insets(10, 10, 0, 0));
@@ -109,7 +111,7 @@ public class GardenInitializationScreen extends Screen {
 
 	public void updatePage() {
 		view.modify.gardenNameLabel.setText(gardenname);
-		view.modify.gardenBudgetLabel.setText("Total Budget: " + gardenbudget);
+		view.modify.gardenBudgetLabel.setText("Total Budget: " + gardenbudgetlocal);
 		view.modify.gardenWeatherConditionLabel.setText("Weather Condition: " + gardenWeatherCondition);
 		view.modify.gardenSoilConditionLabel.setText("Soil Condition: " + gardenSoilCondition);
 		view.modify.gardenMoistureConditionLabel.setText("Moisture Condition: " + gardenMoistureCondition);

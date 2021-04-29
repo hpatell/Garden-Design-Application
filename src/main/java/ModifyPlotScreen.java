@@ -1,5 +1,6 @@
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map.Entry;
 
 import javafx.event.ActionEvent;
@@ -35,9 +36,10 @@ public class ModifyPlotScreen extends Screen {
 	double imgHeight = 100;
 	double imgWidth = 100;
 	
-    //Collection<Image> plantImages;
+	Model model;
 	
-	Model model = new Model();
+	Collection<String> wPlantNames;
+	Collection<String> hPlantNames;
 	
 	public void updatePage(){}
 	
@@ -50,6 +52,7 @@ public class ModifyPlotScreen extends Screen {
 	ScrollPane scrollPane = new ScrollPane();
 	VBox vBoxImages = new VBox();
 	VBox vBox = new VBox();
+	VBox vBoxRight;
 	HBox hBoxBottom = new HBox();
 	
 	CheckBox woody;
@@ -65,17 +68,31 @@ public class ModifyPlotScreen extends Screen {
 	Label gardenBudgetRemainingLabel;
 	Label gardenTotalLeps;
 	
+	String commonname;
+	String totalLeps;
+	String remainingBudget;
+	
+	HashMap<String, ImageView> plantIVs;
+	
+	ImageView currentIV; 
+	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
 		imc = new Controller(v);
+		
+		model = new Model();
     	
 		//System.out.print(model.getPlants());
 		
 		v.setPlantPNG(model.getPlants());
 		//System.out.println(v.plantPNG);
 		
-		HashMap<String, ImageView> plantIVs = createImages(v.plantPNG);
+		
+		//plantIVs = createImages(v.plantPNG);
+		createImages(v.plantPNG);
 		//System.out.println(plantIVs);
+		
+		totalLeps = "0";
 		
 		
 		//ImageView iv1 = createImage("/commonMilkweed.png");
@@ -151,14 +168,19 @@ public class ModifyPlotScreen extends Screen {
     	
     	scene = new Scene(borderPane, canvasWidth, canvasHeight);
     }
+    
+    public void update() {
+    	gardenTotalLeps.setText("Total Leps: " + totalLeps);
+       	gardenBudgetRemainingLabel.setText("Budget Remaining: " + remainingBudget);
+    }
 
     public void DragAndDrop(ImageView iv)
-    {
+    {  	
 		iv.setOnDragDetected(imc.getOnGardenDragDetected(iv));
     	anchorPane.setOnDragOver(imc.getOnGardenDragOver());
     	anchorPane.setOnDragDropped(imc.getOnGardenDragDropped());
     }
-    
+
     public void onGardenDragDetected(MouseEvent event, ImageView iv)
     {
     	Dragboard db = iv.startDragAndDrop(TransferMode.ANY);
@@ -166,6 +188,7 @@ public class ModifyPlotScreen extends Screen {
 		content.putImage(iv.getImage());
 		db.setContent(content);
 		event.consume();
+		setCurrentPlantImage(iv);
     }
     
     public void onGardenDragOver(DragEvent event)
@@ -192,9 +215,18 @@ public class ModifyPlotScreen extends Screen {
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
 			anchorPane.getChildren().add(newIV);
 			success = true;
+	    	if(currentIV != null && plantIVs != null) {
+	    		commonname = findCommomName(currentIV);
+	    		gardenTotalLeps.setText("Total Leps: " + model.leps);
+	    	}
 		}
 		event.setDropCompleted(success);
+		
 		event.consume();
+    }
+    
+    public void setCurrentPlantImage(ImageView iv) {
+    	currentIV = iv;
     }
     
     public void checkbox(ActionEvent event, HashMap<String, ImageView> imageViews)
@@ -239,6 +271,7 @@ public class ModifyPlotScreen extends Screen {
     
     public void label()
     {
+    	
     	gardenNameLabel = new Label(gardenname);
     	gardenNameLabel.setFont(new Font("Arial", 30));
     	HBox hBoxLabel = new HBox();
@@ -253,17 +286,20 @@ public class ModifyPlotScreen extends Screen {
     	gardenBudgetRemainingLabel = new Label("Budget Remaining: ");
     	gardenBudgetRemainingLabel.setFont(new Font("Arial", 16));
     	
-    	gardenTotalLeps = new Label("Total Leps: ");
+    	gardenTotalLeps = new Label();
+    	gardenTotalLeps.setText("Total Leps: " + totalLeps);
     	gardenTotalLeps.setFont(new Font("Arial", 16));
     	
     	gardenDimensionsLabel = new Label("Dimensions: ");
     	gardenDimensionsLabel.setFont(new Font("Arial", 16));
     	
-    	VBox vBoxRight = new VBox();
+    	vBoxRight = new VBox();
+    	vBoxRight.getChildren().remove(gardenTotalLeps);
     	vBoxRight.setAlignment(Pos.CENTER_RIGHT);
     	vBoxRight.setPadding(new Insets(0, 20, 0, 0));
     	vBoxRight.getChildren().addAll(gardenBudgetLabel, gardenBudgetRemainingLabel, gardenTotalLeps);
     	stackPaneTop.getChildren().add(vBoxRight);
+    
     	
     	gardenWeatherConditionLabel = new Label(gardenWeatherCondition);
     	gardenWeatherConditionLabel.setFont(new Font("Arial", 16));
@@ -328,9 +364,46 @@ public class ModifyPlotScreen extends Screen {
 //    	return imageV;
 //    }
     
-    public HashMap<String, ImageView> createImages(HashMap<String, String> imagePNGs)
+    public String findCommomName(ImageView iv) {
+    	commonname = "";
+		for (Entry<String, ImageView> mapElement : plantIVs.entrySet()) 
+    	{          
+            if(mapElement.getValue() == iv) {
+                System.out.println("The key for value " + iv + " is " + mapElement.getKey());
+                commonname = mapElement.getKey();
+                break;
+              }
+    	}
+		return commonname;
+    }
+    
+    public String getGardenBudget() {
+    	return gardenbudget;
+    }
+    
+    public String getCommonName() {
+    	return commonname;
+    }
+    
+    public void setTotalLeps(String t) {
+    	totalLeps = t;
+    }
+    
+    public void setRemainingBudget(String b) {
+    	remainingBudget = b;
+    }
+    
+    public void getWoody(Collection<String> wplants) {
+    	wPlantNames = wplants;
+    }
+    
+    public void getHerb(Collection<String> hplants) {
+    	hPlantNames = hplants;
+    }
+    
+    public void createImages(HashMap<String, String> imagePNGs)
     {
-    	HashMap<String, ImageView> plantIVs = new HashMap<>();
+    	HashMap<String, ImageView> plantIVsCopy = new HashMap<>();
     	
     	for (Entry<String, String> mapElement : imagePNGs.entrySet()) 
     	{
@@ -348,10 +421,9 @@ public class ModifyPlotScreen extends Screen {
         	
         	vBoxImages.getChildren().add(imageV);
         	
-        	plantIVs.put(key, imageV);
+        	plantIVsCopy.put(key, imageV);
     	}
-    	
-    	return plantIVs;
+    	plantIVs = plantIVsCopy;
     }
     
 }

@@ -1,26 +1,38 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Map.Entry;
+
+import javafx.event.ActionEvent;
+import javafx.scene.image.ImageView;
 
 public class Model {
 
 	private double x = 100;
 	private double y = 200;
+	int leps;
+	int currentBudget;
+	int remainingBudget;
+	boolean initialbudget;
 	HashMap<String, Plant> plants = new HashMap<>();
+	
+	Collection<String> Woody;
+	Collection<String> Herbaceous;
+	
+	//View view;
+	
+	String commonname;
+	
 	
 	public Model()
 	{
 		testPlants();
-		//System.out.println(plants);
-//		System.out.println(plants.get("Asteraceae-Helianthus").scientificName);
-//		System.out.println(plants.get("Asteraceae-Helianthus").commonName);
-//		System.out.println(plants.get("Asteraceae-Helianthus").plantType);
-//		System.out.println(plants.get("Asteraceae-Helianthus").lepsSupported);
-//		System.out.println(plants.get("Asteraceae-Helianthus").cost);
-//		System.out.println(plants.get("Asteraceae-Helianthus").weatherType);
-//		System.out.println(plants.get("Asteraceae-Helianthus").moistureType);
-//		System.out.println(plants.get("Asteraceae-Helianthus").soilType);
+		leps = 0;
+		currentBudget = 0;
+		remainingBudget = currentBudget;
+		initialbudget = true;
 	}
 	
 	public void testPlants()
@@ -64,15 +76,49 @@ public class Model {
 		return plants;
     }
 	
-    public int calculateLeps(String plantname) 
-    {
-        return 0;
+    public int calculateLeps(String plantname) {
+    	System.out.println("Model has the name" + commonname);
+    	leps = plants.get(plantname).lepsSupported + leps;
+    	String lepsString = String.valueOf(leps);
+        return leps;
     }
 
-    public static int calculateBudget(int currentBudget) {
-        return 0;
+    public int calculateBudget(String plantname) {
+    	if(initialbudget) {
+    		remainingBudget = currentBudget;
+    		initialbudget = false;
+    	}
+    	remainingBudget = remainingBudget - plants.get(plantname).cost;
+    	System.out.println(remainingBudget);
+        return remainingBudget;
+    }
+    
+    public Collection<String> checkWoody() {
+    	for(Entry<String, Plant> mapElement : plants.entrySet()) {
+            String key = mapElement.getKey();           
+            Plant value = mapElement.getValue();
+            if(plants.get(key).plantType == "woody") {
+            	Woody.add(plants.get(key).commonName);
+            }          
+    	}
+    	return Woody;
+    }
+    
+    public Collection<String> checkHerbaceous() {
+    	for(Entry<String, Plant> mapElement : plants.entrySet()) {
+            String key = mapElement.getKey();           
+            Plant value = mapElement.getValue();
+            if(plants.get(key).plantType == "herbaceous") {
+            	Herbaceous.add(plants.get(key).commonName);
+            }          
+    	}
+    	return Herbaceous;
     }
 
+    public void setCurrentBudget(int budget) {
+    	currentBudget = budget;
+    }
+    
     public static boolean checkCompatability(String name) {
         return false;
     }
@@ -95,6 +141,11 @@ public class Model {
 
     public static void writeGardenFile() {
         
+    }
+    
+    
+    public void setCommonName(String s) {
+    	commonname = s;
     }
     
     public double getX() {
