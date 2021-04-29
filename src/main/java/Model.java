@@ -11,7 +11,8 @@ public class Model {
 	
 	public Model()
 	{
-//		testPlants();
+		testPlants();
+		//System.out.println(plants);
 //		System.out.println(plants.get("Asteraceae-Helianthus").scientificName);
 //		System.out.println(plants.get("Asteraceae-Helianthus").commonName);
 //		System.out.println(plants.get("Asteraceae-Helianthus").plantType);
@@ -50,9 +51,9 @@ public class Model {
 			{
 				plantType = "woody";
 			}
-			plants.put(array[0], new Plant(array[0], array[1], plantType, Integer.parseInt(array[2]), Integer.parseInt(array[3]), array[5], array[6], array[7]));
+			plants.put(array[1], new Plant(array[0], array[1], plantType, Integer.parseInt(array[2]), Integer.parseInt(array[3]), array[5], array[6], array[7]));
 			
-			System.out.println(array[0]);
+			//System.out.println(array[1]);
 		}
 	}
 	
@@ -63,7 +64,8 @@ public class Model {
 		return plants;
     }
 	
-    public static int calculateLeps(String plantname) {
+    public int calculateLeps(String plantname) 
+    {
         return 0;
     }
 

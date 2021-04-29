@@ -14,27 +14,30 @@ public class GardenPlot {
     String moistureLevel;
     int totalnumberLeps;
     Plant[] plotGrid;
-    //Collection<Plant> currentPlants = new ArrayList<Plant>();
-    HashMap<String, Plant> currentPlants = new HashMap<>();
+    
+    HashMap<String, Plant> plantsInGarden = new HashMap<>();
 
     public void addPlant() 
     {
-    	Plant strawberry = new Plant("Fragaria", "Strawberry", "herbaceous", 63, 6, "Sunny", "Dry", "Decent");
-    	Plant sunflower = new Plant("Helianthus", "Sunflower", "herbaceous", 57, 6, "Rainy", "Medium", "Medium");
-    	Plant willow = new Plant("Salix", "Willow", "woody", 292, 20, "Cloudy", "Moist", "Good");
+//    	Plant strawberry = new Plant("Fragaria", "Strawberry", "herbaceous", 63, 6, "Sunny", "Dry", "Decent");
+//    	Plant sunflower = new Plant("Helianthus", "Sunflower", "herbaceous", 57, 6, "Rainy", "Medium", "Medium");
+//    	Plant willow = new Plant("Salix", "Willow", "woody", 292, 20, "Cloudy", "Moist", "Good");
+//    	
+//    	plantsInGarden.put("Fragaria", strawberry);
+//    	plantsInGarden.put("Helianthus", sunflower);
+//    	plantsInGarden.put("Salix", willow);
     	
-    	currentPlants.put("Fragaria", strawberry);
-    	currentPlants.put("Helianthus", sunflower);
-    	currentPlants.put("Salix", willow);
+    	//plantsInGarden.put(, );
+    	
     }
     
     public void removePlant() {
 
     }
     
-    public HashMap<String, Plant> getCurrentPlants() 
+    public HashMap<String, Plant> getPlantsInGarden() 
     {
-		return currentPlants;
+		return plantsInGarden;
     }
     
 }

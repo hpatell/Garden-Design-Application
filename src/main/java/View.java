@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Map.Entry;
+
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -63,18 +65,31 @@ public class View extends Application {
     	currentPage = PE;
     }
     
-    public void setPlantPNG()
+    public void setPlantPNG(HashMap<String, Plant> plants)
     {
-    	plantPNG.put("Fragaria", "/FragariaStrawberry.png");
-    	plantPNG.put("Helianthus", "/HelianthusSunflower.png");
-    	plantPNG.put("Salix", "/SalixWillow.png");
+//    	plantPNG.put("Fragaria", "/FragariaStrawberry.png");
+//    	plantPNG.put("Helianthus", "/HelianthusSunflower.png");
+//    	plantPNG.put("Salix", "/SalixWillow.png");
+//    	
+//    	plantPNG.put("a", "/FragariaStrawberry.png");
+//    	plantPNG.put("b", "/FragariaStrawberry.png");
+//    	plantPNG.put("c", "/HelianthusSunflower.png");
+//    	plantPNG.put("d", "/HelianthusSunflower.png");
+//    	plantPNG.put("e", "/SalixWillow.png");
+//    	plantPNG.put("f", "/plant_images/Willow.png");
     	
-    	plantPNG.put("a", "/FragariaStrawberry.png");
-    	plantPNG.put("b", "/FragariaStrawberry.png");
-    	plantPNG.put("c", "/HelianthusSunflower.png");
-    	plantPNG.put("d", "/HelianthusSunflower.png");
-    	plantPNG.put("e", "/SalixWillow.png");
-    	plantPNG.put("f", "/SalixWillow.png");
+    	for (Entry<String, Plant> mapElement : plants.entrySet()) 
+    	{
+            String key = mapElement.getKey();
+            
+            System.out.println("/plant_images/" + key + ".png");
+            
+            String png = "/plant_images/" + key + ".png";
+            
+            //plantPNG.put(key, "/plant_images/" + key + ".png");
+            plantPNG.put(key, png);
+    	}
+    	System.out.println(plantPNG.size());
     }
     
     

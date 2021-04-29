@@ -75,6 +75,7 @@ public class Controller {
     		public void handle(DragEvent event) 
     		{
     			view.modify.onGardenDragDropped(event);
+    			
     		}
     	};
     }

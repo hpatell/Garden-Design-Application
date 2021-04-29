@@ -37,6 +37,8 @@ public class ModifyPlotScreen extends Screen {
 	
     //Collection<Image> plantImages;
 	
+	Model model = new Model();
+	
 	public void updatePage(){}
 	
 	private Controller imc;
@@ -67,12 +69,13 @@ public class ModifyPlotScreen extends Screen {
 		super(v, PagesEnum.ModifyPlotScreen);
 		imc = new Controller(v);
     	
+		//System.out.print(model.getPlants());
 		
-		v.setPlantPNG();
-		System.out.println(v.plantPNG);
+		v.setPlantPNG(model.getPlants());
+		//System.out.println(v.plantPNG);
 		
 		HashMap<String, ImageView> plantIVs = createImages(v.plantPNG);
-		System.out.println(plantIVs);
+		//System.out.println(plantIVs);
 		
 		
 		//ImageView iv1 = createImage("/commonMilkweed.png");
@@ -214,14 +217,14 @@ public class ModifyPlotScreen extends Screen {
             }
             else if(woody.isSelected() && herbaceous.isSelected() == false)
             {
-            	if(key == "Salix")
+            	if(model.plants.get(key).plantType == "woody")
             	{
             		vBoxImages.getChildren().add(value);
             	}
             }
             else if(herbaceous.isSelected() && woody.isSelected() == false)
             {
-            	if(key == "Fragaria" || key == "Helianthus")
+            	if(model.plants.get(key).plantType == "herbaceous")
             	{
             		vBoxImages.getChildren().add(value);
             	}

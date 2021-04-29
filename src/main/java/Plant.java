@@ -9,7 +9,7 @@ public class Plant {
     double imgHeight, imgWidth;
     //HashMap<String, String[]> Conditions;
     
-    Plant(String scientificName, String commonName, String plantType, int lepsSupported, int cost, String weatherType, String moistureType, String soilType) 
+    public Plant(String scientificName, String commonName, String plantType, int lepsSupported, int cost, String weatherType, String moistureType, String soilType) 
     {
         this.scientificName = scientificName; 
         this.commonName = commonName;
