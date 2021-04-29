@@ -59,6 +59,9 @@ public class ModifyPlotScreen extends Screen {
 	Label gardenSoilConditionLabel;
 	Label gardenMoistureConditionLabel;
 	
+	Label gardenBudgetRemainingLabel;
+	Label gardenTotalLeps;
+	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
 		imc = new Controller(v);
@@ -122,7 +125,7 @@ public class ModifyPlotScreen extends Screen {
     	
     	// HboxBottom
     	hBoxBottom.setAlignment(Pos.CENTER);
-    	hBoxBottom.setSpacing(850);
+    	hBoxBottom.setSpacing(50);
     	
     	layout = borderPane;
     	
@@ -139,7 +142,6 @@ public class ModifyPlotScreen extends Screen {
     	
     	label();
     	settingsbutton();
-    	budgetButton();
     	summarybutton();
     	faunabutton();
     	
@@ -235,48 +237,54 @@ public class ModifyPlotScreen extends Screen {
     {
     	gardenNameLabel = new Label(gardenname);
     	gardenNameLabel.setFont(new Font("Arial", 30));
-    	gardenBudgetLabel = new Label(gardenbudget);
-    	gardenWeatherConditionLabel = new Label(gardenWeatherCondition);
-    	gardenSoilConditionLabel = new Label(gardenSoilCondition);
-    	gardenMoistureConditionLabel = new Label(gardenMoistureCondition);
-    	HBox hBoxLabel = new HBox(10);
+    	HBox hBoxLabel = new HBox();
     	hBoxLabel.setAlignment(Pos.CENTER);
     	//hBoxLabel.setPadding(new Insets(5, 0, 5, 0));
-    	hBoxLabel.getChildren().addAll(gardenNameLabel, gardenBudgetLabel, gardenWeatherConditionLabel, gardenSoilConditionLabel, gardenMoistureConditionLabel);
+    	hBoxLabel.getChildren().add(gardenNameLabel);
     	stackPaneTop.getChildren().add(hBoxLabel);
+    	
+    	gardenBudgetLabel = new Label(gardenbudget);
+    	gardenBudgetLabel.setFont(new Font("Arial", 16));
+    	
+    	gardenBudgetRemainingLabel = new Label("Budget Remaining: ");
+    	gardenBudgetRemainingLabel.setFont(new Font("Arial", 16));
+    	
+    	gardenTotalLeps = new Label("Total Leps: ");
+    	gardenTotalLeps.setFont(new Font("Arial", 16));
+    	
+    	VBox vBoxRight = new VBox();
+    	vBoxRight.setAlignment(Pos.CENTER_RIGHT);
+    	vBoxRight.setPadding(new Insets(0, 20, 0, 0));
+    	vBoxRight.getChildren().addAll(gardenBudgetLabel, gardenBudgetRemainingLabel, gardenTotalLeps);
+    	stackPaneTop.getChildren().add(vBoxRight);
+    	
+    	gardenWeatherConditionLabel = new Label(gardenWeatherCondition);
+    	gardenWeatherConditionLabel.setFont(new Font("Arial", 16));
+    	
+    	gardenSoilConditionLabel = new Label(gardenSoilCondition);
+    	gardenSoilConditionLabel.setFont(new Font("Arial", 16));
+    	
+    	gardenMoistureConditionLabel = new Label(gardenMoistureCondition);
+    	gardenMoistureConditionLabel.setFont(new Font("Arial", 16));
+    	
+    	VBox vBoxLeft = new VBox();
+    	vBoxLeft.setAlignment(Pos.CENTER_LEFT);
+    	vBoxLeft.setPadding(new Insets(0, 0, 0, 20));
+    	vBoxLeft.getChildren().addAll(gardenWeatherConditionLabel, gardenSoilConditionLabel, gardenMoistureConditionLabel);
+    	stackPaneTop.getChildren().add(vBoxLeft);
     }
     
     public void settingsbutton() 
     {
     	Button settings = new Button("Settings");
     	settings.setOnAction(e -> view.switchPage(PagesEnum.SettingsScreen));
-    	HBox hBoxSettings = new HBox();
-    	hBoxSettings.setAlignment(Pos.CENTER_LEFT);
-    	hBoxSettings.setPadding(new Insets(0, 0, 0, 10));
-    	hBoxSettings.getChildren().add(settings);
-    	stackPaneTop.getChildren().add(hBoxSettings);
-    }
-
-    public void presentationModeButton() 
-    {	
-    	Button fullscreen = new Button("Full Screen");
-    	//fullscreen.setTranslateX(680);
-    	//fullscreen.setTranslateY(0);
-    	fullscreen.setOnAction(e -> view.switchPage(PagesEnum.PresentationModeScreen));
-    	//hBoxTop.getChildren().add(fullscreen);
+    	//HBox hBoxSettings = new HBox();
+    	//hBoxSettings.setAlignment(Pos.CENTER_LEFT);
+    	//hBoxSettings.setPadding(new Insets(0, 0, 0, 10));
+    	hBoxBottom.getChildren().add(settings);
+    	//stackPaneTop.getChildren().add(hBoxSettings);
     }
     
-    public void budgetButton() 
-    {
-    	Button budget = new Button("Budget");
-    	budget.setOnAction(e -> view.switchPage(PagesEnum.BudgetScreen));
-    	//HBox hBoxBudget = new HBox();
-    	//hBoxBudget.setAlignment(Pos.CENTER_LEFT);
-    	//hBoxBudget.setPadding(new Insets(0, 0, 0, 10));
-    	//hBoxBottom.getChildren().add(budget);
-    	//stackPaneBottom.getChildren().add(hBoxBudget);
-    }
-
     public void faunabutton() 
     {
     	Button fauna = new Button("Fauna");
@@ -301,10 +309,6 @@ public class ModifyPlotScreen extends Screen {
     	
     }
 
-    public void plantNameText() {
-        
-    }
-    
 //    public ImageView createImage(String png) 
 //    {
 //    	Image image = new Image(getClass().getResourceAsStream(png));

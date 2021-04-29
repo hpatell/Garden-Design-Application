@@ -54,7 +54,7 @@ public class GardenInitializationScreen extends Screen {
 		createGardenButton = new Button("Create Garden");
 		name = new Label("Garden Name: ");
 		nametf = new TextField();
-		budget = new Label("Budget:               ");
+		budget = new Label("Budget: ");
 		budgettf = new TextField();
 		weather = new ComboBox<String>();
 		soil = new ComboBox<String>();
@@ -105,9 +105,9 @@ public class GardenInitializationScreen extends Screen {
 
 	public void updatePage() {
 		view.modify.gardenNameLabel.setText(gardenname);
-		view.modify.gardenBudgetLabel.setText(gardenbudget);
-		view.modify.gardenWeatherConditionLabel.setText(gardenWeatherCondition);
-		view.modify.gardenSoilConditionLabel.setText(gardenSoilCondition);
-		view.modify.gardenMoistureConditionLabel.setText(gardenMoistureCondition);
+		view.modify.gardenBudgetLabel.setText("Total Budget: " + gardenbudget);
+		view.modify.gardenWeatherConditionLabel.setText("Weather Condition: " + gardenWeatherCondition);
+		view.modify.gardenSoilConditionLabel.setText("Soil Condition: " + gardenSoilCondition);
+		view.modify.gardenMoistureConditionLabel.setText("Moisture Condition: " + gardenMoistureCondition);
 	}	
 } 
