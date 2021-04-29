@@ -67,9 +67,9 @@ public class GardenInitializationScreen extends Screen {
 		moisture.setPromptText("Moisture Type");
 		soil.setPromptText("Soil Type");
 		
-		weather.getItems().addAll("Sunny", "Rainy", "Cloudy");
-		soil.getItems().addAll("Dry", "Medium", "Moist");		
-		moisture.getItems().addAll("Decent", "Medium", "Good");
+		weather.getItems().addAll("Full Sun", "Half Sun", "Shade");
+		soil.getItems().addAll("Sand", "Silt", "Clay");
+		moisture.getItems().addAll("Dry", "Moist", "Wet");
 		
 		nametf.setMaxWidth(canvasHeight/2);
 		budgettf.setMaxWidth(canvasHeight/2);

@@ -35,12 +35,12 @@ public class faunaScreen extends Screen {
 	StackPane hstackPaneTop;
 	StackPane hstackPaneBottom;
 	
-	Model model;
+	//Model model;
 	
 	public faunaScreen(View v) {
 		super(v, PagesEnum.FaunaScreen);
 		
-		model = new Model();
+		//model = new Model();
 		
 		borderPane = new BorderPane();	
 		gridPane = new GridPane();
