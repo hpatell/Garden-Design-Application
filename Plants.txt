@@ -6,5 +6,4 @@ Asteraceae-Helianthus,Sunflower,57,6,h,fullSun,Moist,Sand
 Nyssaceae-Nyssa,Blackgum,34,20,w,fullSun,Dry,Sand
 Hamamelidaceae-Liquidambar,Sweetgum,34,20,w,fullSun,Moist,Clay
 Salicaceae-Salix,Willow,292,20,w,halfSun,Dry,Silt
-Asteraceae-Helianthus,Sunflower,57,6,h,Shade,Dry,Silt
 Caprifoliaceae-Lonicera,Honeysuckle,30,20,w,halfSun,Dry,Silt
