@@ -347,7 +347,7 @@ public class ModifyPlotScreen extends Screen {
     	//HBox hBoxFauna = new HBox();
     	//hBoxFauna.setAlignment(Pos.CENTER_RIGHT);
     	//hBoxFauna.setPadding(new Insets(0, 10, 0, 0));
-    	hBoxBottom.getChildren().add(fauna);
+    	//hBoxBottom.getChildren().add(fauna);
     	//stackPaneBottom.getChildren().add(hBoxFauna);
     }
     
