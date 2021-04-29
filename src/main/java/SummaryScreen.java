@@ -1,84 +1,100 @@
 import java.awt.Font;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 
 
 public class SummaryScreen extends Screen {
 	
-	public void updatePage(){}
+	HBox hboxtop;
+	HBox hboxbottom;
+	VBox vbox;
+	BorderPane borderPane;
+	StackPane hstackPaneTop;	
+	StackPane hstackPaneBottom;
+	StackPane vstackPaneBottom;
 	
-	ProgressBar budgetbar = new ProgressBar(.40);
+	double ratio;
 	
-	Button save = new Button("Save");
+	ProgressBar budgetbar;
 	
-	Text budgettext = new Text("Budget");
-	Text plantstext = new Text("Plants In Garden");
-	Text lepstext = new Text("Leps In Garden");
+	Button save;
 	
-	Text FragariaStrawberry = new Text("Fragaria (Strawberry)");
-	Text HelianthusSunflower = new Text("Helianthus (Sunflower)");
-	Text SalixWillow = new Text("Salix (Willow)");
+	Text budgettext;
+	Text lepsandplantstext;
+	Text newText;
 	
-	Text FragariaStrawberrylep = new Text("63");
-	Text HelianthusSunflowerlep = new Text("57");
-	Text SalixWillowlep = new Text("292");
 	
 	public SummaryScreen(View v) {
 		super(v, PagesEnum.SummaryScreen);
 		
-    	layout = new StackPane();
+		borderPane = new BorderPane();
+		hstackPaneTop = new StackPane();	
+		vstackPaneBottom = new StackPane();
+		hstackPaneBottom = new StackPane();	
+
+    	borderPane.setTop(hstackPaneTop);
+    	borderPane.setCenter(vstackPaneBottom);
+    	borderPane.setBottom(hstackPaneBottom);
     	
-    	alignText();
+    	hboxtop = new HBox();
+    	hboxbottom = new HBox(50);
+    	vbox = new VBox(10);
+    	
+		ratio = 100;
+		
+		budgetbar = new ProgressBar(100);
+		budgetbar.setMinHeight(40);
+		budgetbar.setMinWidth(500);
+    	
+		save = new Button("Save");
+    	
+		lepsandplantstext = new Text("              Plants In Garden            Leps Supported            Cost of Plant");
+		budgettext = new Text("Budget");
+		
     	createReturnToPlotButton();
 		createSettingsButton();
-    	
-    	layout.getChildren().addAll(save, settingsButton, returnToPlotButton, budgetbar, budgettext, plantstext, 
-    			lepstext, FragariaStrawberry, FragariaStrawberrylep, HelianthusSunflower, HelianthusSunflowerlep, SalixWillowlep, SalixWillow);
-    	
-    	layout.setStyle(theme);
+		
+		hboxtop.setAlignment(Pos.TOP_RIGHT);
+		hboxtop.setPadding(new Insets(10, 10, 0, 0));
+		hboxtop.getChildren().addAll(settingsButton);
+		
+		vbox.setAlignment(Pos.TOP_CENTER);
+		vbox.getChildren().addAll(budgettext, budgetbar, lepsandplantstext);
+		
+		hboxbottom.setAlignment(Pos.BOTTOM_CENTER);
+		hboxbottom.setPadding(new Insets(0, 0, 10, 0));
+		hboxbottom.getChildren().addAll(save, returnToPlotButton);
+		
+		hstackPaneTop.getChildren().addAll(hboxtop);
+		vstackPaneBottom.getChildren().addAll(vbox);
+		hstackPaneBottom.getChildren().addAll(hboxbottom);
+		
+		borderPane.setMaxHeight(canvasHeight);
+		borderPane.setMaxWidth(canvasHeight);
+		borderPane.setStyle(theme); 
+		borderPane.setStyle(theme);
+		
+    	layout = borderPane;
     	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
 	
-	public void alignText() {
-    	budgetbar.setTranslateX(0);
-    	budgetbar.setTranslateY(-250);
-    	
-    	budgetbar.setMaxHeight(40);
-    	budgetbar.setMaxWidth(600);
-    	
-    	budgettext.setTranslateX(0);
-    	budgettext.setTranslateY(-300);
-    	
-    	save.setTranslateX(150);
-    	save.setTranslateY(200);
-    	
-    	plantstext.setTranslateX(-150);
-    	plantstext.setTranslateY(-100);
-    	
-    	lepstext.setTranslateX(75);
-    	lepstext.setTranslateY(-100);
-    	
-    	FragariaStrawberry.setTranslateX(-150);
-    	FragariaStrawberry.setTranslateY(-50);
-    	
-    	FragariaStrawberrylep.setTranslateX(75);
-    	FragariaStrawberrylep.setTranslateY(-50);
-    	
-    	HelianthusSunflower.setTranslateX(-150);
-    	HelianthusSunflower.setTranslateY(0);
-    	
-    	HelianthusSunflowerlep.setTranslateX(75);
-    	HelianthusSunflowerlep.setTranslateY(0);
-    	
-    	SalixWillow.setTranslateX(-150);
-    	SalixWillow.setTranslateY(50);
-    	
-    	SalixWillowlep.setTranslateX(75);
-    	SalixWillowlep.setTranslateY(50);
+	public void update(double r, String commonname, String leps, String cost) {
+		newText = new Text(commonname + "                         " + leps + "                         " + cost);
+		budgetbar.setProgress(r);
+		vbox.getChildren().addAll(newText);
 	}
+	
+	public void updatePage(){};
 }

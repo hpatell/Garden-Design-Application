@@ -13,8 +13,8 @@ public class Model {
 	private double x = 100;
 	private double y = 200;
 	int leps;
-	int currentBudget;
-	int remainingBudget;
+	double currentBudget;
+	double remainingBudget;
 	boolean initialbudget;
 	HashMap<String, Plant> plants = new HashMap<>();
 	
@@ -74,7 +74,7 @@ public class Model {
 	public HashMap<String, Plant> getPlants() 
     {
 		return plants;
-    }
+    }	
 	
     public int calculateLeps(String plantname) {
     	System.out.println("Model has the name" + commonname);
@@ -83,7 +83,7 @@ public class Model {
         return leps;
     }
 
-    public int calculateBudget(String plantname) {
+    public double calculateBudget(String plantname) {
     	if(initialbudget) {
     		remainingBudget = currentBudget;
     		initialbudget = false;
@@ -92,7 +92,7 @@ public class Model {
     	System.out.println(remainingBudget);
         return remainingBudget;
     }
-    
+    /*
     public Collection<String> checkWoody() {
     	for(Entry<String, Plant> mapElement : plants.entrySet()) {
             String key = mapElement.getKey();           
@@ -114,6 +114,7 @@ public class Model {
     	}
     	return Herbaceous;
     }
+    */
 
     public void setCurrentBudget(int budget) {
     	currentBudget = budget;
@@ -121,6 +122,10 @@ public class Model {
     
     public static boolean checkCompatability(String name) {
         return false;
+    }
+    
+    public double calculateRemainOverTotalBudget() {
+    	return remainingBudget/currentBudget;
     }
 
     public static int calcUniqueplants() {

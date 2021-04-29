@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -22,63 +23,63 @@ public class faunaScreen extends Screen {
 	
 	public void updatePage(){}
 	
-	Text plantsText;
-	Text lepsText;
-	Text plantsImgText;
-	
-	TableView plantsDataTable;
-
 	HBox hboxtop;
 	HBox hboxbottom;
+	VBox vbox;
 	BorderPane borderPane;
-	GridPane gridPane;
-	StackPane hstackPaneTop;
+	StackPane hstackPaneTop;	
 	StackPane hstackPaneBottom;
+	StackPane vstackPaneBottom;
+
+	Text lepsandplantstext;
 	
-	//Model model;
 	
 	public faunaScreen(View v) {
 		super(v, PagesEnum.FaunaScreen);
 		
-		//model = new Model();
-		
-		borderPane = new BorderPane();	
-		gridPane = new GridPane();
-		plantsDataTable = new TableView();
-		hstackPaneTop = new StackPane();
+		borderPane = new BorderPane();
+		hstackPaneTop = new StackPane();	
+		vstackPaneBottom = new StackPane();
 		hstackPaneBottom = new StackPane();	
 
     	borderPane.setTop(hstackPaneTop);
-    	borderPane.setCenter(plantsDataTable);
+    	borderPane.setCenter(vstackPaneBottom);
     	borderPane.setBottom(hstackPaneBottom);
-
+    	
     	hboxtop = new HBox();
-    	hboxtop.setPadding(new Insets(10, 10, 0, 0));
-    	hboxtop.setAlignment(Pos.TOP_RIGHT);
+    	hboxbottom = new HBox(50);
+    	vbox = new VBox(10);
     	
-    	hboxbottom = new HBox();
-    	hboxbottom.setAlignment(Pos.TOP_CENTER);
-    	
+		lepsandplantstext = new Text("              Plants In Garden            Leps Supported            Cost of Plant");
+		
+    	createReturnToPlotButton();
 		createSettingsButton();
-		createReturnToPlotButton();
 		
-		plantsText = new Text("Plants In Garden");
-		lepsText = new Text("Leps");
-		plantsImgText = new Text("Image of Plants In Garden");		
-		
-		gridPane.setGridLinesVisible(true);
-
-		
+		hboxtop.setAlignment(Pos.TOP_RIGHT);
+		hboxtop.setPadding(new Insets(10, 10, 0, 0));
 		hboxtop.getChildren().addAll(settingsButton);
+		
+		vbox.setAlignment(Pos.TOP_CENTER);
+		vbox.getChildren().addAll(lepsandplantstext);
+		
+		hboxbottom.setAlignment(Pos.BOTTOM_CENTER);
+		hboxbottom.setPadding(new Insets(0, 0, 10, 0));
 		hboxbottom.getChildren().addAll(returnToPlotButton);
 		
 		hstackPaneTop.getChildren().addAll(hboxtop);
+		vstackPaneBottom.getChildren().addAll(vbox);
 		hstackPaneBottom.getChildren().addAll(hboxbottom);
 		
+		borderPane.setMaxHeight(canvasHeight);
+		borderPane.setMaxWidth(canvasHeight);
+		borderPane.setStyle(theme); 
+		borderPane.setStyle(theme);
 		
-		borderPane.setStyle(theme);	
-		layout = borderPane;
-		scene = new Scene(layout, canvasWidth, canvasHeight);
+    	layout = borderPane;
+    	scene = new Scene(layout, canvasWidth, canvasHeight);
+	}
+	
+	public void addPlants() {
 	}
 }
 	
