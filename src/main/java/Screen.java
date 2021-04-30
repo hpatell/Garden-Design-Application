@@ -46,7 +46,7 @@ public abstract class Screen {
         view = v;
         canvasWidth = 1000;
         canvasHeight = 790;
-        theme = "-fx-background-color: #FFFFFF;";
+        theme = "-fx-background-color: #87CEFA;";
         view.nameToScreenMap.put(pe, this);  
         settingsButton = new Button("Settings");
         gear = new Image(getClass().getResourceAsStream("/gear.png"));
@@ -85,9 +85,9 @@ public abstract class Screen {
     
     public void changeTheme(String s) {
     	if(s == "dark") {
-    		theme = "-fx-background-color: #000000;";
+    		theme = "-fx-background-color: #808080;";
     	} else if(s == "light") {
-    		theme = "-fx-background-color: #FFFFFF;";
+    		theme = "-fx-background-color: #87CEFA;";
     	}
     	layout.setStyle(theme);
     }

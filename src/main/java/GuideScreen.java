@@ -20,8 +20,8 @@ public class GuideScreen extends Screen {
 		super(v, PagesEnum.GuideScreen);
 		
 		backgroundimgview.setPreserveRatio(true);
-		backgroundimgview.setFitHeight(1200);
-		backgroundimgview.setFitWidth(1000);
+		backgroundimgview.setFitHeight(800);
+		backgroundimgview.setFitWidth(800);
 		
 		createSettingsButton();
 		createGardenButton();
@@ -36,8 +36,9 @@ public class GuideScreen extends Screen {
 		
     	layout = new StackPane();
     	layout.setMaxHeight(canvasHeight);
-    	layout.setMaxWidth(canvasHeight);
-    	layout.getChildren().addAll(backgroundimgview, createGardenButton, importButton);	
+    	layout.setMaxWidth(canvasWidth);
+    	layout.getChildren().addAll(backgroundimgview, createGardenButton, importButton);
+    	layout.setStyle(theme);
     	scene = new Scene(layout, canvasWidth, canvasHeight);
     	
 	}

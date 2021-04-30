@@ -180,7 +180,7 @@ public class ModifyPlotScreen extends Screen {
     
     public void update() {
     	gardenTotalLeps.setText("Total Leps: " + totalLeps);
-       	gardenBudgetRemainingLabel.setText("Budget Remaining: " + remainingBudget);
+       	gardenBudgetRemainingLabel.setText("Budget Remaining: $" + remainingBudget);
     }
 
     public void DragAndDrop(ImageView iv)

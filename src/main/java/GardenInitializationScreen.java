@@ -112,7 +112,7 @@ public class GardenInitializationScreen extends Screen {
 
 	public void updatePage() {
 		view.modify.gardenNameLabel.setText(gardenname);
-		view.modify.gardenBudgetLabel.setText("Total Budget: " + gardenbudgetlocal);
+		view.modify.gardenBudgetLabel.setText("Total Budget: $" + gardenbudgetlocal);
 		view.modify.gardenWeatherConditionLabel.setText("Weather Condition: " + gardenWeatherCondition);
 		view.modify.gardenSoilConditionLabel.setText("Soil Condition: " + gardenSoilCondition);
 		view.modify.gardenMoistureConditionLabel.setText("Moisture Condition: " + gardenMoistureCondition);
