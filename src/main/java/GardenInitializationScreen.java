@@ -36,6 +36,12 @@ public class GardenInitializationScreen extends Screen {
 	
 	View view;
 	
+	/**
+	 * Constructor for GardenInitializationScreen. Used to create the scene for create garden screen
+	 * 
+	 * @param v takes in the instance of View accessed in Screen
+	 * @author Kush Patel
+	 */
 	public GardenInitializationScreen(View v) {
 		super(v, PagesEnum.InitializationScreen);
 		
@@ -109,7 +115,10 @@ public class GardenInitializationScreen extends Screen {
     	scene = new Scene(layout, canvasWidth, canvasHeight);
 	}
 	
-
+	/**
+	 * Used to update the user input based variables in the garden, such as name, budget, and conditions in modify plot
+	 * @author Kush Patel
+	 */
 	public void updatePage() {
 		view.modify.gardenNameLabel.setText(gardenname);
 		view.modify.gardenBudgetLabel.setText("Total Budget: $" + gardenbudgetlocal);

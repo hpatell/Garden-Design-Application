@@ -25,6 +25,12 @@ public class ImportGardenScreen extends Screen {
 	
 	Button fileOpenerButton;
 	
+	/**
+	 * Constructor for ImportGardenScreen. Used to create the scene for import garden screen
+	 * 
+	 * @param v takes in the instance of View accessed in Screen
+	 * @author Kush Patel
+	 */
 	public ImportGardenScreen(View v) {
 		super(v, PagesEnum.ImportScreen);
 		fileOpenerButton = new Button("Open File");

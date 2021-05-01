@@ -28,7 +28,12 @@ public class settingsScreen extends Screen {
     Button lchangeThemebutton;
     Button returnToMenuButton;
 	
-
+	/**
+	 * Constructor for settingsScreen. Used to create the scene for settings screen
+	 * 
+	 * @param v takes in the instance of View accessed in Screen
+	 * @author Kush Patel
+	 */
     public settingsScreen(View v) {
         super(v, PagesEnum.SettingsScreen);	
     	
@@ -64,11 +69,20 @@ public class settingsScreen extends Screen {
         scene = new Scene(layout, canvasWidth, canvasHeight);
     }
     
+	/**
+	 * Assigns the exitButton a value and assigns the screen to swap to upon button press
+	 * @author Kush Patel
+	 */
     public void exitButton() {
     	exitButton = new Button("Exit");
         exitButton.setOnAction(e -> view.switchPage(view.previouspage));
     }
-
+    
+	/**
+	 * Assigns values to the dark and light mode button as well as changing the theme
+	 * on the appropriate button press
+	 * @author Kush Patel
+	 */
     public void changeTheme() {
         dchangeThemebutton = new Button("Dark");
         lchangeThemebutton = new Button("Light");
@@ -76,12 +90,22 @@ public class settingsScreen extends Screen {
         lchangeThemebutton.setOnAction(e -> applyTheme("light"));
     }
     
+	/**
+	 * Assigns the returnToMenuButton a value and assigns the screen to swap to upon button press
+	 * @param s changes the theme of every screen in the program by access the HashMap of every screen and setting
+	 * their layout theme to the new theme
+	 * @author Kush Patel
+	 */
     public void applyTheme(String s) {
     	view.nameToScreenMap.forEach((name, screen) -> {
     		screen.changeTheme(s);
     	});
     }
     
+	/**
+	 * Assigns the returnToMenuButton a value and assigns the screen to swap to upon button press
+	 * @author Kush Patel
+	 */
     public void returnToMenuButton() {
     	returnToMenuButton = new Button("Return To Menu");
     	returnToMenuButton.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));

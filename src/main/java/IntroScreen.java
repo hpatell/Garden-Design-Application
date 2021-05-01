@@ -21,6 +21,7 @@ import javafx.geometry.Pos;
 
 public class IntroScreen extends Screen {
 	
+	
 	public void updatePage(){}
 	
 	Image backgroundIMG;
@@ -30,7 +31,13 @@ public class IntroScreen extends Screen {
 	BorderPane borderPane;
 	StackPane hstackPane;	
 	StackPane vstackPane;	
-		
+	
+	/**
+	 * Constructor for IntroScreen. Used to create the scene for intro screen
+	 * 
+	 * @param v takes in the instance of View accessed in Screen
+	 * @author Kush Patel
+	 */
 	public IntroScreen(View v) {
 		super(v, PagesEnum.IntroScreen);
 		borderPane = new BorderPane();

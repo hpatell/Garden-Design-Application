@@ -11,13 +11,20 @@ public class GuideScreen extends Screen {
 	
 	public void updatePage(){}
 	
-	Image backgroundimg = new Image(getClass().getResourceAsStream("/NewHowTo.png"));
-	ImageView backgroundimgview = new ImageView(backgroundimg);
+	Image backgroundimg;
+	ImageView backgroundimgview;
 	
-	PagesEnum screen = PagesEnum.IntroScreen;
-	
+	/**
+	 * Constructor for GuideScreen. Used to create the scene for guide screen
+	 * 
+	 * @param v takes in the instance of View accessed in Screen
+	 * @author Kush Patel
+	 */
 	public GuideScreen(View v) {
 		super(v, PagesEnum.GuideScreen);
+		
+		backgroundimg = new Image(getClass().getResourceAsStream("/NewHowTo.png"));
+		backgroundimgview = new ImageView(backgroundimg);
 		
 		backgroundimgview.setPreserveRatio(true);
 		backgroundimgview.setFitHeight(800);
@@ -39,7 +46,6 @@ public class GuideScreen extends Screen {
     	layout.setMaxWidth(canvasWidth);
     	layout.getChildren().addAll(backgroundimgview, createGardenButton, importButton);
     	layout.setStyle(theme);
-    	scene = new Scene(layout, canvasWidth, canvasHeight);
-    	
+    	scene = new Scene(layout, canvasWidth, canvasHeight);   	
 	}
 }
