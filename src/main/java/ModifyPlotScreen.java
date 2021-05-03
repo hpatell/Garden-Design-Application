@@ -36,7 +36,7 @@ public class ModifyPlotScreen extends Screen {
 	double imgHeight = 100;
 	double imgWidth = 100;
 	
-	Model model;
+	//Model model;
 	
 	Collection<String> wPlantNames;
 	Collection<String> hPlantNames;
@@ -83,11 +83,11 @@ public class ModifyPlotScreen extends Screen {
 		super(v, PagesEnum.ModifyPlotScreen);
 		imc = new Controller(v);
 		
-		model = new Model();
+		//model = new Model();
     	
 		//System.out.print(model.getPlants());
 		
-		v.setPlantPNG(model.getPlants());
+		v.setPlantPNG(imc.getplants());
 		//System.out.println(v.plantPNG);
 		
 		
@@ -226,7 +226,7 @@ public class ModifyPlotScreen extends Screen {
 			success = true;
 	    	if(currentIV != null && plantIVs != null) {
 	    		commonname = findCommomName(currentIV);
-	    		gardenTotalLeps.setText("Total Leps: " + model.leps);
+	    		//gardenTotalLeps.setText("Total Leps: " + model.leps);
 	    	}
 		}
 		event.setDropCompleted(success);
@@ -238,7 +238,7 @@ public class ModifyPlotScreen extends Screen {
     	currentIV = iv;
     }
     
-    public void checkbox(ActionEvent event, HashMap<String, ImageView> imageViews)
+    public void checkbox(ActionEvent event, HashMap<String, ImageView> imageViews, HashMap<String, Plant> plants)
     {  	
     	vBoxImages.getChildren().clear();
     	
@@ -261,14 +261,14 @@ public class ModifyPlotScreen extends Screen {
             }
             else if(woody.isSelected() && herbaceous.isSelected() == false)
             {
-            	if(model.plants.get(key).plantType == "woody")
+            	if(plants.get(key).plantType == "woody")
             	{
             		vBoxImages.getChildren().addAll(plantNames, value);
             	}
             }
             else if(herbaceous.isSelected() && woody.isSelected() == false)
             {
-            	if(model.plants.get(key).plantType == "herbaceous")
+            	if(plants.get(key).plantType == "herbaceous")
             	{
             		vBoxImages.getChildren().addAll(plantNames, value);
             	}

@@ -82,7 +82,7 @@ public class View extends Application {
 	* path to the PNG of the plant in the resources folder. 
 	*
 	* @param plants a HashMap of all the plant images as values and their common names as the key
-	* @author Kush Patel
+	* @author Himanshu Patel
 	*/    
     public void setPlantPNG(HashMap<String, Plant> plants) {
 //    	plantPNG.put("Fragaria", "/FragariaStrawberry.png");

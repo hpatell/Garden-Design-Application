@@ -93,9 +93,14 @@ public class Controller {
     	return new EventHandler<ActionEvent>() {
     		public void handle(ActionEvent event)
     		{
-    			view.modify.checkbox(event, imageViews);
+    			view.modify.checkbox(event, imageViews, model.plants);
     		}
     	};
+    }
+    
+    public HashMap<String, Plant> getplants()
+    {
+    	return model.plants;
     }
 
 }
