@@ -29,6 +29,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
 public class ModifyPlotScreen extends Screen {
@@ -56,7 +57,8 @@ public class ModifyPlotScreen extends Screen {
 	VBox vBoxRight;
 	HBox hBoxBottom = new HBox();
 	
-	Label plantNames;
+	Label plantName;
+	VBox plantBox;
 	
 	CheckBox woody;
 	CheckBox herbaceous;
@@ -133,6 +135,8 @@ public class ModifyPlotScreen extends Screen {
         //vBoxImages.getChildren().addAll(iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10);
         vBoxImages.setStyle("-fx-background-color: #add8e6;");
         vBoxImages.setAlignment(Pos.CENTER);
+        vBoxImages.setMinWidth(182);
+        vBoxImages.setSpacing(25);
         
         // VBoxNames
         //vBoxNames.getChildren().addAll(v.plantPNG.key);
@@ -216,9 +220,13 @@ public class ModifyPlotScreen extends Screen {
 		if(db.hasImage()) 
 		{
 			ImageView newIV = new ImageView(db.getImage());
+			
+			Circle clip = new Circle(imgWidth/2, imgHeight/2, imgWidth/2);
+			newIV.setClip(clip);
+			
 			newIV.setFitHeight(imgHeight);
 			newIV.setFitWidth(imgWidth);
-			newIV.setPreserveRatio(true);
+			//newIV.setPreserveRatio(true);
 			newIV.setOnMouseDragged(imc.getDragHandler());
 			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - imgWidth/2);
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
@@ -245,15 +253,19 @@ public class ModifyPlotScreen extends Screen {
     	for (Entry<String, ImageView> mapElement : imageViews.entrySet()) 
     	{
             String key = mapElement.getKey();
-            
-            plantNames = new Label(key);
-            plantNames.setFont(new Font("Arial", 22));
-            
             ImageView value = mapElement.getValue();
+            
+            plantName = new Label(key);
+            plantName.setFont(new Font("Arial", 22));
+        	
+        	plantBox = new VBox();
+        	plantBox.setAlignment(Pos.CENTER);
+        	plantBox.getChildren().addAll(value, plantName);
             
             if(woody.isSelected() && herbaceous.isSelected())
     		{
-    			vBoxImages.getChildren().addAll(plantNames, value);
+    			//vBoxImages.getChildren().addAll(plantName, value);
+            	vBoxImages.getChildren().addAll(plantBox);
     		}
             else if(woody.isSelected() == false && herbaceous.isSelected() == false)
             {
@@ -263,14 +275,16 @@ public class ModifyPlotScreen extends Screen {
             {
             	if(plants.get(key).plantType == "woody")
             	{
-            		vBoxImages.getChildren().addAll(plantNames, value);
+            		//vBoxImages.getChildren().addAll(plantName, value);
+            		vBoxImages.getChildren().addAll(plantBox);
             	}
             }
             else if(herbaceous.isSelected() && woody.isSelected() == false)
             {
             	if(plants.get(key).plantType == "herbaceous")
             	{
-            		vBoxImages.getChildren().addAll(plantNames, value);
+            		//vBoxImages.getChildren().addAll(plantName, value);
+            		vBoxImages.getChildren().addAll(plantBox);
             	}
             }
             
@@ -425,18 +439,26 @@ public class ModifyPlotScreen extends Screen {
             
             Image image = new Image(getClass().getResourceAsStream(value));
         	ImageView imageV = new ImageView();
+        	
+        	Circle clip = new Circle(imgWidth/2, imgHeight/2, imgWidth/2);
+        	imageV.setClip(clip);
+        	
         	imageV.setImage(image);
-        	imageV.setPreserveRatio(true);
+        	//imageV.setPreserveRatio(true);
         	imageV.setFitHeight(imgHeight);
         	imageV.setFitWidth(imgWidth);
         	DragAndDrop(imageV);
         	
-        	plantNames = new Label(key);
-        	plantNames.setFont(new Font("Arial", 22));
+        	plantName = new Label(key);
+        	plantName.setFont(new Font("Arial", 22));
         	
-        	vBoxImages.getChildren().addAll(plantNames, imageV);
+        	plantBox = new VBox();
+        	plantBox.setAlignment(Pos.CENTER);
+        	plantBox.getChildren().addAll(imageV, plantName);
         	
-        	//vBoxNames.getChildren().addAll(plantNames);
+        	vBoxImages.getChildren().addAll(plantBox);
+        	
+        	//vBoxImages.getChildren().addAll(plantNames, imageV);
         	
         	plantIVsCopy.put(key, imageV);
     	}

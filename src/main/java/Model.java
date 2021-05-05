@@ -79,7 +79,7 @@ public class Model {
     public int calculateLeps(String plantname) {
     	System.out.println("Model has the name" + commonname);
     	leps = plants.get(plantname).lepsSupported + leps;
-    	String lepsString = String.valueOf(leps);
+    	//String lepsString = String.valueOf(leps);
         return leps;
     }
 
