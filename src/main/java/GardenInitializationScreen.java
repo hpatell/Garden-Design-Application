@@ -14,6 +14,8 @@ import javafx.scene.control.ComboBox;
 
 public class GardenInitializationScreen extends Screen {
 	
+	private Controller imc;
+	
 	Button createGardenButton;
 	
 	Label name;
@@ -46,6 +48,8 @@ public class GardenInitializationScreen extends Screen {
 		super(v, PagesEnum.InitializationScreen);
 		
 		view = v;
+		
+		imc = new Controller(v);
 		
 		borderPane = new BorderPane();
     	hstackPane = new StackPane();	
@@ -126,5 +130,8 @@ public class GardenInitializationScreen extends Screen {
 		view.modify.gardenSoilConditionLabel.setText("Soil Condition: " + gardenSoilCondition);
 		view.modify.gardenMoistureConditionLabel.setText("Moisture Condition: " + gardenMoistureCondition);
 		view.modify.gardenDimensionsLabel.setText("Dimensions: " + gardenDimensions);
+		view.modify.createImages(view.plantPNG, gardenWeatherCondition, gardenSoilCondition, gardenMoistureCondition, imc.getplants());
+		view.modify.woody.setOnAction(imc.getCheckboxHandler(view.modify.plantIVs));
+		view.modify.herbaceous.setOnAction(imc.getCheckboxHandler(view.modify.plantIVs));
 	}	
 } 

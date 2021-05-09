@@ -1,80 +1,80 @@
-Asteraceae-Solidago,goldenrod,106,6,h,fullSun,Moist,Sand
-Asteraceae-Symphyotrichum,aster,90,6,h,fullSun,Wet,Sand
-Rosaceae-Fragaria,strawberry,63,6,h,fullSun,Moist,Silt
-Fabaceae-Phaseolus,beans,63,6,h,fullSun,Wet,Clay
-Asteraceae-Helianthus,sunflower,57,6,h,fullSun,Moist,Sand
-Nyssaceae-Nyssa,blackgum,34,20,w,fullSun,Dry,Sand
-Hamamelidaceae-Liquidambar,sweetgum,34,20,w,fullSun,Moist,Clay
-Salicaceae-Salix,willow,292,20,w,halfSun,Dry,Silt
-Caprifoliaceae-Lonicera,honeysuckle,30,20,w,halfSun,Dry,Silt
-Euphorbiaceae-Acalypha,copperleaf,5,6,h,fullSun,Moist,Sand
-Aceraceae-Acer,maple,256,20,w,fullSun,Moist,Sand
-Asteraceae-Achillea,yarrow,11,6,h,fullSun,Dry,Clay
+Asteraceae-Solidago,goldenrod,106,6,h,Full Sun,Moist,Sand
+Asteraceae-Symphyotrichum,aster,90,6,h,Full Sun,Wet,Sand
+Rosaceae-Fragaria,strawberry,63,6,h,Full Sun,Moist,Silt
+Fabaceae-Phaseolus,beans,63,6,h,Full Sun,Wet,Clay
+Asteraceae-Helianthus,sunflower,57,6,h,Full Sun,Moist,Sand
+Nyssaceae-Nyssa,blackgum,34,20,w,Full Sun,Dry,Sand
+Hamamelidaceae-Liquidambar,sweetgum,34,20,w,Full Sun,Moist,Clay
+Salicaceae-Salix,willow,292,20,w,Half Sun,Dry,Silt
+Caprifoliaceae-Lonicera,honeysuckle,30,20,w,Half Sun,Dry,Silt
+Euphorbiaceae-Acalypha,copperleaf,5,6,h,Full Sun,Moist,Sand
+Aceraceae-Acer,maple,256,20,w,Full Sun,Moist,Sand
+Asteraceae-Achillea,yarrow,11,6,h,Full Sun,Dry,Clay
 Ranunculaceae-Actaea,baneberry,3,6,h,Shade,Moist,Silt
 Fabaceae-Aeschynomene,jointvetch,1,6,h,Shade,Moist,Clay
-Orobanchaceae-Agalinis,false-foxglove,4,6,h,fullSun,Moist,Silt
-Lamiaceae-Agastache,hyssop,3,6,h,halfSun,Moist,Silt
-Asteraceae-Ageratina,snakeroot,5,6,h,halfSun,Moist,Silt
-Rosaceae-Agrimonia,agrimony,1,6,h,fullSun,Moist,Clay
-Poaceae-Agrostis,bent-grass,11,6,h,fullSun,Moist,Sand
-Alismataceae-Alisma,water-plantain,1,6,h,fullSun,Wet,Sand
-Alliaceae-Allium,onion,17,6,h,fullSun,Moist,Clay
-Betulaceae-Alnus,alder,164,20,w,fullSun,Wet,Clay
+Orobanchaceae-Agalinis,false-foxglove,4,6,h,Full Sun,Moist,Silt
+Lamiaceae-Agastache,hyssop,3,6,h,Half Sun,Moist,Silt
+Asteraceae-Ageratina,snakeroot,5,6,h,Half Sun,Moist,Silt
+Rosaceae-Agrimonia,agrimony,1,6,h,Full Sun,Moist,Clay
+Poaceae-Agrostis,bent-grass,11,6,h,Full Sun,Moist,Sand
+Alismataceae-Alisma,water-plantain,1,6,h,Full Sun,Wet,Sand
+Alliaceae-Allium,onion,17,6,h,Full Sun,Moist,Clay
+Betulaceae-Alnus,alder,164,20,w,Full Sun,Wet,Clay
 Poaceae-Alopecurus,foxtail,2,6,h,Shade,Moist,Silt
-Amaranthaceae-Amaranthus,amaranth,31,6,h,fullSun,Moist,Clay
-Asteraceae-Ambrosia,ragweed,51,6,h,fullSun,Dry,Sand
-Rosaceae-Amelanchier,serviceberry,91,20,w,fullSun,Moist,Clay
-Poaceae-Ammophila,beachgrass,2,6,h,fullSun,Dry,Sand
-Fabaceae-Amorpha,false-indigo,23,6,h,fullSun,Dry,Silt
-Fabaceae-Amphicarpaea,hogpeanut,7,6,h,halfSun,Moist,Silt
-Asteraceae-Anaphalis,pearly-everlasting,4,6,h,fullSun,Dry,Sand
-Poaceae-Andropogon,bluestem,14,6,h,halfSun,Moist,Silt
-Ranunculaceae-Anemone,anemone,2,6,h,halfSun,Moist,Clay
+Amaranthaceae-Amaranthus,amaranth,31,6,h,Full Sun,Moist,Clay
+Asteraceae-Ambrosia,ragweed,51,6,h,Full Sun,Dry,Sand
+Rosaceae-Amelanchier,serviceberry,91,20,w,Full Sun,Moist,Clay
+Poaceae-Ammophila,beachgrass,2,6,h,Full Sun,Dry,Sand
+Fabaceae-Amorpha,false-indigo,23,6,h,Full Sun,Dry,Silt
+Fabaceae-Amphicarpaea,hogpeanut,7,6,h,Half Sun,Moist,Silt
+Asteraceae-Anaphalis,pearly-everlasting,4,6,h,Full Sun,Dry,Sand
+Poaceae-Andropogon,bluestem,14,6,h,Half Sun,Moist,Silt
+Ranunculaceae-Anemone,anemone,2,6,h,Half Sun,Moist,Clay
 Apiaceae-Angelica,angelica,3,6,h,Shade,Moist,Sand
-Asteraceae-Antennaria,pussytoes,1,6,h,fullSun,Dry,Silt
-Fabaceae-Apios,groundnut,4,6,h,fullSun,Wet,Clay
-Fagaceae-Quercus,oak,463,20,w,fullSun,Wet,Clay
-Rosaceae-Prunus,beach-plum,347,20,w,halfSun,Moist,Sand
+Asteraceae-Antennaria,pussytoes,1,6,h,Full Sun,Dry,Silt
+Fabaceae-Apios,groundnut,4,6,h,Full Sun,Wet,Clay
+Fagaceae-Quercus,oak,463,20,w,Full Sun,Wet,Clay
+Rosaceae-Prunus,beach-plum,347,20,w,Half Sun,Moist,Sand
 Betulaceae-Betula,birch,285,20,w,Shade,Wet,Sand
-Fagaceae-Malus,crabapple,233,20,w,halfSun,Moist,Silt
-Malvaceae-Tilia,basswood,139,20,w,fullSun,Dry,Sand
-Rosaceae-Rubus,blackberry,135,20,w,halfSun,Moist,Clay
-Fagaceae-Fagus,beech,125,20,w,fullSun,Wet,Sand
-Oleaceae-Fraxinus,ash,124,20,w,halfSun,Dry,Silt
-Juglandaceae-Juglans,butternut,124,20,w,fullSun,Wet,Clay
+Fagaceae-Malus,crabapple,233,20,w,Half Sun,Moist,Silt
+Malvaceae-Tilia,basswood,139,20,w,Full Sun,Dry,Sand
+Rosaceae-Rubus,blackberry,135,20,w,Half Sun,Moist,Clay
+Fagaceae-Fagus,beech,125,20,w,Full Sun,Wet,Sand
+Oleaceae-Fraxinus,ash,124,20,w,Half Sun,Dry,Silt
+Juglandaceae-Juglans,butternut,124,20,w,Full Sun,Wet,Clay
 Adoxaceae-Sambucus,elderberry,32,20,w,Shade,Dry,Silt
-Lauraceae-Lindera,spicebush,12,20,w,fullSun,Wet,Clay
+Lauraceae-Lindera,spicebush,12,20,w,Full Sun,Wet,Clay
 Poaceae-Poa,bluegrass,35,20,h,Shade,Wet,Sand
-Amaranthaceae-Amaranthus,pigweed,31,6,h,fullSun,Moist,Silt
+Amaranthaceae-Amaranthus,pigweed,31,6,h,Full Sun,Moist,Silt
 Poaceae-Bromus,brome,10,6,h,Shade,Wet,Sand
-Poaceae-Triticum,wheat,27,6,h,fullSun,Moist,Silt
-Asteraceae-Cirsium,thistle,26,6,h,fullSun,Wet,Clay
+Poaceae-Triticum,wheat,27,6,h,Full Sun,Moist,Silt
+Asteraceae-Cirsium,thistle,26,6,h,Full Sun,Wet,Clay
 Violaceae-Viola,violet,26,6,h,Shade,Moist,Sand
-Asteraceae-Erigeron,fleabane,25,6,h,fullSun,Dry,Silt
+Asteraceae-Erigeron,fleabane,25,6,h,Full Sun,Dry,Silt
 Nymphaeaceae-Nymphaea,waterlily,9,6,h,Shade,Wet,Clay
-Phytolaccaceae-Phytolacca,pokeweed,9,6,h,fullSun,Dry,Clay
+Phytolaccaceae-Phytolacca,pokeweed,9,6,h,Full Sun,Dry,Clay
 Poaceae-Hordeum,barley,17,6,h,Shade,Wet,Sand
-Typhaceae-Typha,cattail,16,6,h,fullSun,Dry,Clay
+Typhaceae-Typha,cattail,16,6,h,Full Sun,Dry,Clay
 Apocynaceae-Apocynum,dogbane,14,6,h,Shade,Wet,Silt
-Asteraceae-Bidens,beggar-tick,14,6,h,fullSun,Dry,Silt
-Linaceae-Linum,flax,14,6,h,fullSun,Moist,Clay
+Asteraceae-Bidens,beggar-tick,14,6,h,Full Sun,Dry,Silt
+Linaceae-Linum,flax,14,6,h,Full Sun,Moist,Clay
 Rubiaceae-Galium,bedstraw,13,6,h,Shade,Moist,Sand
-Iridaceae-Iris,iris,13,6,h,halfSun,Moist,Clay
+Iridaceae-Iris,iris,13,6,h,Half Sun,Moist,Clay
 Poaceae-Spartina,cordgrass,13,6,h,Shade,Dry,Silt
-Asteraceae-Doellingeria,whitetop,11,6,h,fullSun,Dry,Clay
-Malvaceae-Hibiscus,hibiscus,25,6,h,halfSun,Dry,Silt
+Asteraceae-Doellingeria,whitetop,11,6,h,Full Sun,Dry,Clay
+Malvaceae-Hibiscus,hibiscus,25,6,h,Half Sun,Dry,Silt
 Myricaceae-Comptonia,sweet-fern,47,20,w,Shade,Wet,Sand
-Platanaceae-Platanus,sycamore,42,20,w,halfSun,Moist,Clay
-Lauraceae-Sassafras,sassafras,35,20,w,fullSun,Moist,Sand
-Rosaceae-Physocarpus,ninebark,29,20,w,halfSun,Dry,Clay
+Platanaceae-Platanus,sycamore,42,20,w,Half Sun,Moist,Clay
+Lauraceae-Sassafras,sassafras,35,20,w,Full Sun,Moist,Sand
+Rosaceae-Physocarpus,ninebark,29,20,w,Half Sun,Dry,Clay
 Vitaceae-Parthenocissus,virginia-creeper,28,20,w,Shade,Wet,Silt
-Rubiaceae-Cephalanthus,buttonbush,25,20,w,fullSun,Wet,Sand
-Ericaceae-Oxydendrum,sourwood,13,20,w,halfSun,Moist,Silt
-Annonaceae-Asimina,pawpaw,12,20,w,fullSun,Wet,Clay
-Oleaceae-Chionanthus,fringetree,11,20,w,halfSun,Wet,Clay
-Taxaceae-Taxus,yew,5,20,w,halfSun,Moist,Clay
-Santalaceae-Phoradendron,mistletoe,2,20,w,fullSun,Wet,Sand
-Staphyleaceae-Staphylea,bladdernut,2,20,w,halfSun,Wet,Silt
-Lamiaceae-Salvia,sage,6,6,h,fullSun,Dry,Sand
+Rubiaceae-Cephalanthus,buttonbush,25,20,w,Full Sun,Wet,Sand
+Ericaceae-Oxydendrum,sourwood,13,20,w,Half Sun,Moist,Silt
+Annonaceae-Asimina,pawpaw,12,20,w,Full Sun,Wet,Clay
+Oleaceae-Chionanthus,fringetree,11,20,w,Half Sun,Wet,Clay
+Taxaceae-Taxus,yew,5,20,w,Half Sun,Moist,Clay
+Santalaceae-Phoradendron,mistletoe,2,20,w,Full Sun,Wet,Sand
+Staphyleaceae-Staphylea,bladdernut,2,20,w,Half Sun,Wet,Silt
+Lamiaceae-Salvia,sage,6,6,h,Full Sun,Dry,Sand
 Poaceae-Eragrostis,lovegrass,5,6,h,Shade,Moist,Silt
-Nelumbonaceae-Nelumbo,lotus,5,6,h,halfSun,Dry,Clay
+Nelumbonaceae-Nelumbo,lotus,5,6,h,Half Sun,Dry,Clay

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -37,8 +38,6 @@ public class ModifyPlotScreen extends Screen {
 	double imgHeight = 100;
 	double imgWidth = 100;
 	
-	//Model model;
-	
 	Collection<String> wPlantNames;
 	Collection<String> hPlantNames;
 	
@@ -52,7 +51,6 @@ public class ModifyPlotScreen extends Screen {
 	StackPane stackPaneBottom = new StackPane();
 	ScrollPane scrollPane = new ScrollPane();
 	VBox vBoxImages = new VBox();
-	VBox vBoxNames = new VBox();
 	VBox vBox = new VBox();
 	VBox vBoxRight;
 	HBox hBoxBottom = new HBox();
@@ -84,34 +82,16 @@ public class ModifyPlotScreen extends Screen {
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
 		imc = new Controller(v);
-		
-		//model = new Model();
-    	
-		//System.out.print(model.getPlants());
-		
+
 		v.setPlantPNG(imc.getplants());
 		//System.out.println(v.plantPNG);
 		
-		
-		//plantIVs = createImages(v.plantPNG);
-		createImages(v.plantPNG);
+		//createImages(v.plantPNG);
 		//System.out.println(plantIVs);
 		
 		totalLeps = "0";
 		
 		
-		//ImageView iv1 = createImage("/commonMilkweed.png");
-//		ImageView iv1 = createImage("/FragariaStrawberry.png");
-//		ImageView iv2 = createImage("/HelianthusSunflower.png");
-//		ImageView iv3 = createImage("/SalixWillow.png");
-//		ImageView iv4 = createImage("/SalixWillow.png");
-//		ImageView iv5 = createImage("/SalixWillow.png");
-//		ImageView iv6 = createImage("/SalixWillow.png");
-//		ImageView iv7 = createImage("/SalixWillow.png");
-//		ImageView iv8 = createImage("/SalixWillow.png");
-//		ImageView iv9 = createImage("/SalixWillow.png");
-//		ImageView iv10 = createImage("/SalixWillow.png");
-    	
 		
 		// Search Bar
     	TextField textField = new TextField();
@@ -123,33 +103,28 @@ public class ModifyPlotScreen extends Screen {
         woody.setSelected(true);
         herbaceous.setSelected(true);
         
-        woody.setOnAction(imc.getCheckboxHandler(plantIVs));
-        herbaceous.setOnAction(imc.getCheckboxHandler(plantIVs));
+        //woody.setOnAction(imc.getCheckboxHandler(plantIVs));
+        //herbaceous.setOnAction(imc.getCheckboxHandler(plantIVs));
         
         HBox hbox = new HBox(24);
         //hbox.setAlignment(Pos.CENTER);
         hbox.getChildren().addAll(woody, herbaceous);
         
     	// VBoxImages
-    	//vBox.setMinWidth(200);
-        //vBoxImages.getChildren().addAll(iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10);
         vBoxImages.setStyle("-fx-background-color: #add8e6;");
         vBoxImages.setAlignment(Pos.CENTER);
         vBoxImages.setMinWidth(182);
         vBoxImages.setSpacing(25);
-        
-        // VBoxNames
-        //vBoxNames.getChildren().addAll(v.plantPNG.key);
     	
     	// ScrollPane
     	scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
     	scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
     	scrollPane.setMinWidth(200);
     	scrollPane.setContent(vBoxImages);
-    	//scrollPane.setContent(vBoxNames);
     	
     	// VBox
     	vBox.getChildren().addAll(hbox, scrollPane);
+    	vBox.setStyle("-fx-background-color: #add8e6;");
     	
     	// AnchorPane
     	anchorPane.setMinWidth(200);
@@ -185,6 +160,7 @@ public class ModifyPlotScreen extends Screen {
     public void update() {
     	gardenTotalLeps.setText("Total Leps: " + totalLeps);
        	gardenBudgetRemainingLabel.setText("Budget Remaining: $" + remainingBudget);
+       	
     }
 
     public void DragAndDrop(ImageView iv)
@@ -230,6 +206,9 @@ public class ModifyPlotScreen extends Screen {
 			newIV.setOnMouseDragged(imc.getDragHandler());
 			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - imgWidth/2);
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
+			
+			//checkCollsion(newIV);
+			
 			anchorPane.getChildren().add(newIV);
 			success = true;
 	    	if(currentIV != null && plantIVs != null) {
@@ -241,6 +220,21 @@ public class ModifyPlotScreen extends Screen {
 		
 		event.consume();
     }
+    
+//    private void checkCollsion(ImageView block) 
+//    {
+//    	//boolean collisionDetected = false;
+//    	for (Entry<String, ImageView> mapElement : plantIVs.entrySet()) 
+//    	{
+//    		ImageView static_bloc = mapElement.getValue();
+//    		
+//    		if (block.getBoundsInParent().intersects(static_bloc.getBoundsInParent()))
+//    		{
+//    	        System.out.println("COLLISION!!!");
+//    	        //block.setY(10);
+//    	    }
+//    	}
+//    }
     
     public void setCurrentPlantImage(ImageView iv) {
     	currentIV = iv;
@@ -261,33 +255,16 @@ public class ModifyPlotScreen extends Screen {
         	plantBox = new VBox();
         	plantBox.setAlignment(Pos.CENTER);
         	plantBox.getChildren().addAll(value, plantName);
-            
-            if(woody.isSelected() && herbaceous.isSelected())
-    		{
-    			//vBoxImages.getChildren().addAll(plantName, value);
+        	
+        	if(woody.isSelected() && plants.get(key).plantType == "woody")
+        	{
+        		vBoxImages.getChildren().addAll(plantBox);
+        	}
+            if(herbaceous.isSelected() && plants.get(key).plantType == "herbaceous")
+            {
             	vBoxImages.getChildren().addAll(plantBox);
-    		}
-            else if(woody.isSelected() == false && herbaceous.isSelected() == false)
-            {
-            	vBoxImages.getChildren().remove(value);
             }
-            else if(woody.isSelected() && herbaceous.isSelected() == false)
-            {
-            	if(plants.get(key).plantType == "woody")
-            	{
-            		//vBoxImages.getChildren().addAll(plantName, value);
-            		vBoxImages.getChildren().addAll(plantBox);
-            	}
-            }
-            else if(herbaceous.isSelected() && woody.isSelected() == false)
-            {
-            	if(plants.get(key).plantType == "herbaceous")
-            	{
-            		//vBoxImages.getChildren().addAll(plantName, value);
-            		vBoxImages.getChildren().addAll(plantBox);
-            	}
-            }
-            
+                        
         	//woody.setOnAction(imc.getCheckboxHandler(plantIVs));
             //herbaceous.setOnAction(imc.getCheckboxHandler(plantIVs));
     	}
@@ -427,8 +404,9 @@ public class ModifyPlotScreen extends Screen {
     	hPlantNames = hplants;
     }
     
-    public void createImages(HashMap<String, String> imagePNGs)
+    public void createImages(HashMap<String, String> imagePNGs, String Weather, String Soil, String Moisture, HashMap<String, Plant> plants)
     {
+    	vBoxImages.getChildren().clear();
     	HashMap<String, ImageView> plantIVsCopy = new HashMap<>();
     	
     	for (Entry<String, String> mapElement : imagePNGs.entrySet()) 
@@ -456,13 +434,37 @@ public class ModifyPlotScreen extends Screen {
         	plantBox.setAlignment(Pos.CENTER);
         	plantBox.getChildren().addAll(imageV, plantName);
         	
-        	vBoxImages.getChildren().addAll(plantBox);
+        	//vBoxImages.getChildren().addAll(plantBox);
         	
-        	//vBoxImages.getChildren().addAll(plantNames, imageV);
+        	//filterConditions(key, imageV, Weather, Soil, Moisture, imc.getplants(), plantIVsCopy);
         	
-        	plantIVsCopy.put(key, imageV);
+        	if(plants.get(key).weatherType.equals(Weather) && plants.get(key).soilType.equals(Soil) && plants.get(key).moistureType.equals(Moisture))
+    		{	
+    			vBoxImages.getChildren().addAll(plantBox);
+    			plantIVsCopy.put(key, imageV);
+    		}
+        	
+        	//plantIVsCopy.put(key, imageV);
     	}
     	plantIVs = plantIVsCopy;
     }
+    
+//    public void filterConditions(String key, ImageView imageV, String Weather, String Soil, String Moisture, HashMap<String, Plant> plants, HashMap<String, ImageView> plantIVsCopy)
+//    {
+//        plantName = new Label(key);
+//        plantName.setFont(new Font("Arial", 22));
+//    	
+//    	plantBox = new VBox();
+//    	plantBox.setAlignment(Pos.CENTER);
+//    	plantBox.getChildren().addAll(imageV, plantName);
+//		
+//    	//vBoxImages.getChildren().addAll(plantBox);
+//    	
+//		if(plants.get(key).weatherType.equals(Weather) && plants.get(key).soilType.equals(Soil) && plants.get(key).moistureType.equals(Moisture))
+//		{	
+//			vBoxImages.getChildren().addAll(plantBox);
+//			plantIVsCopy.put(key, imageV);
+//		}
+//    }
     
 }
