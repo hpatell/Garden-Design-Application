@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
@@ -207,6 +208,7 @@ public class ModifyPlotScreen extends Screen {
 			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - imgWidth/2);
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
 			
+			removePlant(newIV);
 			//checkCollsion(newIV);
 			
 			anchorPane.getChildren().add(newIV);
@@ -219,6 +221,17 @@ public class ModifyPlotScreen extends Screen {
 		event.setDropCompleted(success);
 		
 		event.consume();
+    }
+    
+    public void removePlant(ImageView iv)
+    {
+    	iv.setOnMouseClicked(event ->
+    	{
+    		if(event.getButton() == MouseButton.SECONDARY)
+    		{
+    			anchorPane.getChildren().remove(iv);
+    		}
+    	});
     }
     
 //    private void checkCollsion(ImageView block) 
