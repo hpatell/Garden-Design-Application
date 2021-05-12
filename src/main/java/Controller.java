@@ -9,6 +9,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,13 +44,23 @@ public class Controller {
     	model.setCommonName(view.modify.getCommonName());
     }
 
-    public void drag(MouseEvent event, ImageView iv) {   	
+    public void drag(MouseEvent event, Circle iv) {   	
     	Node n = (Node)event.getSource();
 		if (DEBUG) System.out.println("ic mouse drag tx: " + n.getTranslateX() + ", ex: " + event.getX() );
 		model.setX(model.getX() + event.getX()); //event.getX() is the amount of horiz drag
 		model.setY(model.getY() + event.getY());
+		
+		double oldX = n.getTranslateX();
+		double oldY = n.getTranslateY();
+		
 		n.setTranslateX(n.getTranslateX() + event.getX() - imgWidth/2);
 		n.setTranslateY(n.getTranslateY() + event.getY() - imgHeight/2);
+		
+		if(view.modify.checkCollsion(iv))
+		{
+			n.setTranslateX(oldX);
+			n.setTranslateY(oldY);
+		}
 		
 		// Check Garden Bounds
 		if(n.getTranslateX() > view.modify.anchorPane.getWidth() - imgWidth)
@@ -72,7 +83,7 @@ public class Controller {
 		//view.modify.checkCollsion(iv);
     }
 
-    public EventHandler<MouseEvent> getDragHandler(ImageView iv)
+    public EventHandler<MouseEvent> getDragHandler(Circle iv)
     {
     	return event -> drag((MouseEvent) event, iv);
     }

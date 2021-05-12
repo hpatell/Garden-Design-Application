@@ -25,6 +25,11 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -32,6 +37,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
@@ -49,7 +55,7 @@ public class ModifyPlotScreen extends Screen {
 	private Controller imc;
 	
 	BorderPane borderPane = new BorderPane();
-	AnchorPane anchorPane = new AnchorPane();
+	AnchorPane anchorPane;
 	StackPane stackPaneTop = new StackPane();
 	StackPane stackPaneBottom = new StackPane();
 	ScrollPane scrollPane = new ScrollPane();
@@ -80,7 +86,7 @@ public class ModifyPlotScreen extends Screen {
 	
 	HashMap<String, ImageView> plantIVs;
 	
-	ArrayList<ImageView> plantsInGarden = new ArrayList<ImageView>();
+	ArrayList<Circle> plantsInGarden = new ArrayList<Circle>();
 	
 	ImageView currentIV; 
 	
@@ -135,15 +141,26 @@ public class ModifyPlotScreen extends Screen {
     	vBox.setStyle("-fx-background-color: #add8e6;");
     	
     	// AnchorPane
-    	anchorPane.setMinWidth(200);
-    	anchorPane.setStyle("-fx-background-color: #d2b48c;");
-//    	gardenIMG = new Image(getClass().getResourceAsStream("/gardenIMG.png"));
-//    	gardenIV = new ImageView(gardenIMG);
-//		gardenIV.setPreserveRatio(true);
-//		//System.out.println();
-//    	gardenIV.setFitHeight(anchorPane.getPrefHeight());
-//    	gardenIV.setFitWidth(anchorPane.getPrefWidth());
-//		anchorPane.getChildren().add(gardenIV);
+    	//anchorPane.setMinWidth(200);
+    	anchorPane = new AnchorPane();
+    	
+    	//anchorPane.setMaxHeight(500);
+    	//anchorPane.setMaxWidth(500);
+    	
+    	//anchorPane.setStyle("-fx-background-color: #d2b48c;");
+    	gardenIMG = new Image(getClass().getResourceAsStream("/gardenIMG.png"));
+    	//gardenIV = new ImageView(gardenIMG);
+		//gardenIV.setPreserveRatio(true);
+		//System.out.println(anchorPane.getHeight());
+    	//gardenIV.setFitHeight(anchorPane.getHeight());
+    	//gardenIV.setFitWidth(anchorPane.getWidth());
+		//anchorPane.getChildren().add(gardenIV);
+    	anchorPane.setBackground(new Background(new BackgroundImage(
+    			gardenIMG,  
+                BackgroundRepeat.NO_REPEAT,  
+                BackgroundRepeat.NO_REPEAT,  
+                BackgroundPosition.CENTER,  
+                new BackgroundSize(1.0, 1.0, true, true, false, false))));
     	
     	// HboxBottom
     	hBoxBottom.setAlignment(Pos.CENTER);
@@ -208,26 +225,39 @@ public class ModifyPlotScreen extends Screen {
 		boolean success = false;
 		if(db.hasImage()) 
 		{
-			ImageView newIV = new ImageView(db.getImage());
+			//ImageView newIV = new ImageView(db.getImage());
 			
-			Circle clip = new Circle(imgWidth/2, imgHeight/2, imgWidth/2);
-			newIV.setClip(clip);
+			Circle newIV = new Circle(imgWidth/2, imgHeight/2, imgWidth/2);
+//			newIV.setClip(clip);
 			
-			newIV.setFitHeight(imgHeight);
-			newIV.setFitWidth(imgWidth);
+			newIV.setFill(new ImagePattern(db.getImage()));
+			
+			//newIV.setFitHeight(imgHeight);
+			//newIV.setFitWidth(imgWidth);
 			//newIV.setPreserveRatio(true);
 			newIV.setOnMouseDragged(imc.getDragHandler(newIV));
+			
+			//double oldX = newIV.getTranslateX();
+			//double oldY = newIV.getTranslateY();
+			
 			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - imgWidth/2);
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
 			
-			removePlant(newIV);
+			//removePlant(newIV);
 			//checkCollsion(newIV);
 			
 			anchorPane.getChildren().add(newIV);
 			success = true;
 			
 			plantsInGarden.add(newIV);
-			checkCollsion(newIV);
+			
+//			if(checkCollsion(newIV))
+//			{
+//				newIV.setTranslateX(oldX);
+//				newIV.setTranslateY(oldY);
+//			}
+			
+			//checkCollsion(newIV);
 			
 	    	if(currentIV != null && plantIVs != null) {
 	    		commonname = findCommomName(currentIV);
@@ -250,14 +280,14 @@ public class ModifyPlotScreen extends Screen {
     	});
     }
     
-    public void checkCollsion(ImageView iv)
+    public boolean checkCollsion(Circle iv)
     {
-    	//boolean collisionDetected = false;
-    	for (ImageView static_bloc : plantsInGarden)
+    	for (Circle static_bloc : plantsInGarden)
     	{
     		if (static_bloc != iv)
     		{
-    			if (iv.getBoundsInParent().intersects(static_bloc.getBoundsInParent()))
+    			Shape intersect = Shape.intersect(iv, static_bloc);
+    			if (intersect.getBoundsInLocal().getWidth() != -1)
     			{
     				System.out.println("COLLISION!!!");
     				//iv.setTranslateX(0);
@@ -266,21 +296,23 @@ public class ModifyPlotScreen extends Screen {
     				//iv.setTranslateY(iv.getTranslateY() - imgHeight);
     				//iv.setY(10);
     				
-    				if(iv.getTranslateX() > static_bloc.getTranslateX() - imgWidth && iv.getTranslateX() < static_bloc.getTranslateX())
-        			{
-        				iv.setTranslateX(static_bloc.getTranslateX() - imgWidth);
-        			}
-    				if(iv.getTranslateX() < static_bloc.getTranslateX() + imgWidth && iv.getTranslateX() > static_bloc.getTranslateX())
-        			{
-        				iv.setTranslateX(static_bloc.getTranslateX() + imgWidth);
-        			}
+//    				if(iv.getTranslateX() > static_bloc.getTranslateX() - imgWidth && iv.getTranslateX() < static_bloc.getTranslateX())
+//        			{
+//        				iv.setTranslateX(static_bloc.getTranslateX() - imgWidth);
+//        			}
+//    				if(iv.getTranslateX() < static_bloc.getTranslateX() + imgWidth && iv.getTranslateX() > static_bloc.getTranslateX())
+//        			{
+//        				iv.setTranslateX(static_bloc.getTranslateX() + imgWidth);
+//        			}
 //    				if(iv.getTranslateY() < static_bloc.getTranslateY() + imgHeight)
 //        			{
 //        				iv.setTranslateY(static_bloc.getTranslateY() + imgHeight);
 //        			}
+    				return true;
     			}
     		}
     	}
+    	return false;
     }
     
     public void setCurrentPlantImage(ImageView iv) {
