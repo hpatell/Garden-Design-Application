@@ -46,6 +46,9 @@ public class ModifyPlotScreen extends Screen {
 	
 	double imgHeight = 100;
 	double imgWidth = 100;
+	int gardenSize;
+	double newimgHeight;
+	double newimgWidth;
 	
 	Collection<String> wPlantNames;
 	Collection<String> hPlantNames;
@@ -227,7 +230,7 @@ public class ModifyPlotScreen extends Screen {
 		{
 			//ImageView newIV = new ImageView(db.getImage());
 			
-			Circle newIV = new Circle(imgWidth/2, imgHeight/2, imgWidth/2);
+			Circle newIV = new Circle(newimgHeight/2, newimgHeight/2, newimgHeight/2);
 //			newIV.setClip(clip);
 			
 			newIV.setFill(new ImagePattern(db.getImage()));
@@ -526,6 +529,12 @@ public class ModifyPlotScreen extends Screen {
         	//plantIVsCopy.put(key, imageV);
     	}
     	plantIVs = plantIVsCopy;
+    }
+    
+    public void scaleGarden(String dim) {
+        gardenSize = Integer.parseInt(dim);
+        newimgHeight = (imgHeight/gardenSize)*20;
+        newimgWidth = (imgWidth/gardenSize)*20;
     }
     
 //    public void filterConditions(String key, ImageView imageV, String Weather, String Soil, String Moisture, HashMap<String, Plant> plants, HashMap<String, ImageView> plantIVsCopy)
