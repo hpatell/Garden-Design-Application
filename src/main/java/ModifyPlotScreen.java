@@ -84,6 +84,9 @@ public class ModifyPlotScreen extends Screen {
 	
 	ImageView currentIV; 
 	
+	Image gardenIMG;
+	ImageView gardenIV;
+	
     public ModifyPlotScreen(View v) {
 		super(v, PagesEnum.ModifyPlotScreen);
 		imc = new Controller(v);
@@ -134,8 +137,13 @@ public class ModifyPlotScreen extends Screen {
     	// AnchorPane
     	anchorPane.setMinWidth(200);
     	anchorPane.setStyle("-fx-background-color: #d2b48c;");
-    	//anchorPane.setTopAnchor(, 0.0);
-    	//anchorPane.setLeftAnchor(, 0.0);
+//    	gardenIMG = new Image(getClass().getResourceAsStream("/gardenIMG.png"));
+//    	gardenIV = new ImageView(gardenIMG);
+//		gardenIV.setPreserveRatio(true);
+//		//System.out.println();
+//    	gardenIV.setFitHeight(anchorPane.getPrefHeight());
+//    	gardenIV.setFitWidth(anchorPane.getPrefWidth());
+//		anchorPane.getChildren().add(gardenIV);
     	
     	// HboxBottom
     	hBoxBottom.setAlignment(Pos.CENTER);
@@ -252,11 +260,24 @@ public class ModifyPlotScreen extends Screen {
     			if (iv.getBoundsInParent().intersects(static_bloc.getBoundsInParent()))
     			{
     				System.out.println("COLLISION!!!");
-    				iv.setTranslateX(0);
-    				iv.setTranslateY(0);
-    				//iv.setTranslateX(iv.getTranslateX());
-    				//iv.setTranslateY(iv.getTranslateY());
+    				//iv.setTranslateX(0);
+    				//iv.setTranslateY(0);
+    				//iv.setTranslateX(iv.getTranslateX() - imgWidth);
+    				//iv.setTranslateY(iv.getTranslateY() - imgHeight);
     				//iv.setY(10);
+    				
+    				if(iv.getTranslateX() > static_bloc.getTranslateX() - imgWidth && iv.getTranslateX() < static_bloc.getTranslateX())
+        			{
+        				iv.setTranslateX(static_bloc.getTranslateX() - imgWidth);
+        			}
+    				if(iv.getTranslateX() < static_bloc.getTranslateX() + imgWidth && iv.getTranslateX() > static_bloc.getTranslateX())
+        			{
+        				iv.setTranslateX(static_bloc.getTranslateX() + imgWidth);
+        			}
+//    				if(iv.getTranslateY() < static_bloc.getTranslateY() + imgHeight)
+//        			{
+//        				iv.setTranslateY(static_bloc.getTranslateY() + imgHeight);
+//        			}
     			}
     		}
     	}
