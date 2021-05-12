@@ -47,8 +47,8 @@ public class ModifyPlotScreen extends Screen {
 	double imgHeight = 100;
 	double imgWidth = 100;
 	int gardenSize;
-	double newimgHeight;
-	double newimgWidth;
+	double scaledImgHeight;
+	double scaledImgWidth;
 	
 	Collection<String> wPlantNames;
 	Collection<String> hPlantNames;
@@ -230,7 +230,7 @@ public class ModifyPlotScreen extends Screen {
 		{
 			//ImageView newIV = new ImageView(db.getImage());
 			
-			Circle newIV = new Circle(newimgHeight/2, newimgHeight/2, newimgHeight/2);
+			Circle newIV = new Circle(scaledImgHeight/2, scaledImgWidth/2, scaledImgHeight/2);
 //			newIV.setClip(clip);
 			
 			newIV.setFill(new ImagePattern(db.getImage()));
@@ -243,8 +243,8 @@ public class ModifyPlotScreen extends Screen {
 			//double oldX = newIV.getTranslateX();
 			//double oldY = newIV.getTranslateY();
 			
-			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - imgWidth/2);
-			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
+			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - scaledImgWidth/2);
+			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - scaledImgHeight/2);
 			
 			//removePlant(newIV);
 			//checkCollsion(newIV);
@@ -533,8 +533,8 @@ public class ModifyPlotScreen extends Screen {
     
     public void scaleGarden(String dim) {
         gardenSize = Integer.parseInt(dim);
-        newimgHeight = (imgHeight/gardenSize)*20;
-        newimgWidth = (imgWidth/gardenSize)*20;
+        scaledImgHeight = (imgHeight/gardenSize)*10;
+        scaledImgWidth = (imgWidth/gardenSize)*10;
     }
     
 //    public void filterConditions(String key, ImageView imageV, String Weather, String Soil, String Moisture, HashMap<String, Plant> plants, HashMap<String, ImageView> plantIVsCopy)

@@ -16,8 +16,8 @@ import javafx.event.EventHandler;
 
 public class Controller {
 
-	double imgHeight = 100;
-	double imgWidth = 100;
+	//double imgHeight = 100;
+	//double imgWidth = 100;
 	private final boolean DEBUG = true;
     Model model;
     View view;
@@ -53,8 +53,8 @@ public class Controller {
 		double oldX = n.getTranslateX();
 		double oldY = n.getTranslateY();
 		
-		n.setTranslateX(n.getTranslateX() + event.getX() - imgWidth/2);
-		n.setTranslateY(n.getTranslateY() + event.getY() - imgHeight/2);
+		n.setTranslateX(n.getTranslateX() + event.getX() - view.modify.scaledImgWidth/2);
+		n.setTranslateY(n.getTranslateY() + event.getY() - view.modify.scaledImgHeight/2);
 		
 		if(view.modify.checkCollsion(iv))
 		{
@@ -63,9 +63,9 @@ public class Controller {
 		}
 		
 		// Check Garden Bounds
-		if(n.getTranslateX() > view.modify.anchorPane.getWidth() - imgWidth)
+		if(n.getTranslateX() > view.modify.anchorPane.getWidth() - view.modify.scaledImgWidth)
 		{
-			n.setTranslateX(view.modify.anchorPane.getWidth() - imgWidth);
+			n.setTranslateX(view.modify.anchorPane.getWidth() - view.modify.scaledImgWidth);
 		}
 		if(n.getTranslateX() < 0)
 		{
@@ -75,9 +75,9 @@ public class Controller {
 		{
 			n.setTranslateY(0);
 		}
-		if(n.getTranslateY() > view.modify.anchorPane.getHeight() - imgHeight)
+		if(n.getTranslateY() > view.modify.anchorPane.getHeight() - view.modify.scaledImgHeight)
 		{
-			n.setTranslateY(view.modify.anchorPane.getHeight() - imgHeight);
+			n.setTranslateY(view.modify.anchorPane.getHeight() - view.modify.scaledImgHeight);
 		}
 		
 		//view.modify.checkCollsion(iv);
