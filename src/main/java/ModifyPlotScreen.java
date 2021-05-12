@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,6 +33,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 
 public class ModifyPlotScreen extends Screen {
@@ -77,6 +79,8 @@ public class ModifyPlotScreen extends Screen {
 	String remainingBudget;
 	
 	HashMap<String, ImageView> plantIVs;
+	
+	ArrayList<ImageView> plantsInGarden = new ArrayList<ImageView>();
 	
 	ImageView currentIV; 
 	
@@ -204,7 +208,7 @@ public class ModifyPlotScreen extends Screen {
 			newIV.setFitHeight(imgHeight);
 			newIV.setFitWidth(imgWidth);
 			//newIV.setPreserveRatio(true);
-			newIV.setOnMouseDragged(imc.getDragHandler());
+			newIV.setOnMouseDragged(imc.getDragHandler(newIV));
 			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - imgWidth/2);
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - imgHeight/2);
 			
@@ -213,6 +217,10 @@ public class ModifyPlotScreen extends Screen {
 			
 			anchorPane.getChildren().add(newIV);
 			success = true;
+			
+			plantsInGarden.add(newIV);
+			checkCollsion(newIV);
+			
 	    	if(currentIV != null && plantIVs != null) {
 	    		commonname = findCommomName(currentIV);
 	    		//gardenTotalLeps.setText("Total Leps: " + model.leps);
@@ -234,20 +242,25 @@ public class ModifyPlotScreen extends Screen {
     	});
     }
     
-//    private void checkCollsion(ImageView block) 
-//    {
-//    	//boolean collisionDetected = false;
-//    	for (Entry<String, ImageView> mapElement : plantIVs.entrySet()) 
-//    	{
-//    		ImageView static_bloc = mapElement.getValue();
-//    		
-//    		if (block.getBoundsInParent().intersects(static_bloc.getBoundsInParent()))
-//    		{
-//    	        System.out.println("COLLISION!!!");
-//    	        //block.setY(10);
-//    	    }
-//    	}
-//    }
+    public void checkCollsion(ImageView iv)
+    {
+    	//boolean collisionDetected = false;
+    	for (ImageView static_bloc : plantsInGarden)
+    	{
+    		if (static_bloc != iv)
+    		{
+    			if (iv.getBoundsInParent().intersects(static_bloc.getBoundsInParent()))
+    			{
+    				System.out.println("COLLISION!!!");
+    				iv.setTranslateX(0);
+    				iv.setTranslateY(0);
+    				//iv.setTranslateX(iv.getTranslateX());
+    				//iv.setTranslateY(iv.getTranslateY());
+    				//iv.setY(10);
+    			}
+    		}
+    	}
+    }
     
     public void setCurrentPlantImage(ImageView iv) {
     	currentIV = iv;
@@ -385,7 +398,7 @@ public class ModifyPlotScreen extends Screen {
 		for (Entry<String, ImageView> mapElement : plantIVs.entrySet()) 
     	{          
             if(mapElement.getValue() == iv) {
-                System.out.println("The key for value " + iv + " is " + mapElement.getKey());
+                //System.out.println("The key for value " + iv + " is " + mapElement.getKey());
                 commonname = mapElement.getKey();
                 break;
               }

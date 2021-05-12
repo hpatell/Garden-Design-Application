@@ -43,18 +43,38 @@ public class Controller {
     	model.setCommonName(view.modify.getCommonName());
     }
 
-    public void drag(MouseEvent event) {   	
+    public void drag(MouseEvent event, ImageView iv) {   	
     	Node n = (Node)event.getSource();
 		if (DEBUG) System.out.println("ic mouse drag tx: " + n.getTranslateX() + ", ex: " + event.getX() );
 		model.setX(model.getX() + event.getX()); //event.getX() is the amount of horiz drag
 		model.setY(model.getY() + event.getY());
 		n.setTranslateX(n.getTranslateX() + event.getX() - imgWidth/2);
 		n.setTranslateY(n.getTranslateY() + event.getY() - imgHeight/2);
+		
+		// Check Garden Bounds
+		if(n.getTranslateX() > view.modify.anchorPane.getWidth() - imgWidth)
+		{
+			n.setTranslateX(view.modify.anchorPane.getWidth() - imgWidth);
+		}
+		if(n.getTranslateX() < 0)
+		{
+			n.setTranslateX(0);
+		}
+		if(n.getTranslateY() < 0)
+		{
+			n.setTranslateY(0);
+		}
+		if(n.getTranslateY() > view.modify.anchorPane.getHeight() - imgHeight)
+		{
+			n.setTranslateY(view.modify.anchorPane.getHeight() - imgHeight);
+		}
+		
+		//view.modify.checkCollsion(iv);
     }
 
-    public EventHandler<MouseEvent> getDragHandler()
+    public EventHandler<MouseEvent> getDragHandler(ImageView iv)
     {
-    	return event -> drag((MouseEvent) event);
+    	return event -> drag((MouseEvent) event, iv);
     }
 
     public EventHandler<MouseEvent> getOnGardenDragDetected(ImageView iv)
