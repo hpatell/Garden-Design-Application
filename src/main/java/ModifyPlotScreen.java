@@ -79,6 +79,10 @@ public class ModifyPlotScreen extends Screen {
 	Label gardenSoilConditionLabel;
 	Label gardenMoistureConditionLabel;
 	Label gardenDimensionsLabel;
+	Label plantType;
+	Label plantWeather;
+	Label plantSoil;
+	Label plantMoisture;
 	
 	Label gardenBudgetRemainingLabel;
 	Label gardenTotalLeps;
@@ -116,6 +120,10 @@ public class ModifyPlotScreen extends Screen {
 		// Search Bar
     	TextField textField = new TextField();
         textField.setPromptText("Search:");
+        plantType = new Label();
+        plantWeather = new Label();
+        plantSoil = new Label();
+        plantMoisture = new Label();
     	
         // Check Boxes
         woody = new CheckBox("Woody");
@@ -182,9 +190,13 @@ public class ModifyPlotScreen extends Screen {
     	scene = new Scene(borderPane, canvasWidth, canvasHeight);
     }
     
-    public void update() {
+    public void update(String type, String leps, String cost, String name) {
     	gardenTotalLeps.setText("Total Leps: " + totalLeps);
        	gardenBudgetRemainingLabel.setText("Budget Remaining: $" + remainingBudget);
+       	plantWeather.setText("Type: " + type);
+       	plantType.setText("Leps Supported: " + leps);
+       	plantSoil.setText("Cost: $" + cost);
+       	plantMoisture.setText("Name: " + name);
        	
     }
 
@@ -353,12 +365,17 @@ public class ModifyPlotScreen extends Screen {
     	gardenBudgetRemainingLabel = new Label("Budget Remaining: ");
     	gardenBudgetRemainingLabel.setFont(new Font("Arial", 16));
     	
+       	plantWeather.setFont(new Font("Arial", 13));
+       	plantType.setFont(new Font("Arial", 13));
+       	plantSoil.setFont(new Font("Arial", 13));
+       	plantMoisture.setFont(new Font("Arial", 13));
+    	   	
     	gardenTotalLeps = new Label();
     	gardenTotalLeps.setText("Total Leps: " + totalLeps);
     	gardenTotalLeps.setFont(new Font("Arial", 16));
     	
     	gardenDimensionsLabel = new Label("Dimensions: ");
-    	gardenDimensionsLabel.setFont(new Font("Arial", 16));
+    	gardenDimensionsLabel.setFont(new Font("Arial", 13));
     	
     	vBoxRight = new VBox();
     	vBoxRight.getChildren().remove(gardenTotalLeps);
@@ -369,18 +386,18 @@ public class ModifyPlotScreen extends Screen {
     
     	
     	gardenWeatherConditionLabel = new Label(gardenWeatherCondition);
-    	gardenWeatherConditionLabel.setFont(new Font("Arial", 16));
+    	gardenWeatherConditionLabel.setFont(new Font("Arial", 13));
     	
     	gardenSoilConditionLabel = new Label(gardenSoilCondition);
-    	gardenSoilConditionLabel.setFont(new Font("Arial", 16));
+    	gardenSoilConditionLabel.setFont(new Font("Arial", 13));
     	
     	gardenMoistureConditionLabel = new Label(gardenMoistureCondition);
-    	gardenMoistureConditionLabel.setFont(new Font("Arial", 16));
+    	gardenMoistureConditionLabel.setFont(new Font("Arial", 13));
     	
     	VBox vBoxLeft = new VBox();
     	vBoxLeft.setAlignment(Pos.CENTER_LEFT);
     	vBoxLeft.setPadding(new Insets(0, 0, 0, 20));
-    	vBoxLeft.getChildren().addAll(gardenWeatherConditionLabel, gardenSoilConditionLabel, gardenMoistureConditionLabel, gardenDimensionsLabel);
+    	vBoxLeft.getChildren().addAll(gardenWeatherConditionLabel, gardenSoilConditionLabel, gardenMoistureConditionLabel, gardenDimensionsLabel, plantMoisture, plantType, plantWeather, plantSoil);
     	stackPaneTop.getChildren().add(vBoxLeft);
     }
     
