@@ -37,7 +37,7 @@ public class Controller {
     	model.calculateBudget(view.modify.getCommonName(), false);
        	view.modify.setRemainingBudget(String.valueOf(model.remainingBudget));
     	view.modify.setTotalLeps(String.valueOf(model.leps));
-    	view.summary.update(model.calculateRemainOverTotalBudget(), view.modify.getCommonName(), 
+    	view.summary.update(model.calculateRemainOverTotalBudget(), model.plants.get(view.modify.getCommonName()).scientificName, 
     			String.valueOf(model.plants.get(view.modify.getCommonName()).lepsSupported), String.valueOf(model.plants.get(view.modify.getCommonName()).cost));
     	view.modify.update(model.plants.get(view.modify.getCommonName()).plantType, String.valueOf(model.plants.get(view.modify.getCommonName()).lepsSupported), String.valueOf(model.plants.get(view.modify.getCommonName()).cost), model.plants.get(view.modify.getCommonName()).scientificName);
     	model.setCommonName(view.modify.getCommonName());

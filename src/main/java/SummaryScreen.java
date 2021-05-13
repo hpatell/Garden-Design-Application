@@ -96,33 +96,33 @@ public class SummaryScreen extends Screen {
 		costText = new Label("Cost");
 		budgettext = new Label("Budget");
 		
-		nameText.setMaxWidth(100);
-		nameText.setMaxWidth(100);
-		nameText.setMaxWidth(100);
-		nameText.setMinWidth(100);
-		nameText.setMinWidth(100);
-		nameText.setMinWidth(100);
+		nameText.setMaxWidth(200);
+		nameText.setMaxWidth(200);
+		nameText.setMaxWidth(200);
+		nameText.setMinWidth(200);
+		nameText.setMinWidth(200);
+		nameText.setMinWidth(200);
 		
-		lepsText.setMaxWidth(100);
-		lepsText.setMaxWidth(100);
-		lepsText.setMaxWidth(100);
-		lepsText.setMinWidth(100);
-		lepsText.setMinWidth(100);
-		lepsText.setMinWidth(100);
+		lepsText.setMaxWidth(200);
+		lepsText.setMaxWidth(200);
+		lepsText.setMaxWidth(200);
+		lepsText.setMinWidth(200);
+		lepsText.setMinWidth(200);
+		lepsText.setMinWidth(200);
 		
-		costText.setMaxWidth(100);
-		costText.setMaxWidth(100);
-		costText.setMaxWidth(100);
-		costText.setMinWidth(100);
-		costText.setMinWidth(100);
-		costText.setMinWidth(100);
+		costText.setMaxWidth(200);
+		costText.setMaxWidth(200);
+		costText.setMaxWidth(200);
+		costText.setMinWidth(200);
+		costText.setMinWidth(200);
+		costText.setMinWidth(200);
 		
-		budgettext.setMaxWidth(100);
-		budgettext.setMaxWidth(100);
-		budgettext.setMaxWidth(100);
-		budgettext.setMinWidth(100);
-		budgettext.setMinWidth(100);
-		budgettext.setMinWidth(100);
+		budgettext.setMaxWidth(200);
+		budgettext.setMaxWidth(200);
+		budgettext.setMaxWidth(200);
+		budgettext.setMinWidth(200);
+		budgettext.setMinWidth(200);
+		budgettext.setMinWidth(200);
 		
 		budgettext.setFont(new Font("Arial", 16));
 		costText.setFont(new Font("Arial", 16));
@@ -185,12 +185,12 @@ public class SummaryScreen extends Screen {
     			newTextName.setFont(new Font("Arial", 16));
     			newTextCost.setFont(new Font("Arial", 16));
     			newTextLeps.setFont(new Font("Arial", 16));
-    			newTextName.setMaxWidth(150);
-    			newTextCost.setMaxWidth(150);
-    			newTextLeps.setMaxWidth(150);
-    			newTextName.setMinWidth(150);
-    			newTextCost.setMinWidth(150);
-    			newTextLeps.setMinWidth(150);
+    			newTextName.setMaxWidth(200);
+    			newTextCost.setMaxWidth(200);
+    			newTextLeps.setMaxWidth(200);
+    			newTextName.setMinWidth(200);
+    			newTextCost.setMinWidth(200);
+    			newTextLeps.setMinWidth(200);
     	    	plantBox = new HBox();
     	    	plantBox.setAlignment(Pos.CENTER);
     	    	plantBox.setSpacing(25);

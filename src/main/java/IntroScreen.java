@@ -79,7 +79,7 @@ public class IntroScreen extends Screen {
 		hbox.getChildren().addAll(settingsButton);
 		
 		vbox.setAlignment(Pos.CENTER);
-		vbox.getChildren().addAll(createGardenButton, guideButton, importButton);
+		vbox.getChildren().addAll(createGardenButton, guideButton);
 		
 		hstackPane.getChildren().addAll(hbox);
 		vstackPane.getChildren().addAll(vbox);
