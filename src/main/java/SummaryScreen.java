@@ -1,4 +1,5 @@
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -35,7 +37,10 @@ public class SummaryScreen extends Screen {
 	Text lepsandplantstext;
 	Text newText;
 	
+	Boolean Unique;
 	
+	ArrayList<String> plantsInGardenName;
+		
 	public SummaryScreen(View v) {
 		super(v, PagesEnum.SummaryScreen);
 		
@@ -59,6 +64,10 @@ public class SummaryScreen extends Screen {
 		budgetbar.setMinWidth(500);
     	
 		save = new Button("Save");
+		
+		Unique = true;
+		
+		plantsInGardenName = new ArrayList<String>();
     	
 		lepsandplantstext = new Text("              Plants In Garden            Leps Supported            Cost of Plant");
 		budgettext = new Text("Budget");
@@ -93,7 +102,18 @@ public class SummaryScreen extends Screen {
 	public void update(double r, String commonname, String leps, String cost) {
 		newText = new Text(commonname + "                         " + leps + "                         " + cost);
 		budgetbar.setProgress(r);
-		vbox.getChildren().addAll(newText);
+		for(String name: plantsInGardenName) {
+			if(commonname.equals(name) && plantsInGardenName != null) {
+				Unique = false;
+			}
+		}		
+		
+		if(Unique) {
+			vbox.getChildren().addAll(newText);
+		}
+		
+		Unique = true;
+		plantsInGardenName.add(commonname);
 	}
 	
 	public void updatePage(){};
