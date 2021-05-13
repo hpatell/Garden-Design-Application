@@ -325,7 +325,7 @@ public class ModifyPlotScreen extends Screen {
             String key = mapElement.getKey();
             ImageView value = mapElement.getValue();
             
-            plantName = new Label(key);
+            plantName = new Label(plants.get(key).scientificName);
             plantName.setFont(new Font("Arial", 22));
         	
         	plantBox = new VBox();
@@ -512,7 +512,7 @@ public class ModifyPlotScreen extends Screen {
         	imageV.setFitWidth(imgWidth);
         	DragAndDrop(imageV);
         	
-        	plantName = new Label(key);
+        	plantName = new Label(plants.get(key).scientificName);
         	plantName.setFont(new Font("Arial", 22));
         	
         	plantBox = new VBox();

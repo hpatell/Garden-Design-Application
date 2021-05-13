@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -75,6 +76,7 @@ public class settingsScreen extends Screen {
 	 */
     public void exitButton() {
     	exitButton = new Button("Exit");
+    	exitButton.setFont(new Font("Arial", 20));
         exitButton.setOnAction(e -> view.switchPage(view.previouspage));
     }
     
@@ -85,7 +87,9 @@ public class settingsScreen extends Screen {
 	 */
     public void changeTheme() {
         dchangeThemebutton = new Button("Dark");
+        dchangeThemebutton.setFont(new Font("Arial", 20));
         lchangeThemebutton = new Button("Light");
+        lchangeThemebutton.setFont(new Font("Arial", 20));
         dchangeThemebutton.setOnAction(e -> applyTheme("dark"));
         lchangeThemebutton.setOnAction(e -> applyTheme("light"));
     }
@@ -108,6 +112,7 @@ public class settingsScreen extends Screen {
 	 */
     public void returnToMenuButton() {
     	returnToMenuButton = new Button("Return To Menu");
+    	returnToMenuButton.setFont(new Font("Arial", 20));
     	returnToMenuButton.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));
     } 
 }
