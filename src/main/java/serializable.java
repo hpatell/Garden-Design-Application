@@ -1,4 +1,4 @@
-import javafx.scene.Scene;
+//import javafx.scene.Scene;
 import java.util.HashMap;
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,23 +7,25 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class serializable {
-	Model model = null;
-	View view = null;
-	Scene theScene = null;
+	Model model;
+	View view;
 	HashMap<String, Object> objects = null;
 
-	public serializable(Model model, View view, Scene theScene) {
+	public serializable() {
+		// NO parameters
 		objects = new HashMap<String, Object>();
-		this.model = model;
-		this.view = view;
-		this.theScene = theScene;
-		objects.put("model", model);
-		objects.put("view", view);
-		objects.put("theScene", theScene);
+		this.model = null;
+		this.view = null;
 	}
 	
-	public void saveData() {
-		String savedGardenName = view.gardeninit.gardenname;
+	public void saveData(Model model, View view) {
+		// Important!!! You must put in the current instance of model and view as parameters
+
+//		String savedGardenName = view.gardeninit.gardenname;
+		String savedGardenName = "hardCodedFileName";
+		this.objects.put("model", model);
+		this.objects.put("view", view);
+
 		try 
 		{
 			FileOutputStream fos = new FileOutputStream(savedGardenName + ".ser");
@@ -39,10 +41,10 @@ public class serializable {
 
 	public void loadData() {
 		// TODO: user selects file
-		String selectedFile = "change this to what the user selected";
+		String selectedFile = "hardCodedFileName";
 		try 
 		{
-			FileInputStream fis = new FileInputStream("selectedFile");	
+			FileInputStream fis = new FileInputStream(selectedFile + ".ser");	
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			this.objects = (HashMap<String, Object>) ois.readObject(); 
 			//warning: "unchecked cast" but should still work
@@ -50,7 +52,7 @@ public class serializable {
 			// loading data from saved file into serializable.java class' fields
 			this.model = (Model) this.objects.get("model");
 			this.view = (View) this.objects.get("view");
-			this.theScene = (Scene) this.objects.get("theScene");
+//			this.theScene = (Scene) this.objects.get("theScene");
 		}
 		catch(Exception ex) 
 		{
@@ -65,9 +67,9 @@ public class serializable {
 		if(this.view != null) {
 			System.out.println("SUCCESS! view is not null");
 		}
-		if(this.theScene != null) {
-			System.out.println("SUCCESS! theScene is not null");
-		}
+//		if(this.theScene != null) {
+//			System.out.println("SUCCESS! theScene is not null");
+//		}
 
 		// if everything is successful, you can just do set the view in controller to serializable.model
 		// do the same for view and theScene
