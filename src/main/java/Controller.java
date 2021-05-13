@@ -56,7 +56,7 @@ public class Controller {
 		n.setTranslateX(n.getTranslateX() + event.getX() - view.modify.scaledImgWidth/2);
 		n.setTranslateY(n.getTranslateY() + event.getY() - view.modify.scaledImgHeight/2);
 		
-		if(view.modify.checkCollsion(iv))
+		if(view.modify.checkCollision(iv))
 		{
 			n.setTranslateX(oldX);
 			n.setTranslateY(oldY);

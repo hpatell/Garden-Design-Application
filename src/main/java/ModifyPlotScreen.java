@@ -144,20 +144,9 @@ public class ModifyPlotScreen extends Screen {
     	vBox.setStyle("-fx-background-color: #add8e6;");
     	
     	// AnchorPane
-    	//anchorPane.setMinWidth(200);
     	anchorPane = new AnchorPane();
-    	
-    	//anchorPane.setMaxHeight(500);
-    	//anchorPane.setMaxWidth(500);
-    	
     	//anchorPane.setStyle("-fx-background-color: #d2b48c;");
     	gardenIMG = new Image(getClass().getResourceAsStream("/gardenIMG.png"));
-    	//gardenIV = new ImageView(gardenIMG);
-		//gardenIV.setPreserveRatio(true);
-		//System.out.println(anchorPane.getHeight());
-    	//gardenIV.setFitHeight(anchorPane.getHeight());
-    	//gardenIV.setFitWidth(anchorPane.getWidth());
-		//anchorPane.getChildren().add(gardenIV);
     	anchorPane.setBackground(new Background(new BackgroundImage(
     			gardenIMG,  
                 BackgroundRepeat.NO_REPEAT,  
@@ -229,50 +218,35 @@ public class ModifyPlotScreen extends Screen {
 		if(db.hasImage()) 
 		{
 			//ImageView newIV = new ImageView(db.getImage());
-			
 			Circle newIV = new Circle(scaledImgHeight/2, scaledImgWidth/2, scaledImgHeight/2);
-//			newIV.setClip(clip);
-			
+			//newIV.setClip(clip);
 			newIV.setFill(new ImagePattern(db.getImage()));
-			
 			//newIV.setFitHeight(imgHeight);
 			//newIV.setFitWidth(imgWidth);
 			//newIV.setPreserveRatio(true);
 			newIV.setOnMouseDragged(imc.getDragHandler(newIV));
-			
-			//double oldX = newIV.getTranslateX();
-			//double oldY = newIV.getTranslateY();
-			
 			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - scaledImgWidth/2);
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - scaledImgHeight/2);
 			
-			//removePlant(newIV);
-			//checkCollsion(newIV);
+			removePlant(newIV);
 			
 			anchorPane.getChildren().add(newIV);
 			success = true;
 			
 			plantsInGarden.add(newIV);
 			
-//			if(checkCollsion(newIV))
-//			{
-//				newIV.setTranslateX(oldX);
-//				newIV.setTranslateY(oldY);
-//			}
+			checkDragDropCollision(newIV);
 			
-			//checkCollsion(newIV);
-			
-	    	if(currentIV != null && plantIVs != null) {
+	    	if(currentIV != null && plantIVs != null) 
+	    	{
 	    		commonname = findCommomName(currentIV);
-	    		//gardenTotalLeps.setText("Total Leps: " + model.leps);
 	    	}
 		}
 		event.setDropCompleted(success);
-		
 		event.consume();
     }
     
-    public void removePlant(ImageView iv)
+    public void removePlant(Circle iv)
     {
     	iv.setOnMouseClicked(event ->
     	{
@@ -283,7 +257,7 @@ public class ModifyPlotScreen extends Screen {
     	});
     }
     
-    public boolean checkCollsion(Circle iv)
+    public void checkDragDropCollision(Circle iv)
     {
     	for (Circle static_bloc : plantsInGarden)
     	{
@@ -295,22 +269,29 @@ public class ModifyPlotScreen extends Screen {
     				System.out.println("COLLISION!!!");
     				//iv.setTranslateX(0);
     				//iv.setTranslateY(0);
-    				//iv.setTranslateX(iv.getTranslateX() - imgWidth);
-    				//iv.setTranslateY(iv.getTranslateY() - imgHeight);
-    				//iv.setY(10);
-    				
-//    				if(iv.getTranslateX() > static_bloc.getTranslateX() - imgWidth && iv.getTranslateX() < static_bloc.getTranslateX())
-//        			{
-//        				iv.setTranslateX(static_bloc.getTranslateX() - imgWidth);
-//        			}
-//    				if(iv.getTranslateX() < static_bloc.getTranslateX() + imgWidth && iv.getTranslateX() > static_bloc.getTranslateX())
-//        			{
-//        				iv.setTranslateX(static_bloc.getTranslateX() + imgWidth);
-//        			}
-//    				if(iv.getTranslateY() < static_bloc.getTranslateY() + imgHeight)
-//        			{
-//        				iv.setTranslateY(static_bloc.getTranslateY() + imgHeight);
-//        			}
+    				if(iv.getTranslateX() > static_bloc.getTranslateX() - imgWidth && iv.getTranslateX() < static_bloc.getTranslateX())
+        			{
+        				iv.setTranslateX(static_bloc.getTranslateX() - imgWidth);
+        			}
+    				if(iv.getTranslateX() < static_bloc.getTranslateX() + imgWidth && iv.getTranslateX() > static_bloc.getTranslateX())
+        			{
+        				iv.setTranslateX(static_bloc.getTranslateX() + imgWidth);
+        			}
+    			}
+    		}
+    	}
+    }
+    
+    public boolean checkCollision(Circle iv)
+    {
+    	for (Circle static_bloc : plantsInGarden)
+    	{
+    		if (static_bloc != iv)
+    		{
+    			Shape intersect = Shape.intersect(iv, static_bloc);
+    			if (intersect.getBoundsInLocal().getWidth() != -1)
+    			{
+    				System.out.println("COLLISION!!!");
     				return true;
     			}
     		}
@@ -531,7 +512,8 @@ public class ModifyPlotScreen extends Screen {
     	plantIVs = plantIVsCopy;
     }
     
-    public void scaleGarden(String dim) {
+    public void scaleGarden(String dim) 
+    {
         gardenSize = Integer.parseInt(dim);
         scaledImgHeight = (imgHeight/gardenSize)*10;
         scaledImgWidth = (imgWidth/gardenSize)*10;
