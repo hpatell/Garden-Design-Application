@@ -1,80 +1,80 @@
-Asteraceae-Solidago,goldenrod,106,6,h,Full Sun,Moist,Sand
-Asteraceae-Symphyotrichum,aster,90,6,h,Full Sun,Wet,Sand
-Rosaceae-Fragaria,strawberry,63,6,h,Full Sun,Moist,Silt
-Fabaceae-Phaseolus,beans,63,6,h,Full Sun,Wet,Clay
-Asteraceae-Helianthus,sunflower,57,6,h,Full Sun,Moist,Sand
-Nyssaceae-Nyssa,blackgum,34,20,w,Full Sun,Dry,Sand
-Hamamelidaceae-Liquidambar,sweetgum,34,20,w,Full Sun,Moist,Clay
-Salicaceae-Salix,willow,292,20,w,Half Sun,Dry,Silt
-Caprifoliaceae-Lonicera,honeysuckle,30,20,w,Half Sun,Dry,Silt
-Euphorbiaceae-Acalypha,copperleaf,5,6,h,Full Sun,Moist,Sand
-Aceraceae-Acer,maple,256,20,w,Full Sun,Moist,Sand
-Asteraceae-Achillea,yarrow,11,6,h,Full Sun,Dry,Clay
-Ranunculaceae-Actaea,baneberry,3,6,h,Shade,Moist,Silt
-Fabaceae-Aeschynomene,jointvetch,1,6,h,Shade,Moist,Clay
-Orobanchaceae-Agalinis,false-foxglove,4,6,h,Full Sun,Moist,Silt
-Lamiaceae-Agastache,hyssop,3,6,h,Half Sun,Moist,Silt
-Asteraceae-Ageratina,snakeroot,5,6,h,Half Sun,Moist,Silt
-Rosaceae-Agrimonia,agrimony,1,6,h,Full Sun,Moist,Clay
-Poaceae-Agrostis,bent-grass,11,6,h,Full Sun,Moist,Sand
-Alismataceae-Alisma,water-plantain,1,6,h,Full Sun,Wet,Sand
-Alliaceae-Allium,onion,17,6,h,Full Sun,Moist,Clay
-Betulaceae-Alnus,alder,164,20,w,Full Sun,Wet,Clay
-Poaceae-Alopecurus,foxtail,2,6,h,Shade,Moist,Silt
-Amaranthaceae-Amaranthus,amaranth,31,6,h,Full Sun,Moist,Clay
-Asteraceae-Ambrosia,ragweed,51,6,h,Full Sun,Dry,Sand
-Rosaceae-Amelanchier,serviceberry,91,20,w,Full Sun,Moist,Clay
-Poaceae-Ammophila,beachgrass,2,6,h,Full Sun,Dry,Sand
-Fabaceae-Amorpha,false-indigo,23,6,h,Full Sun,Dry,Silt
-Fabaceae-Amphicarpaea,hogpeanut,7,6,h,Half Sun,Moist,Silt
-Asteraceae-Anaphalis,pearly-everlasting,4,6,h,Full Sun,Dry,Sand
-Poaceae-Andropogon,bluestem,14,6,h,Half Sun,Moist,Silt
-Ranunculaceae-Anemone,anemone,2,6,h,Half Sun,Moist,Clay
-Apiaceae-Angelica,angelica,3,6,h,Shade,Moist,Sand
-Asteraceae-Antennaria,pussytoes,1,6,h,Full Sun,Dry,Silt
-Fabaceae-Apios,groundnut,4,6,h,Full Sun,Wet,Clay
-Fagaceae-Quercus,oak,463,20,w,Full Sun,Wet,Clay
-Rosaceae-Prunus,beach-plum,347,20,w,Half Sun,Moist,Sand
-Betulaceae-Betula,birch,285,20,w,Shade,Wet,Sand
-Fagaceae-Malus,crabapple,233,20,w,Half Sun,Moist,Silt
-Malvaceae-Tilia,basswood,139,20,w,Full Sun,Dry,Sand
-Rosaceae-Rubus,blackberry,135,20,w,Half Sun,Moist,Clay
-Fagaceae-Fagus,beech,125,20,w,Full Sun,Wet,Sand
-Oleaceae-Fraxinus,ash,124,20,w,Half Sun,Dry,Silt
-Juglandaceae-Juglans,butternut,124,20,w,Full Sun,Wet,Clay
-Adoxaceae-Sambucus,elderberry,32,20,w,Shade,Dry,Silt
-Lauraceae-Lindera,spicebush,12,20,w,Full Sun,Wet,Clay
-Poaceae-Poa,bluegrass,35,20,h,Shade,Wet,Sand
-Amaranthaceae-Amaranthus,pigweed,31,6,h,Full Sun,Moist,Silt
-Poaceae-Bromus,brome,10,6,h,Shade,Wet,Sand
-Poaceae-Triticum,wheat,27,6,h,Full Sun,Moist,Silt
-Asteraceae-Cirsium,thistle,26,6,h,Full Sun,Wet,Clay
-Violaceae-Viola,violet,26,6,h,Shade,Moist,Sand
-Asteraceae-Erigeron,fleabane,25,6,h,Full Sun,Dry,Silt
-Nymphaeaceae-Nymphaea,waterlily,9,6,h,Shade,Wet,Clay
-Phytolaccaceae-Phytolacca,pokeweed,9,6,h,Full Sun,Dry,Clay
-Poaceae-Hordeum,barley,17,6,h,Shade,Wet,Sand
-Typhaceae-Typha,cattail,16,6,h,Full Sun,Dry,Clay
-Apocynaceae-Apocynum,dogbane,14,6,h,Shade,Wet,Silt
-Asteraceae-Bidens,beggar-tick,14,6,h,Full Sun,Dry,Silt
-Linaceae-Linum,flax,14,6,h,Full Sun,Moist,Clay
-Rubiaceae-Galium,bedstraw,13,6,h,Shade,Moist,Sand
-Iridaceae-Iris,iris,13,6,h,Half Sun,Moist,Clay
-Poaceae-Spartina,cordgrass,13,6,h,Shade,Dry,Silt
-Asteraceae-Doellingeria,whitetop,11,6,h,Full Sun,Dry,Clay
-Malvaceae-Hibiscus,hibiscus,25,6,h,Half Sun,Dry,Silt
-Myricaceae-Comptonia,sweet-fern,47,20,w,Shade,Wet,Sand
-Platanaceae-Platanus,sycamore,42,20,w,Half Sun,Moist,Clay
-Lauraceae-Sassafras,sassafras,35,20,w,Full Sun,Moist,Sand
-Rosaceae-Physocarpus,ninebark,29,20,w,Half Sun,Dry,Clay
-Vitaceae-Parthenocissus,virginia-creeper,28,20,w,Shade,Wet,Silt
-Rubiaceae-Cephalanthus,buttonbush,25,20,w,Full Sun,Wet,Sand
-Ericaceae-Oxydendrum,sourwood,13,20,w,Half Sun,Moist,Silt
-Annonaceae-Asimina,pawpaw,12,20,w,Full Sun,Wet,Clay
-Oleaceae-Chionanthus,fringetree,11,20,w,Half Sun,Wet,Clay
-Taxaceae-Taxus,yew,5,20,w,Half Sun,Moist,Clay
-Santalaceae-Phoradendron,mistletoe,2,20,w,Full Sun,Wet,Sand
-Staphyleaceae-Staphylea,bladdernut,2,20,w,Half Sun,Wet,Silt
-Lamiaceae-Salvia,sage,6,6,h,Full Sun,Dry,Sand
-Poaceae-Eragrostis,lovegrass,5,6,h,Shade,Moist,Silt
-Nelumbonaceae-Nelumbo,lotus,5,6,h,Half Sun,Dry,Clay
+Acalypha virginica,copperleaf,5,6,h,Full Sun,Medium,Sand
+Acer rubrum,maple,0,20,w,Full Sun,Medium,Sand,2
+Achillea millefolium,yarrow,11,6,h,Full Sun,Dry,Clay,2
+Actaea racemosa,baneberry,3,6,h,Shade,Medium,Silt,2
+Aureolaria flava,false-foxglove,4,6,h,Full Sun,Medium,Silt,2
+Agastache foeniculum,hyssop,3,6,h,Half Sun,Medium,Silt,2
+Ageratina aromatica,snakeroot,3,6,h,Half Sun,Medium,Silt,2
+Agrimonia gryposepala,agrimony,1,6,h,Full Sun,Medium,Clay,2
+Agrostis perennans,bent-grass,11,6,h,Full Sun,Medium,Sand,2
+Alisma subcordatum,water-plantain,6,6,h,Full Sun,Wet,Sand,2
+Alnus maritima,alder,164,20,w,Full Sun,Wet,Clay,2
+Alopecurus aequalis,foxtail,2,6,h,Shade,Medium,Silt,2
+Amaranthus caudatus,amaranth,31,6,h,Full Sun,Medium,Clay,3
+Ambrosia trifida,ragweed,51,6,h,Full Sun,Dry,Sand,2
+Amelanchier arborea,serviceberry,91,20,w,Full Sun,Medium,Clay,2
+Amphicarpaea bracteata,hogpeanut,7,6,h,Half Sun,Medium,Silt,2
+Anaphalis margaritacea,pearly-everlasting,4,6,h,Full Sun,Dry,Sand,2
+Andropogon glomeratus,bluestem,14,6,h,Half Sun,Medium,Silt,2
+Antennaria parlinii,pussytoes,1,6,h,Full Sun,Dry,Silt,2
+Apios americana,groundnut,4,6,h,Full Sun,Wet,Clay,2
+Quercus alba,oak,463,20,w,Full Sun,Wet,Clay,2
+Prunus maritima,beach-plum,347,20,w,Half Sun,Medium,Sand,2
+Tilia americana,basswood,139,20,w,Full Sun,Dry,Sand,2
+Rubus allegheniensis,blackberry,135,20,w,Half Sun,Medium,Clay
+Fagus grandifolia,beech,125,20,w,Full Sun,Wet,Sand,2
+Fraxinus pennsylvanica,ash,124,20,w,Half Sun,Dry,Silt,2
+Juglans cinerea,butternut,124,20,w,Full Sun,Wet,Clay,2
+Lindera benzoin,spicebush,12,20,w,Full Sun,Wet,Clay,2
+Bromus latiglumis,brome,10,6,h,Shade,Wet,Sand,2
+Cirsium ciliatum,thistle,26,6,h,Full Sun,Wet,Clay,2
+Erigeron acris,fleabane,25,6,h,Full Sun,Dry,Silt,2
+Nymphaea odorata,waterlily,9,6,h,Shade,Wet,Clay,2
+Phytolacca americana,pokeweed,9,6,h,Full Sun,Dry,Clay,2
+Hordeum murinum,barley,17,6,h,Shade,Wet,Sand,2
+Apocynum androsaemifolium,dogbane,14,6,h,Shade,Wet,Silt,2
+Bidens cernua,beggar-tick,14,6,h,Full Sun,Dry,Silt,2
+Linum usitatissimum,flax,14,6,h,Full Sun,Medium,Clay,2
+Galium obtusum,bedstraw,13,6,h,Shade,Medium,Sand,2
+Iris prismatica,iris,13,6,h,Half Sun,Medium,Clay,2
+Sporobolus michauxianus,cordgrass,13,6,h,Shade,Dry,Silt,2
+Doellingeria infirma,whitetop,11,6,h,Full Sun,Dry,Clay,2
+Platanus occidentalis,sycamore,42,20,w,Half Sun,Medium,Clay,2
+Sassafras albidum,sassafras,35,20,w,Full Sun,Medium,Sand,2
+Physocarpus opulifolius,ninebark,29,20,w,Half Sun,Dry,Clay,2
+Parthenocissus quinquefolia,virginia-creeper,28,20,w,Shade,Wet,Silt
+Asimina triloba,pawpaw,12,20,w,Full Sun,Wet,Clay,3
+Chionanthus virginicus,fringetree,11,20,w,Half Sun,Wet,Clay,2
+Phoradendron leucarpum,mistletoe,2,20,w,Full Sun,Wet,Sand,2
+Salvia pratensis,sage,6,6,h,Full Sun,Dry,Sand,2
+Nelumbo lutea,lotus,5,6,h,Half Sun,Dry,Clay,2
+Hamamelis virginiana,witchhazel,34,20,w,Full Sun,Medium,Clay,2
+Populus balsamifera,poplar,292,20,w,Half Sun,Dry,Silt,2
+Persicaria virginiana,jumpseed,1,6,h,Shade,Medium,Clay,2
+Potamogeton epihydrus,pondweed,17,6,h,Full Sun,Medium,Clay,2
+Nabalus albus,rattlesnakeroot,2,6,h,Full Sun,Dry,Sand,2
+Pycnanthemum loomisii,mountainmint,2,6,h,Half Sun,Medium,Clay,2
+Pyrola elliptica,shinleaf,3,6,h,Shade,Medium,Sand,2
+Ranunculus abortivus,buttercup,23,6,h,Full Sun,Dry,Silt,2
+Ulmus rubra,elm,285,20,w,Shade,Wet,Sand,2
+Vitis aestivalis,grape,233,20,w,Half Sun,Medium,Silt,2
+Xanthium strumarium,cocklebur,32,20,w,Shade,Dry,Silt,2
+Cuscuta epithymum,dodder,35,6,h,Shade,Wet,Sand,2
+Eleocharis palustris,spikerush,31,6,h,Full Sun,Medium,Silt,2
+Cyperus flavescens,flatsedge,27,6,h,Full Sun,Medium,Silt,2
+Juncus effusus,rush,26,6,h,Shade,Medium,Sand,2
+Thalictrum thalictroides,rue-anemone,25,6,h,Half Sun,Dry,Silt,2
+Carya laciniosa,kingnut,47,20,w,Shade,Wet,Sand,2
+Ceanothus americanus,ceanothus,25,20,w,Full Sun,Wet,Sand,2
+Carya ovata,hickory,13,20,w,Half Sun,Medium,Silt,2
+Bromus tectorum,cheatgrass,5,6,h,Half Sun,Medium,Clay,2
+Clematis viorna,vasevine,2,20,w,Half Sun,Wet,Silt,2
+Cuscuta gronovii,scaldweed,16,6,h,Full Sun,Dry,Clay,2
+Solidago rigida,goldenrod,106,6,h,Full Sun,Medium,Sand,2
+Symphyotrichum,aster,90,6,h,Full Sun,Wet,Sand,2
+Fragaria virginiana,strawberry,63,6,h,Full Sun,Medium,Silt,2
+Phaseolus polystachios,beans,63,6,h,Full Sun,Wet,Clay,2
+Helianthus × laetiflorus,sunflower,57,6,h,Full Sun,Medium,Sand,2
+Hydrangea barbara,climbing-hydrangea,63,20,w,Full Sun,Wet,Clay,2
+Elymus repens,quackgrass,57,6,h,Full Sun,Medium,Sand,2
+Agrostis,bentgrass,11,6,h,Full Sun,Medium,Sand,2
