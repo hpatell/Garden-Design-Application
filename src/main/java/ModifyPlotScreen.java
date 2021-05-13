@@ -254,9 +254,8 @@ public class ModifyPlotScreen extends Screen {
     public void removePlant(MouseEvent event, Circle iv)
     {
     		anchorPane.getChildren().remove(iv);
-    		System.out.println(plantsToName.get(iv));
     		commonnameRemove = plantsToName.get(iv);
-    		plantsToName.remove(iv);
+    		plantsToName.get(iv);
     }
     
     public void checkDragDropCollision(Circle iv)

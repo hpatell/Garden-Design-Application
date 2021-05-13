@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.control.ComboBox;
 
 public class GardenInitializationScreen extends Screen {
@@ -65,12 +66,19 @@ public class GardenInitializationScreen extends Screen {
 		createSettingsButton();
 	
 		createGardenButton = new Button("Create Garden");
+		createGardenButton.setFont(new Font("Arial", 20));
 		name = new Label("Garden Name: ");
+		name.setFont(new Font("Arial", 20));
 		nametf = new TextField();
+        nametf.setFont(new Font("Arial", 20));
 		budget = new Label("Budget: ");
+        budget.setFont(new Font("Arial", 20));
 		budgettf = new TextField();
-		plotSize = new Label("Length and Width");
+        budgettf.setFont(new Font("Arial", 20));
+		plotSize = new Label("Length x Width ft (Between 5 and 20)");
+        plotSize.setFont(new Font("Arial", 20));
 		plotSizetf = new TextField();
+        plotSizetf.setFont(new Font("Arial", 20));
 
 		weather = new ComboBox<String>();
 		soil = new ComboBox<String>();
@@ -90,16 +98,18 @@ public class GardenInitializationScreen extends Screen {
 		budgettf.setMaxWidth(canvasHeight/2);
 			
     	createGardenButton.setOnAction(e -> {
-    		if((budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null) && (plotSizetf.getText() != null)) {
-    			view.switchPage(PagesEnum.ModifyPlotScreen);
-    			gardenname = nametf.getText();
-    	    	gardenbudget = budgettf.getText();
-    	    	gardenWeatherCondition = weather.getValue();
-    	    	gardenSoilCondition = soil.getValue();
-    	    	gardenMoistureCondition = moisture.getValue();
-    	    	gardenDimensions = plotSizetf.getText();
-    	    	gardenbudgetlocal = gardenbudget;
-    			updatePage();
+    		if((nametf.getText() != null) && (budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null) && (plotSizetf.getText() != null)) {
+    			if((Integer.parseInt(plotSizetf.getText()) <= 20) && (Integer.parseInt(plotSizetf.getText()) >= 5)) {
+        			view.switchPage(PagesEnum.ModifyPlotScreen);
+        			gardenname = nametf.getText();
+        	    	gardenbudget = budgettf.getText();
+        	    	gardenWeatherCondition = weather.getValue();
+        	    	gardenSoilCondition = soil.getValue();
+        	    	gardenMoistureCondition = moisture.getValue();
+        	    	gardenDimensions = plotSizetf.getText();
+        	    	gardenbudgetlocal = gardenbudget;
+        			updatePage();
+    			}
     		}
     	});
     	
