@@ -137,8 +137,6 @@ public class Controller {
 	       	    	model.calculateLeps(view.modify.getCommonNameRemove(), true);
 	       	    	model.calculateBudget(view.modify.getCommonNameRemove(), true);
 	       	       	view.modify.setRemainingBudget(String.valueOf(model.remainingBudget));
-	       	       	view.summary.update(model.calculateRemainOverTotalBudget(), view.modify.getCommonNameRemove(), 
-	         			String.valueOf(model.plants.get(view.modify.getCommonNameRemove()).lepsSupported), String.valueOf(model.plants.get(view.modify.getCommonNameRemove()).cost));
 	       	    	view.modify.setTotalLeps(String.valueOf(model.leps));
 	       	    	view.modify.update();
        			}
