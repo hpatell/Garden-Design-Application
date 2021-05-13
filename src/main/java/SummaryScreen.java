@@ -1,14 +1,12 @@
-import java.awt.Font;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import java.util.ArrayList;
 import java.util.Map.Entry;
-
+import javafx.scene.control.Label;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -19,6 +17,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 
 
 public class SummaryScreen extends Screen {
@@ -125,6 +124,11 @@ public class SummaryScreen extends Screen {
 		budgettext.setMinWidth(100);
 		budgettext.setMinWidth(100);
 		
+		budgettext.setFont(new Font("Arial", 16));
+		costText.setFont(new Font("Arial", 16));
+		lepsText.setFont(new Font("Arial", 16));
+		nameText.setFont(new Font("Arial", 16));
+		
     	createReturnToPlotButton();
 		createSettingsButton();
 		
@@ -178,12 +182,15 @@ public class SummaryScreen extends Screen {
     			newTextName = new Label(commonname);
     			newTextCost = new Label(cost);
     			newTextLeps = new Label(leps);
-    			newTextName.setMaxWidth(100);
-    			newTextCost.setMaxWidth(100);
-    			newTextLeps.setMaxWidth(100);
-    			newTextName.setMinWidth(100);
-    			newTextCost.setMinWidth(100);
-    			newTextLeps.setMinWidth(100);
+    			newTextName.setFont(new Font("Arial", 16));
+    			newTextCost.setFont(new Font("Arial", 16));
+    			newTextLeps.setFont(new Font("Arial", 16));
+    			newTextName.setMaxWidth(150);
+    			newTextCost.setMaxWidth(150);
+    			newTextLeps.setMaxWidth(150);
+    			newTextName.setMinWidth(150);
+    			newTextCost.setMinWidth(150);
+    			newTextLeps.setMinWidth(150);
     	    	plantBox = new HBox();
     	    	plantBox.setAlignment(Pos.CENTER);
     	    	plantBox.setSpacing(25);
