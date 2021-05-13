@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.event.EventHandler;
 
 public abstract class Screen {
@@ -60,7 +61,7 @@ public abstract class Screen {
         gearIV = new ImageView(gear);
         createGardenButton = new Button("Create Garden");
 		guideButton = new Button("Guide");
-		importButton = new Button("Import Garden");
+		importButton = new Button("Load Garden");
 		returnToPlotButton = new Button("Return to Plot");
     }
     
@@ -79,6 +80,7 @@ public abstract class Screen {
 	*/
 	public void createGardenButton() {
 	     createGardenButton.setOnAction(e -> view.switchPage(PagesEnum.InitializationScreen));
+	     createGardenButton.setFont(new Font("Arial", 20));
 	}  
 	 
 	/**
@@ -101,6 +103,7 @@ public abstract class Screen {
 	*/
 	public void createGuideButton() {
 	    guideButton.setOnAction(e -> view.switchPage(PagesEnum.GuideScreen));
+	    guideButton.setFont(new Font("Arial", 20));
 	}
 	
 	/**
@@ -110,6 +113,7 @@ public abstract class Screen {
 	*/
 	public void createImportButton() {
 		importButton.setOnAction(e -> view.switchPage(PagesEnum.ImportScreen));
+		importButton.setFont(new Font("Arial", 20));
 	}
 	
 	/**

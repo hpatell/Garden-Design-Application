@@ -23,7 +23,7 @@ public class GuideScreen extends Screen {
 	public GuideScreen(View v) {
 		super(v, PagesEnum.GuideScreen);
 		
-		backgroundimg = new Image(getClass().getResourceAsStream("/NewHowTo.png"));
+		backgroundimg = new Image(getClass().getResourceAsStream("/guideImg.png"));
 		backgroundimgview = new ImageView(backgroundimg);
 		
 		backgroundimgview.setPreserveRatio(true);
@@ -35,16 +35,16 @@ public class GuideScreen extends Screen {
 		createGuideButton();
 		createImportButton();
 
-		importButton.setTranslateX(75);
-		importButton.setTranslateY(380);
+		//importButton.setTranslateX(75);
+		//importButton.setTranslateY(380);
     	
-		createGardenButton.setTranslateX(-75);
-		createGardenButton.setTranslateY(380);
+		createGardenButton.setTranslateX(0);
+		createGardenButton.setTranslateY(360);
 		
     	layout = new StackPane();
     	layout.setMaxHeight(canvasHeight);
     	layout.setMaxWidth(canvasWidth);
-    	layout.getChildren().addAll(backgroundimgview, createGardenButton, importButton);
+    	layout.getChildren().addAll(backgroundimgview, createGardenButton);
     	layout.setStyle(theme);
     	scene = new Scene(layout, canvasWidth, canvasHeight);   	
 	}

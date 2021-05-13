@@ -7,6 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage; 
@@ -25,7 +30,7 @@ public class IntroScreen extends Screen {
 	public void updatePage(){}
 	
 	Image backgroundIMG;
-	ImageView backgroundIV;
+	//ImageView backgroundIV;
 	VBox vbox;
 	HBox hbox;
 	BorderPane borderPane;
@@ -51,12 +56,18 @@ public class IntroScreen extends Screen {
     	hbox = new HBox();
    
     	
-    	backgroundIMG = new Image(getClass().getResourceAsStream("/introbackground.png"));
-    	backgroundIV = new ImageView(backgroundIMG);
+    	backgroundIMG = new Image(getClass().getResourceAsStream("/backgroundIMG.png"));
+//    	backgroundIV = new ImageView(backgroundIMG);
+//		backgroundIV.setPreserveRatio(true);
+//		backgroundIV.setFitHeight(canvasHeight);
+//		backgroundIV.setFitWidth(canvasWidth);
+    	vstackPane.setBackground(new Background(new BackgroundImage(
+    			backgroundIMG,  
+                BackgroundRepeat.NO_REPEAT,  
+                BackgroundRepeat.NO_REPEAT,  
+                BackgroundPosition.CENTER,  
+                new BackgroundSize(1.0, 1.0, true, true, false, false))));
     	
-		backgroundIV.setPreserveRatio(true);
-		backgroundIV.setFitHeight(canvasHeight);
-		backgroundIV.setFitWidth(canvasWidth);
 		
 		createSettingsButton();
 		createGardenButton();
@@ -71,11 +82,11 @@ public class IntroScreen extends Screen {
 		vbox.getChildren().addAll(createGardenButton, guideButton, importButton);
 		
 		hstackPane.getChildren().addAll(hbox);
-		vstackPane.getChildren().addAll(backgroundIV, vbox);
+		vstackPane.getChildren().addAll(vbox);
 
 		borderPane.setMaxHeight(canvasHeight);
 		borderPane.setMaxWidth(canvasHeight);
-		borderPane.setStyle(theme); 
+		borderPane.setStyle("-fx-background-color: #FFFFFF");
     	
 		layout = borderPane;
     	scene = new Scene(layout, canvasWidth, canvasHeight);
