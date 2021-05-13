@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
@@ -31,11 +32,9 @@ public class Controller {
     }
     
     public void update() {
-    	//view.modify.getWoody(model.checkWoody());
-    	//view.modify.getHerb(model.checkWoody());
     	model.setCurrentBudget(Integer.parseInt(view.gardeninit.gardenbudgetlocal));
-    	model.calculateLeps(view.modify.getCommonName());
-    	model.calculateBudget(view.modify.getCommonName());
+    	model.calculateLeps(view.modify.getCommonName(), false);
+    	model.calculateBudget(view.modify.getCommonName(), false);
        	view.modify.setRemainingBudget(String.valueOf(model.remainingBudget));
     	view.modify.setTotalLeps(String.valueOf(model.leps));
     	view.summary.update(model.calculateRemainOverTotalBudget(), view.modify.getCommonName(), 
@@ -128,6 +127,22 @@ public class Controller {
     		}
     	};
     }
+    
+    public EventHandler<MouseEvent> removePlant(Circle iv)
+    {
+       	return new EventHandler<MouseEvent>() {
+       		public void handle(MouseEvent event) {
+       			if(event.getButton() == MouseButton.SECONDARY) {
+	       			view.modify.removePlant(event, iv);
+	       	    	model.calculateLeps(view.modify.getCommonNameRemove(), true);
+	       	    	model.calculateBudget(view.modify.getCommonNameRemove(), true);
+	       	       	view.modify.setRemainingBudget(String.valueOf(model.remainingBudget));
+	       	    	view.modify.setTotalLeps(String.valueOf(model.leps));
+	       	    	view.modify.update();
+       			}
+       		}
+       	};
+      }
     
     public HashMap<String, Plant> getplants()
     {

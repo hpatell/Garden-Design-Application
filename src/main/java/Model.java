@@ -76,21 +76,29 @@ public class Model {
 		return plants;
     }	
 	
-    public int calculateLeps(String plantname) {
-    	System.out.println("Model has the name" + commonname);
-    	leps = plants.get(plantname).lepsSupported + leps;
-    	//String lepsString = String.valueOf(leps);
-        return leps;
+    public int calculateLeps(String plantname, Boolean remove) {
+    	if(remove) {
+    		leps = leps - plants.get(plantname).lepsSupported;
+    		System.out.println(leps);
+    	} else {
+    		leps = leps + plants.get(plantname).lepsSupported;
+    	}
+    	return leps;
     }
 
-    public double calculateBudget(String plantname) {
+    public double calculateBudget(String plantname, Boolean remove) {
     	if(initialbudget) {
     		remainingBudget = currentBudget;
     		initialbudget = false;
     	}
-    	remainingBudget = remainingBudget - plants.get(plantname).cost;
-    	System.out.println(remainingBudget);
-        return remainingBudget;
+    	
+    	if(remove) {
+    		System.out.println(remainingBudget);
+    		remainingBudget = remainingBudget + plants.get(plantname).cost;
+    	} else {
+    		remainingBudget = remainingBudget - plants.get(plantname).cost;
+    	}
+    	return remainingBudget;
     }
     /*
     public Collection<String> checkWoody() {

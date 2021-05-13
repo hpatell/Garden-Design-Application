@@ -87,9 +87,12 @@ public class ModifyPlotScreen extends Screen {
 	String totalLeps;
 	String remainingBudget;
 	
+	String commonnameRemove;
+	
 	HashMap<String, ImageView> plantIVs;
 	
 	ArrayList<Circle> plantsInGarden = new ArrayList<Circle>();
+	HashMap<Circle, String> plantsToName = new HashMap<Circle, String>();
 	
 	ImageView currentIV; 
 	
@@ -228,33 +231,32 @@ public class ModifyPlotScreen extends Screen {
 			newIV.setTranslateX(newIV.getTranslateX() + event.getX() - scaledImgWidth/2);
 			newIV.setTranslateY(newIV.getTranslateY() + event.getY() - scaledImgHeight/2);
 			
-			removePlant(newIV);
+	    	if(currentIV != null && plantIVs != null) 
+	    	{
+	    		commonname = findCommomName(currentIV);
+	    	}
+			
+			newIV.setOnMouseClicked(imc.removePlant(newIV));
 			
 			anchorPane.getChildren().add(newIV);
 			success = true;
 			
 			plantsInGarden.add(newIV);
+			plantsToName.put(newIV, commonname);
 			
 			checkDragDropCollision(newIV);
 			
-	    	if(currentIV != null && plantIVs != null) 
-	    	{
-	    		commonname = findCommomName(currentIV);
-	    	}
 		}
 		event.setDropCompleted(success);
 		event.consume();
     }
     
-    public void removePlant(Circle iv)
+    public void removePlant(MouseEvent event, Circle iv)
     {
-    	iv.setOnMouseClicked(event ->
-    	{
-    		if(event.getButton() == MouseButton.SECONDARY)
-    		{
-    			anchorPane.getChildren().remove(iv);
-    		}
-    	});
+    		anchorPane.getChildren().remove(iv);
+    		System.out.println(plantsToName.get(iv));
+    		commonnameRemove = plantsToName.get(iv);
+    		plantsToName.remove(iv);
     }
     
     public void checkDragDropCollision(Circle iv)
@@ -449,6 +451,10 @@ public class ModifyPlotScreen extends Screen {
     
     public String getCommonName() {
     	return commonname;
+    }
+    
+    public String getCommonNameRemove() {
+    	return commonnameRemove;
     }
     
     public void setTotalLeps(String t) {
