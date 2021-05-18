@@ -21,11 +21,13 @@ public class Model {
 	Collection<String> Woody;
 	Collection<String> Herbaceous;
 	
-	//View view;
-	
 	String commonname;
 	
-	
+	/**
+	 * Constructor for Model
+	 * 
+	 * @author Himanshu Patel
+	 */
 	public Model()
 	{
 		testPlants();
@@ -50,6 +52,11 @@ public class Model {
 		
 	}
 	
+	/**
+	 * Reads a text file containing the plants and their info and creates objects with that info to add to a HashMap
+	 * 
+	 * @author Himanshu Patel
+	 */
 	public void makeHashSet() throws FileNotFoundException
 	{
 		File file = new File("Plants.txt");
@@ -70,12 +77,22 @@ public class Model {
 	}
 	
 	
-	
+	/**
+	 * Getter for the HashMap of all plants
+	 * 
+	 * @author Himanshu Patel
+	 */
 	public HashMap<String, Plant> getPlants() 
     {
 		return plants;
     }	
 	
+	/**
+	 * Updates the lep count when a plant is added or removed from the garden
+	 * 
+	 * @param plantname takes in commonname of a plant, remove takes in a boolean identify if plant is being added/removed
+	 * @author Kush Patel
+	 */
     public int calculateLeps(String plantname, Boolean remove) {
     	if(remove) {
     		leps = leps - plants.get(plantname).lepsSupported;
@@ -86,6 +103,12 @@ public class Model {
     	return leps;
     }
 
+	/**
+	 * Updates the budget when a plant is added or removed from the garden
+	 * 
+	 * @param plantname takes in commonname of a plant, remove takes in a boolean identify if plant is being added/removed
+	 * @author Kush Patel
+	 */
     public double calculateBudget(String plantname, Boolean remove) {
     	if(initialbudget) {
     		remainingBudget = currentBudget;
@@ -123,7 +146,13 @@ public class Model {
     	return Herbaceous;
     }
     */
-
+    
+	/**
+	 * Sets the current budget
+	 * 
+	 * @param budget, takes in an int value of the currentbudget for the garden
+	 * @author Kush Patel
+	 */
     public void setCurrentBudget(int budget) {
     	currentBudget = budget;
     }
@@ -132,10 +161,22 @@ public class Model {
         return false;
     }
     
+	/**
+	 * Calculates the ratio of remaining budget over total budget
+	 * 
+	 * @param budget, takes in an int value of the currentbudget for the garden
+	 * @author Kush Patel
+	 */
     public double calculateRemainOverTotalBudget() {
     	return remainingBudget/currentBudget;
     }
-
+    
+	/**
+	 * Calculates the ratio of remaining budget over total budget
+	 * 
+	 * @param budget, takes in an int value of the currentbudget for the garden
+	 * @author Kush Patel
+	 */
     public static int calcUniqueplants() {
     	return 0;
     }
@@ -156,23 +197,46 @@ public class Model {
         
     }
     
-    
+	/**
+	 * Sets commonname of the current/latest plant edited in the garden
+	 * 
+	 * @param budget, takes in an int value of the currentbudget for the garden
+	 * @author Kush Patel
+	 */
     public void setCommonName(String s) {
     	commonname = s;
     }
     
+	/**
+	 * Gets the x of the current/latest plant edited in the garden
+	 * 
+	 */
     public double getX() {
 		return x;
 	}
 
+	/**
+	 * Sets the x of the current/latest plant edited in the garden
+	 * 
+	 * @param double x, x location of a plant
+	 */
 	public void setX(double x) {
 		this.x = x;
 	}
 
+	/**
+	 * Gets the y location of the current/latest plant edited in the garden
+	 * 
+	 */
 	public double getY() {
 		return y;
 	}
 
+	/**
+	 * Sets the y location of the current/latest plant edited in the garden
+	 * 
+	 * @param y, y location 
+	 */
 	public void setY(double y) {
 		this.y = y;
 	}

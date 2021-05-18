@@ -17,20 +17,28 @@ import javafx.event.EventHandler;
 
 public class Controller {
 
-	//double imgHeight = 100;
-	//double imgWidth = 100;
 	private final boolean DEBUG = true;
     Model model;
     View view;
     Scene theScene;
-    //ModifyPlotScreen ModifyPlotScreen;
 
+	/**
+	 * Constructor for Controller
+	 * 
+	 * @param view takes in the instance of View accessed in Screen
+	 * @author Kush Patel
+	 */
     public Controller(View view) {
     	this.view = view;
     	model = new Model();
     	if (DEBUG) System.out.println("ic created");
     }
     
+	/**
+	 * Updates the dynamic asepcts of every screen such as remaining budget and lep count
+	 * 
+	 * @author Kush Patel
+	 */ 
     public void update() {
     	model.setCurrentBudget(Integer.parseInt(view.gardeninit.gardenbudgetlocal));
     	model.calculateLeps(view.modify.getCommonName(), false);
@@ -43,6 +51,12 @@ public class Controller {
     	model.setCommonName(view.modify.getCommonName());
     }
 
+	/**
+	 * Drag logic, updates the x and y location as the image is being dragged and sets drag boundaries.
+	 * 
+	 * @param event takes in mouse drag and iv takes in the image being dragged as a circle
+	 * @author Himanshu Patel
+	 */ 
     public void drag(MouseEvent event, Circle iv) {   	
     	Node n = (Node)event.getSource();
 		if (DEBUG) System.out.println("ic mouse drag tx: " + n.getTranslateX() + ", ex: " + event.getX() );
@@ -82,6 +96,12 @@ public class Controller {
 		//view.modify.checkCollsion(iv);
     }
 
+	/**
+	 * Handler for drag, used in modifyPlotScreen for when image is dragged
+	 * 
+	 * @param iv takes in the image being dragged as a circle
+	 * @author Himanshu Patel
+	 */ 
     public EventHandler<MouseEvent> getDragHandler(Circle iv)
     {
     	return event -> drag((MouseEvent) event, iv);
@@ -107,6 +127,11 @@ public class Controller {
     	};
     }
     
+	/**
+	 * Handler for drop, used in modifyPlotScreen for when image is dropped
+	 * 
+	 * @author Himanshu Patel
+	 */ 
     public EventHandler<DragEvent> getOnGardenDragDropped()
     {
     	return new EventHandler<DragEvent>() {
@@ -118,6 +143,12 @@ public class Controller {
     	};
     }
     
+	/**
+	 * Handler for checkbox filtering, used in modifyPlotScreen
+	 * 
+	 * @param imageViews takes the set of all images that are avaible in a certain set of conditions, made in modifyPlotScreen
+	 * @author Himanshu Patel
+	 */ 
     public EventHandler<ActionEvent> getCheckboxHandler(HashMap<String, ImageView> imageViews)
     {
     	return new EventHandler<ActionEvent>() {
@@ -128,6 +159,12 @@ public class Controller {
     	};
     }
     
+	/**
+	 * Handler for remove plant on mouse click and updates the dymanic aspects of relevant screens
+	 * 
+	 * @param iv takes in the image of the plant being removed from the garden
+	 * @author Himanshu Patel
+	 */ 
     public EventHandler<MouseEvent> removePlant(Circle iv)
     {
        	return new EventHandler<MouseEvent>() {
@@ -144,6 +181,11 @@ public class Controller {
        	};
      }
     
+	/**
+	 * Getter method to get the hashmap of plants in model
+	 * 
+	 * @author Himanshu Patel
+	 */ 
     public HashMap<String, Plant> getplants()
     {
     	return model.plants;

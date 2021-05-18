@@ -33,6 +33,8 @@ public class faunaScreen extends Screen {
 
 	Text lepsandplantstext;
 	
+	String spacing;
+	
 	
 	public faunaScreen(View v) {
 		super(v, PagesEnum.FaunaScreen);
@@ -50,7 +52,9 @@ public class faunaScreen extends Screen {
     	hboxbottom = new HBox(50);
     	vbox = new VBox(10);
     	
-		lepsandplantstext = new Text("              Plants In Garden            Leps Supported            Cost of Plant");
+    	spacing = "            ";
+    	
+		lepsandplantstext = new Text(spacing + "Plants In Garden" + spacing + "Leps Supported" + spacing +"Cost of Plant");
 		
     	createReturnToPlotButton();
 		createSettingsButton();

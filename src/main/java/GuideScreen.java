@@ -34,9 +34,6 @@ public class GuideScreen extends Screen {
 		createGardenButton();
 		createGuideButton();
 		createImportButton();
-
-		//importButton.setTranslateX(75);
-		//importButton.setTranslateY(380);
     	
 		createGardenButton.setTranslateX(0);
 		createGardenButton.setTranslateY(360);
