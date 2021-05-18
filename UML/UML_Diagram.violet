@@ -5,21 +5,33 @@
    <object class="com.horstmann.violet.ClassNode" id="ClassNode0">
     <void property="attributes">
      <void property="text">
-      <string>HashMap plantsDatabase</string>
+      <string>private double x = 100;
+private double y = 200;
+int leps;
+double currentBudget;
+double remainingBudget;
+boolean initialbudget;
+HashMap&lt;String, Plant&gt; plants = new HashMap&lt;&gt;();
+Collection&lt;String&gt; Woody;
+Collection&lt;String&gt; Herbaceous;
+String commonname;</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>Model(){}
-updateLocation(){}
-calculateLeps(){}
-calculateBudget(){}
-checkCompatability(){}
-calcUniquePlants(){}
-readSettings(){}
-readGarden(){}
-saveSettings(){}
-saveGarden(){}</string>
+      <string>public Model()
+public void testPlants()
+public void makeHashSet() throws FileNotFoundException
+public HashMap&lt;String, Plant&gt; getPlants()
+public int calculateLeps(String plantname, Boolean remove)
+public double calculateBudget(String plantname, Boolean remove)
+public void setCurrentBudget(int budget)
+public double calculateRemainOverTotalBudget()
+public void setCommonName(String s)
+public double getX()
+public void setX(double x)
+public double getY()
+public void setY(double y)</string>
      </void>
     </void>
     <void property="name">
@@ -33,19 +45,19 @@ saveGarden(){}</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double0"/>
-      <double>1360.0</double>
+      <double>1070.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double0"/>
-      <double>60.0</double>
+      <double>290.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>1360.0</double>
-     <double>60.0</double>
+     <double>1070.0</double>
+     <double>290.0</double>
     </void>
    </object>
   </void>
@@ -55,18 +67,21 @@ saveGarden(){}</string>
      <void property="text">
       <string>Model model
 View view
-Scene theScene
-Group root</string>
+Scene theScene</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>Controller(){}
-start(){}
-main(){}
-drag(){}
-getHandlerForDrag(){}
-getOnPageHandler(){}</string>
+      <string>public Controller(View view){}
+public void update()
+public void drag(MouseEvent event, Circle iv)
+public EventHandler&lt;MouseEvent&gt; getDragHandler(Circle iv)
+public EventHandler&lt;MouseEvent&gt; getOnGardenDragDetected(ImageView iv)
+public EventHandler&lt;DragEvent&gt; getOnGardenDragOver()
+public EventHandler&lt;DragEvent&gt; getOnGardenDragDropped()
+public EventHandler&lt;ActionEvent&gt; getCheckboxHandler(HashMap&lt;String, ImageView&gt; imageViews)
+public EventHandler&lt;MouseEvent&gt; removePlant(Circle iv)
+public HashMap&lt;String, Plant&gt; getplants()</string>
      </void>
     </void>
     <void property="name">
@@ -102,22 +117,34 @@ getOnPageHandler(){}</string>
      <void property="text">
       <string>String theme
 Collection screens
-Collection&lt;&gt; plantImages
-canvasHeight
-canvasWidth
-imgWidth
-imgHeight</string>
+HashMap&lt;String, String&gt; plantPNG = new HashMap&lt;&gt;();
+Image plant;
+Image importedImage;
+int canvasHeight, canvasWidth;
+double imgWidth, imgHeight;
+double x, y, xloc, yloc;
+int lepsSupported;
+Stage currentstage;
+IntroScreen intro;
+ImportGardenScreen importgarden;
+GuideScreen guide;
+GardenInitializationScreen gardeninit;
+ModifyPlotScreen modify;
+faunaScreen fauna;
+SummaryScreen summary;
+settingsScreen settings;
+HashMap&lt;PagesEnum, Screen&gt; nameToScreenMap = new HashMap&lt;&gt;();
+PagesEnum firstPage = PagesEnum.IntroScreen;
+PagesEnum previouspage = PagesEnum.IntroScreen;
+PagesEnum currentPage = PagesEnum.IntroScreen;</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>createImage(){}
-importImage(){}
-update(){}
-view(){}
-draw(){}
-drag(){}
-changePage(){}</string>
+      <string>public View()
+public void switchPage(PagesEnum PE)
+public void setPlantPNG(HashMap&lt;String, Plant&gt; plants)
+public void start(Stage stage)</string>
      </void>
     </void>
     <void property="name">
@@ -158,18 +185,18 @@ String soilType
 String moistureLevel
 int totalNumLeps
 Collection currentPlants
-Plant plotGrid[][]</string>
+Plant plotGrid[][]
+HashMap&lt;String, Plant&gt; plantsInGarden = new HashMap&lt;&gt;()</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>addPlant(){}
-removePlant(){}</string>
+      <string>public HashMap&lt;String, Plant&gt; getPlantsInGarden()</string>
      </void>
     </void>
     <void property="name">
      <void property="text">
-      <string>Plot</string>
+      <string>GardenPlot</string>
      </void>
     </void>
    </object>
@@ -200,14 +227,22 @@ removePlant(){}</string>
      <void property="text">
       <string>String scientificName
 String commonName
+String plantType
+String weatherType
+String moistureType
+String soilType
 int numSupportedLeps
-Image plantImage
+int cost
 double x
 double y
-double width
-double height
-int lepsSupported
-HashMap Conditions</string>
+double imgwidth
+double imgheight
+int lepsSupported</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>public Plant(String scientificName, String commonName, String plantType, int lepsSupported, int cost, String weatherType, String moistureType, String soilType)</string>
      </void>
     </void>
     <void property="name">
@@ -221,19 +256,19 @@ HashMap Conditions</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double4"/>
-      <double>1650.0</double>
+      <double>1220.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double4"/>
-      <double>510.0</double>
+      <double>630.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>1650.0</double>
-     <double>510.0</double>
+     <double>1220.0</double>
+     <double>630.0</double>
     </void>
    </object>
   </void>
@@ -241,15 +276,18 @@ HashMap Conditions</string>
    <object class="com.horstmann.violet.ClassNode" id="ClassNode5">
     <void property="attributes">
      <void property="text">
-      <string>Image introScreenImage</string>
+      <string>Image backgroundIMG
+VBox vbox
+HBox hbox
+BorderPane borderPane
+StackPane hstackPane
+StackPane vstackPane</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>startButton(){}
-guideButton(){}
-importButton(){}
-settingsButton(){}</string>
+      <string>IntroScreen(View v){}
+void updatePage(){}</string>
      </void>
     </void>
     <void property="name">
@@ -283,15 +321,15 @@ settingsButton(){}</string>
    <object class="com.horstmann.violet.ClassNode" id="ClassNode6">
     <void property="attributes">
      <void property="text">
-      <string>JFileChooser chooser
-File file
+      <string>Button fileOpenerButton
 </string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
       <string>checkForm(){}
-</string>
+updatePage(){}
+ImportGardenScreen(View v)</string>
      </void>
     </void>
     <void property="name">
@@ -325,14 +363,14 @@ File file
    <object class="com.horstmann.violet.ClassNode" id="ClassNode7">
     <void property="attributes">
      <void property="text">
-      <string>Image guideImage
-popUpImages[]</string>
+      <string>Image backgroundimg
+ImageView backgroundimgview</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>nextButton(){}
-backButton(){}</string>
+      <string>public GuideScreen(View v){}
+public void updatePage(){}</string>
      </void>
     </void>
     <void property="name">
@@ -346,7 +384,7 @@ backButton(){}</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double7"/>
-      <double>80.0</double>
+      <double>50.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
@@ -357,25 +395,39 @@ backButton(){}</string>
      </void>
     </void>
     <void method="setLocation">
-     <double>80.0</double>
+     <double>50.0</double>
      <double>410.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
    <object class="com.horstmann.violet.ClassNode" id="ClassNode8">
+    <void property="attributes">
+     <void property="text">
+      <string>private Controller imc
+Button createGardenButton
+Label name
+TextField nametf
+Label budget;
+TextField budgettf;
+Label plotSize;
+TextField plotSizetf;
+ComboBox&lt;String&gt; weather;
+ComboBox&lt;String&gt; soil;
+ComboBox&lt;String&gt; moisture;
+String gardenbudgetlocal;
+VBox vbox;
+HBox hbox;
+BorderPane borderPane;
+StackPane hstackPane;	
+StackPane vstackPane;
+View view;</string>
+     </void>
+    </void>
     <void property="methods">
      <void property="text">
-      <string>backButton(){}
-forwardButton(){}
-submitButton(){}
-gardenName(){}
-budgetTF(){}
-WdropDown(){}
-soilDropDown(){}
-moistureDropDown(){}
-
-</string>
+      <string>GardenInitializationScreen(View v) {}
+updatePage(){}</string>
      </void>
     </void>
     <void property="name">
@@ -409,18 +461,75 @@ moistureDropDown(){}
    <object class="com.horstmann.violet.ClassNode" id="ClassNode9">
     <void property="attributes">
      <void property="text">
-      <string>Collection plantImages
-</string>
+      <string>private Controller imc;
+double imgHeight = 100;
+double imgWidth = 100;
+int gardenSize;
+double scaledImgHeight;
+double scaledImgWidth;
+Collection&lt;String&gt; wPlantNames;
+Collection&lt;String&gt; hPlantNames;
+BorderPane borderPane;
+AnchorPane anchorPane;
+StackPane stackPaneTop;
+StackPane stackPaneBottom;
+ScrollPane scrollPane;
+VBox vBoxImages;
+HBox hBoxBottom;
+Label plantName;
+VBox plantBox;
+CheckBox woody;
+CheckBox herbaceous;
+Label gardenNameLabel;
+Label gardenBudgetLabel;
+Label gardenWeatherConditionLabel;
+Label gardenSoilConditionLabel;
+Label gardenMoistureConditionLabel;
+Label gardenDimensionsLabel;
+Label plantType;
+Label plantWeather;
+Label plantSoil;
+Label plantMoisture;
+Label gardenBudgetRemainingLabel;
+Label gardenTotalLeps;
+String commonname;
+String totalLeps;
+String remainingBudget;
+String commonnameRemove;
+HashMap&lt;String, ImageView&gt; plantIVs;
+ArrayList&lt;Circle&gt; plantsInGarden;
+HashMap&lt;Circle, String&gt; plantsToName;
+ImageView currentIV;</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>settingsButton(){}
-presentationModeButton(){}
-budgetButton(){}
-faunaButton(){}
-searchTF(){}
-plantNameText(){}</string>
+      <string>ModifyPlotScreen(View v) {}
+public void update(String type, String leps, String cost, String name){}
+public void DragAndDrop(ImageView iv){}
+public void onGardenDragDetected(MouseEvent event, ImageView iv)
+ublic void onGardenDragOver(DragEvent event)
+public void onGardenDragDropped(DragEvent event)
+public void removePlant(MouseEvent event, Circle iv)
+public void checkDragDropCollision(Circle iv)
+public boolean checkCollision(Circle iv)
+public void setCurrentPlantImage(ImageView iv) {}
+public void checkbox(ActionEvent event, HashMap&lt;String, ImageView&gt; imageViews, HashMap&lt;String, Plant&gt; plants)
+public void setScreenOutline()
+public void label()
+public void settingsButton()
+public void summaryButton()
+public void faunaButton()
+public String findCommomName(ImageView iv)
+public String getGardenBudget()
+public String getCommonName()
+public String getCommonNameRemove()
+public void setTotalLeps(String t)
+public void setRemainingBudget(String b)
+public void getWoody(Collection&lt;String&gt; wplants)
+public void getHerb(Collection&lt;String&gt; hplants)
+public void createImages(HashMap&lt;String, String&gt; imagePNGs, String Weather, String Soil, String Moisture, HashMap&lt;String, Plant&gt; plants)
+public void scaleGarden(String dim)</string>
      </void>
     </void>
     <void property="name">
@@ -434,153 +543,44 @@ plantNameText(){}</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double9"/>
-      <double>80.0</double>
+      <double>270.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double9"/>
-      <double>760.0</double>
+      <double>510.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>80.0</double>
-     <double>760.0</double>
+     <double>270.0</double>
+     <double>510.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
    <object class="com.horstmann.violet.ClassNode" id="ClassNode10">
-    <void property="methods">
-     <void property="text">
-      <string>modifyPlotScreenButton(){}</string>
-     </void>
-    </void>
-    <void property="name">
-     <void property="text">
-      <string>PresentationModeScreen</string>
-     </void>
-    </void>
-   </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double10">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double10"/>
-      <double>70.0</double>
-     </void>
-    </void>
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>y</string>
-     <void method="set">
-      <object idref="Point2D$Double10"/>
-      <double>950.0</double>
-     </void>
-    </void>
-    <void method="setLocation">
-     <double>70.0</double>
-     <double>950.0</double>
-    </void>
-   </object>
-  </void>
-  <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode11">
     <void property="attributes">
      <void property="text">
-      <string>BudgetSpent
-BudgetRemaining
-PlantName[]
-Qty
-PlantPrice
-subTotal</string>
+      <string>BorderPane borderPane;
+StackPane hstackPane;	
+StackPane vstackPane;
+VBox vbox;
+HBox hbox;
+Button exitButton;
+Button dchangeThemebutton;
+Button lchangeThemebutton;
+Button returnToMenuButton;</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>budgetBar(){}
-</string>
-     </void>
-    </void>
-    <void property="name">
-     <void property="text">
-      <string>BudgetScreen</string>
-     </void>
-    </void>
-   </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double11">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double11"/>
-      <double>600.0</double>
-     </void>
-    </void>
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>y</string>
-     <void method="set">
-      <object idref="Point2D$Double11"/>
-      <double>700.0</double>
-     </void>
-    </void>
-    <void method="setLocation">
-     <double>600.0</double>
-     <double>700.0</double>
-    </void>
-   </object>
-  </void>
-  <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode12">
-    <void property="attributes">
-     <void property="text">
-      <string>Collection plantImages
-PlantName[]</string>
-     </void>
-    </void>
-    <void property="methods">
-     <void property="text">
-      <string>searchTF(){}
-exitButton(){}
-scrollBar(){}</string>
-     </void>
-    </void>
-    <void property="name">
-     <void property="text">
-      <string>FaunaScreen</string>
-     </void>
-    </void>
-   </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double12">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double12"/>
-      <double>400.0</double>
-     </void>
-    </void>
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>y</string>
-     <void method="set">
-      <object idref="Point2D$Double12"/>
-      <double>700.0</double>
-     </void>
-    </void>
-    <void method="setLocation">
-     <double>400.0</double>
-     <double>700.0</double>
-    </void>
-   </object>
-  </void>
-  <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode13">
-    <void property="methods">
-     <void property="text">
-      <string>AdjBudgetTF(){}
-DarkThemeButton(){}
-LightThemeButton(){}
-SaveButton(){}
-FinishButton(){}
-exitButton(){}</string>
+      <string>settingsScreen(View v)
+public void exitButton()
+public void changeTheme()
+public void applyTheme(String s)
+public void returnToMenuButton()</string>
      </void>
     </void>
     <void property="name">
@@ -589,66 +589,123 @@ exitButton(){}</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double13">
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double10">
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>x</string>
      <void method="set">
-      <object idref="Point2D$Double13"/>
-      <double>630.0</double>
+      <object idref="Point2D$Double10"/>
+      <double>670.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
-      <object idref="Point2D$Double13"/>
-      <double>870.0</double>
+      <object idref="Point2D$Double10"/>
+      <double>650.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>630.0</double>
-     <double>870.0</double>
+     <double>670.0</double>
+     <double>650.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode14">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode11">
     <void property="attributes">
      <void property="text">
-      <string>PlantName[]</string>
+      <string>private String name</string>
      </void>
     </void>
     <void property="methods">
      <void property="text">
-      <string>budgetBar(){}
-exitButton(){}
-saveFileButton(){}
-</string>
+      <string>private PagesEnum(String s)
+public String getName()</string>
      </void>
     </void>
     <void property="name">
      <void property="text">
-      <string>SummaryScreen</string>
+      <string>PagesEnum</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double14">
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double11">
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>x</string>
      <void method="set">
-      <object idref="Point2D$Double14"/>
-      <double>440.0</double>
+      <object idref="Point2D$Double11"/>
+      <double>220.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
-      <object idref="Point2D$Double14"/>
-      <double>870.0</double>
+      <object idref="Point2D$Double11"/>
+      <double>40.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>440.0</double>
-     <double>870.0</double>
+     <double>220.0</double>
+     <double>40.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="addNode">
+   <object class="com.horstmann.violet.ClassNode" id="ClassNode12">
+    <void property="attributes">
+     <void property="text">
+      <string>Pane layout;
+Image backgroundImage;
+View view;
+Scene scene;
+String theme; 
+double canvasWidth;
+double canvasHeight;
+String gardenname;
+String gardenbudget;
+String gardenDimensions;
+String gardenWeatherCondition;
+String gardenSoilCondition;
+String gardenMoistureCondition;
+	Button settingsButton;
+   Image gear;
+   ImageView gearIV;
+Button createGardenButton;
+Button guideButton;
+Button importButton;
+Button returnToPlotButton;</string>
+     </void>
+    </void>
+    <void property="methods">
+     <void property="text">
+      <string>Screen(View v, PagesEnum pe)
+public void createGardenButton()</string>
+     </void>
+    </void>
+    <void property="name">
+     <void property="text">
+      <string>Screen</string>
+     </void>
+    </void>
+   </object>
+   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double12">
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Point2D$Double12"/>
+      <double>240.0</double>
+     </void>
+    </void>
+    <void class="java.awt.geom.Point2D$Double" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Point2D$Double12"/>
+      <double>130.0</double>
+     </void>
+    </void>
+    <void method="setLocation">
+     <double>240.0</double>
+     <double>130.0</double>
     </void>
    </object>
   </void>
@@ -721,18 +778,6 @@ saveFileButton(){}
      <object class="com.horstmann.violet.ArrowHead" field="V"/>
     </void>
    </object>
-   <object idref="ClassNode10"/>
-   <object idref="ClassNode2"/>
-  </void>
-  <void method="connect">
-   <object class="com.horstmann.violet.ClassRelationshipEdge">
-    <void property="bentStyle">
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/>
-    </void>
-    <void property="endArrowHead">
-     <object class="com.horstmann.violet.ArrowHead" field="V"/>
-    </void>
-   </object>
    <object idref="ClassNode6"/>
    <object idref="ClassNode2"/>
   </void>
@@ -781,44 +826,68 @@ saveFileButton(){}
      <object class="com.horstmann.violet.ArrowHead" field="V"/>
     </void>
    </object>
+   <object idref="ClassNode10"/>
+   <object idref="ClassNode2"/>
+  </void>
+  <void method="connect">
+   <object class="com.horstmann.violet.ClassRelationshipEdge">
+    <void property="endArrowHead">
+     <object class="com.horstmann.violet.ArrowHead" field="V"/>
+    </void>
+    <void property="lineStyle">
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/>
+    </void>
+   </object>
    <object idref="ClassNode11"/>
    <object idref="ClassNode2"/>
   </void>
   <void method="connect">
    <object class="com.horstmann.violet.ClassRelationshipEdge">
-    <void property="bentStyle">
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/>
-    </void>
     <void property="endArrowHead">
      <object class="com.horstmann.violet.ArrowHead" field="V"/>
     </void>
+    <void property="lineStyle">
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/>
+    </void>
    </object>
+   <object idref="ClassNode5"/>
    <object idref="ClassNode12"/>
-   <object idref="ClassNode2"/>
   </void>
   <void method="connect">
    <object class="com.horstmann.violet.ClassRelationshipEdge">
-    <void property="bentStyle">
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/>
-    </void>
     <void property="endArrowHead">
      <object class="com.horstmann.violet.ArrowHead" field="V"/>
     </void>
+    <void property="lineStyle">
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/>
+    </void>
    </object>
-   <object idref="ClassNode13"/>
-   <object idref="ClassNode2"/>
+   <object idref="ClassNode6"/>
+   <object idref="ClassNode12"/>
   </void>
   <void method="connect">
    <object class="com.horstmann.violet.ClassRelationshipEdge">
-    <void property="bentStyle">
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/>
-    </void>
     <void property="endArrowHead">
      <object class="com.horstmann.violet.ArrowHead" field="V"/>
     </void>
+    <void property="lineStyle">
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/>
+    </void>
    </object>
-   <object idref="ClassNode14"/>
-   <object idref="ClassNode2"/>
+   <object idref="ClassNode7"/>
+   <object idref="ClassNode12"/>
+  </void>
+  <void method="connect">
+   <object class="com.horstmann.violet.ClassRelationshipEdge">
+    <void property="endArrowHead">
+     <object class="com.horstmann.violet.ArrowHead" field="V"/>
+    </void>
+    <void property="lineStyle">
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/>
+    </void>
+   </object>
+   <object idref="ClassNode8"/>
+   <object idref="ClassNode12"/>
   </void>
  </object>
 </java>
