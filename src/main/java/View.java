@@ -32,10 +32,8 @@ public class View extends Application {
 	GuideScreen guide;
 	GardenInitializationScreen gardeninit;
 	ModifyPlotScreen modify;
-	PresentationModeScreen present;
 	faunaScreen fauna;
 	SummaryScreen summary;
-	BudgetScreen budget;
 	settingsScreen settings;
 	
 	HashMap<PagesEnum, Screen> nameToScreenMap = new HashMap<>();
@@ -54,10 +52,8 @@ public class View extends Application {
     	guide = new GuideScreen(this);
     	gardeninit = new GardenInitializationScreen(this);
     	modify = new ModifyPlotScreen(this);
-    	present = new PresentationModeScreen(this);
     	fauna = new faunaScreen(this);	
     	summary = new SummaryScreen(this);
-    	budget = new BudgetScreen(this);
     	settings = new settingsScreen(this);
     }
     

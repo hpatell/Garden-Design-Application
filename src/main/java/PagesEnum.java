@@ -9,10 +9,8 @@ public enum PagesEnum {
     GuideScreen("guide"),
     InitializationScreen("initilize"),
     ModifyPlotScreen("modify"),
-    PresentationModeScreen("presentation"),
     FaunaScreen("fauna"),
     SummaryScreen("summary"),
-	BudgetScreen("budget"),
 	SettingsScreen("settings"),
 	PreviousScreen("Previous");
 	
