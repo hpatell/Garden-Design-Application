@@ -2,29 +2,14 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import javafx.application.Application;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage; 
-import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
-import javafx.scene.layout.VBox;
-import javafx.event.EventHandler;
+import javafx.stage.Stage;
 
+/**
+* @author	Kush Patel
+* @author	Himanshu Patel
+*/
 public class View extends Application {
 	
-	HashMap<String, String> plantPNG = new HashMap<>();
-	
-    Image plant;
-    Image importedImage;
-    
-    int canvasHeight, canvasWidth;
-    double imgWidth, imgHeight;
-    double x, y, xloc, yloc;
-    int lepsSupported;
 	Stage currentstage;
 	
 	IntroScreen intro;
@@ -36,6 +21,8 @@ public class View extends Application {
 	SummaryScreen summary;
 	settingsScreen settings;
 	
+	HashMap<String, String> plantPNG = new HashMap<>();
+	
 	HashMap<PagesEnum, Screen> nameToScreenMap = new HashMap<>();
 	
 	PagesEnum firstPage = PagesEnum.IntroScreen;
@@ -44,7 +31,6 @@ public class View extends Application {
 	
 	/**
 	* Constructor for View. Creates an instance of every screen used.
-	* @author Kush Patel
 	*/
     public View() {
     	intro = new IntroScreen(this);
@@ -59,14 +45,12 @@ public class View extends Application {
     
 	/**
 	* Takes the enum value of the page being switched to set the scene to that page.
-	* Sets the previous page to current page to allow settings to know what page to return to 
-	* after exiting the screen
+	* Sets the previous page to current page to allow the settings screen to know what 
+	* page to return to after exiting the screen.
 	*
-	* @param PE the enum value of the page being switched to
-	* @author Kush Patel
+	* @param  PE  the enum value of the page being switched to
 	*/   
     public void switchPage(PagesEnum PE) {
-    	//nameToScreenMap.get(PE).updatePage();
     	currentstage.setScene(nameToScreenMap.get(PE).getScene());
     	previouspage = currentPage;
     	currentPage = PE;
@@ -74,24 +58,13 @@ public class View extends Application {
     
 	/**
 	* Searches the HashMap taken in as an argument to create a new HashMap plantPNG
-	* that has the same key, common names of the plants, and assigns the key as the
-	* path to the PNG of the plant in the resources folder. 
-	*
-	* @param plants a HashMap of all the plant images as values and their common names as the key
-	* @author Himanshu Patel
+	* that has the same key, common names of the plants, and assigns the value as the
+	* path to the PNG of the plant in the resources folder.
+	* 
+	* @param  plants  the HashMap of all plants in the application with their common name as the key
 	*/    
-    public void setPlantPNG(HashMap<String, Plant> plants) {
-//    	plantPNG.put("Fragaria", "/FragariaStrawberry.png");
-//    	plantPNG.put("Helianthus", "/HelianthusSunflower.png");
-//    	plantPNG.put("Salix", "/SalixWillow.png");
-//    	
-//    	plantPNG.put("a", "/FragariaStrawberry.png");
-//    	plantPNG.put("b", "/FragariaStrawberry.png");
-//    	plantPNG.put("c", "/HelianthusSunflower.png");
-//    	plantPNG.put("d", "/HelianthusSunflower.png");
-//    	plantPNG.put("e", "/SalixWillow.png");
-//    	plantPNG.put("f", "/plant_images/Willow.png");
-    	
+    public void setPlantPNG(HashMap<String, Plant> plants) 
+    {
     	for (Entry<String, Plant> mapElement : plants.entrySet()) 
     	{
             String key = mapElement.getKey();
@@ -100,17 +73,17 @@ public class View extends Application {
             
             String png = "/plant_images/" + key + ".png";
             
-            //plantPNG.put(key, "/plant_images/" + key + ".png");
             plantPNG.put(key, png);
     	}
     	System.out.println(plantPNG.size());
     }
     
 	/**
-	* Sets the current scene of the program and displays it
-	*
-	* @param stage the stage displaying the scenes in the program
-	* @author Kush Patel
+	* The main entry point for the JavaFX application. The start method is called after the 
+	* init method has returned, and after the system is ready for the application to begin running.
+	* Sets the current scene of the program and displays it.
+	* 
+	* @param  stage  the primary stage for this application, onto which the application scenes can be set
 	*/
     @Override
     public void start(Stage stage) {
@@ -124,10 +97,10 @@ public class View extends Application {
     }
 
 	/**
-	* Launches the program
-	*
-	* @param args main method args
-	* @author Kush Patel
+	* Main method. The starting point for JVM to start execution of a Java program.
+	* Calls the launch() method to launch a standalone application.
+	* 
+	* @param  args  accepts a string array to hold command line arguments
 	*/
     public static void main(String[] args) {
         launch(args);

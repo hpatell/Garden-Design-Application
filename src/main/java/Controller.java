@@ -1,33 +1,29 @@
 import java.util.HashMap;
-
-import javafx.application.Application;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+* @author	Himanshu Patel
+* @author	Kush Patel
+*/
 public class Controller {
 
 	private final boolean DEBUG = true;
     Model model;
     View view;
-    Scene theScene;
 
-	/**
-	 * Constructor for Controller
-	 * 
-	 * @param view takes in the instance of View accessed in Screen
-	 * @author Kush Patel
-	 */
+    /**
+	* Constructor for the Controller, assigns value to view. Creates an instance of model.
+	* If statement used for debugging problems with code.
+	* 
+	* @param  view  takes in the instance of View accessed in Screen
+	*/
     public Controller(View view) {
     	this.view = view;
     	model = new Model();
@@ -35,10 +31,8 @@ public class Controller {
     }
     
 	/**
-	 * Updates the dynamic asepcts of every screen such as remaining budget and lep count
-	 * 
-	 * @author Kush Patel
-	 */ 
+	* Updates the dynamic aspects of every screen such as remaining budget and lep count.
+	*/
     public void update() {
     	model.setCurrentBudget(Integer.parseInt(view.gardeninit.gardenbudgetlocal));
     	model.calculateLeps(view.modify.getCommonName(), false);
@@ -52,11 +46,14 @@ public class Controller {
     }
 
 	/**
-	 * Drag logic, updates the x and y location as the image is being dragged and sets drag boundaries.
-	 * 
-	 * @param event takes in mouse drag and iv takes in the image being dragged as a circle
-	 * @author Himanshu Patel
-	 */ 
+	* Drag logic, gets the plant that was dragged and assigns it to n, then updates the x, y locations of the plant
+	* based on the x, y location set in model and the x, y location identified by the mouse movements. Translates 
+	* the movements for the circle plant object. Sets the drag boundaries so plants can't be dragged out of the garden
+	* plot. Checks for drag collision of plants and prevents the collision.
+	* 
+	* @param  event  the MouseEvent for dragging the plants in the garden, mouse movements by user
+	* @param  iv     the circle object of the plant being dragged
+	*/ 
     public void drag(MouseEvent event, Circle iv) {   	
     	Node n = (Node)event.getSource();
 		if (DEBUG) System.out.println("ic mouse drag tx: " + n.getTranslateX() + ", ex: " + event.getX() );
@@ -92,21 +89,27 @@ public class Controller {
 		{
 			n.setTranslateY(view.modify.anchorPane.getHeight() - view.modify.scaledImgHeight);
 		}
-		
-		//view.modify.checkCollsion(iv);
     }
 
 	/**
-	 * Handler for drag, used in modifyPlotScreen for when image is dragged
-	 * 
-	 * @param iv takes in the image being dragged as a circle
-	 * @author Himanshu Patel
-	 */ 
+	* EventHandler of MouseEvent for drag, used in ModifyPlotScreen for when the plant is dragged in the garden.
+	* Uses lambda to get mouse movements.
+	* 
+	* @param  iv  the circle object of the plant being dragged
+	* @return     the MouseEvent for drag, event of mouse movement
+	*/
     public EventHandler<MouseEvent> getDragHandler(Circle iv)
     {
     	return event -> drag((MouseEvent) event, iv);
     }
 
+    /**
+	* EventHandler of MouseEvent for setOnDragDetected when starting the Drag and Drop Gesture on a plant ImageView.
+	* Used in ModifyPlotScreen when the plant ImageView is clicked and dragged.
+	* 
+	* @param  iv  the ImageView of the plant being drag and dropped
+	* @return     the EventHandler of the DRAG_DETECTED MouseEvent
+	*/
     public EventHandler<MouseEvent> getOnGardenDragDetected(ImageView iv)
     {
     	return new EventHandler<MouseEvent>() {
@@ -117,6 +120,12 @@ public class Controller {
     	};
     }
     
+    /**
+	* EventHandler of DragEvent for setOnDragOver when handling a DRAG_OVER event on a target.
+	* Used in ModifyPlotScreen when the plant ImageView is dragged over a potential drop target.
+	* 
+	* @return the EventHandler of the DRAG_OVER DragEvent
+	*/
     public EventHandler<DragEvent> getOnGardenDragOver()
     {
     	return new EventHandler<DragEvent>() {
@@ -128,10 +137,11 @@ public class Controller {
     }
     
 	/**
-	 * Handler for drop, used in modifyPlotScreen for when image is dropped
-	 * 
-	 * @author Himanshu Patel
-	 */ 
+	* EventHandler of DragEvent for setOnDragDropped when handling a DRAG_DROPPED event on a target.
+	* Used in ModifyPlotScreen when the plant ImageView is dropped on the garden plot/AnchorPane.
+	* 
+	* @return the EventHandler of the DRAG_DROPPED DragEvent
+	*/ 
     public EventHandler<DragEvent> getOnGardenDragDropped()
     {
     	return new EventHandler<DragEvent>() {
@@ -144,11 +154,12 @@ public class Controller {
     }
     
 	/**
-	 * Handler for checkbox filtering, used in modifyPlotScreen
-	 * 
-	 * @param imageViews takes the set of all images that are avaible in a certain set of conditions, made in modifyPlotScreen
-	 * @author Himanshu Patel
-	 */ 
+	* EventHandler of setOnAction ActionEvent for CheckBox filtering of Woody and Herbaceous plant types.
+	* Used in ModifyPlotScreen when the Woody and Herbaceous CheckBoxes are clicked on.
+	* 
+	* @param  imageViews  the HashMap of current ImageViews in the plant selection menu based on user selected conditions
+	* @return the EventHandler of the setOnAction ActionEvent
+	*/ 
     public EventHandler<ActionEvent> getCheckboxHandler(HashMap<String, ImageView> imageViews)
     {
     	return new EventHandler<ActionEvent>() {
@@ -160,11 +171,13 @@ public class Controller {
     }
     
 	/**
-	 * Handler for remove plant on mouse click and updates the dymanic aspects of relevant screens
-	 * 
-	 * @param iv takes in the image of the plant being removed from the garden
-	 * @author Himanshu Patel
-	 */ 
+	* 
+	* EventHandler of MouseEvent for removing the plant in the garden on mouse right click.
+	* Updates the dynamic aspects of relevant screens.
+	* 
+	* @param  iv  the circle object of the plant being removed from the garden
+	* @return     the EventHandler of the setOnMouseClicked MouseEvent
+	*/ 
     public EventHandler<MouseEvent> removePlant(Circle iv)
     {
        	return new EventHandler<MouseEvent>() {
@@ -182,10 +195,10 @@ public class Controller {
      }
     
 	/**
-	 * Getter method to get the hashmap of plants in model
-	 * 
-	 * @author Himanshu Patel
-	 */ 
+	* Getter method to get the HashMap of all plants in the application in model.
+	* 
+	* @return the HashMap of all plants in the application from model
+	*/
     public HashMap<String, Plant> getplants()
     {
     	return model.plants;
