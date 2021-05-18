@@ -94,31 +94,15 @@ public class SummaryScreen extends Screen {
 		budgettext = new Label("Budget");
 		
 		nameText.setMaxWidth(200);
-		nameText.setMaxWidth(200);
-		nameText.setMaxWidth(200);
-		nameText.setMinWidth(200);
-		nameText.setMinWidth(200);
 		nameText.setMinWidth(200);
 		
 		lepsText.setMaxWidth(200);
-		lepsText.setMaxWidth(200);
-		lepsText.setMaxWidth(200);
-		lepsText.setMinWidth(200);
-		lepsText.setMinWidth(200);
 		lepsText.setMinWidth(200);
 		
 		costText.setMaxWidth(200);
-		costText.setMaxWidth(200);
-		costText.setMaxWidth(200);
-		costText.setMinWidth(200);
-		costText.setMinWidth(200);
 		costText.setMinWidth(200);
 		
 		budgettext.setMaxWidth(200);
-		budgettext.setMaxWidth(200);
-		budgettext.setMaxWidth(200);
-		budgettext.setMinWidth(200);
-		budgettext.setMinWidth(200);
 		budgettext.setMinWidth(200);
 		
 		budgettext.setFont(new Font("Arial", 16));
@@ -132,7 +116,7 @@ public class SummaryScreen extends Screen {
 		descripHBox.setAlignment(Pos.CENTER);
 		descripHBox.setSpacing(25);
 		
-		descripHBox.getChildren().addAll(nameText, lepsText, costText);
+		descripHBox.getChildren().addAll(nameText, costText, lepsText);
 		
 		hboxtop.setAlignment(Pos.TOP_RIGHT);
 		hboxtop.setPadding(new Insets(10, 10, 0, 0));
@@ -165,54 +149,25 @@ public class SummaryScreen extends Screen {
 	}
 	
 	public void update(double r, String commonname, String leps, String cost) {
-		//vbox.getChildren().clear();
-		//scrollPanePlants.setContent(vbox);
-		//scrollPanePlants.setMinHeight(500);
-		//vbox.getChildren().addAll(descripHBox, scrollPanePlants);
-		/*
-    	for (Entry<Circle, String> mapElement : view.modify.plantsToName.entrySet()) 
-    	{
-    	*/
-            //Circle key = mapElement.getKey();
-            //String value = mapElement.getValue();
-            //if(value.equals(commonname)) {
-    			newTextName = new Label(commonname);
-    			newTextCost = new Label(cost);
-    			newTextLeps = new Label(leps);
-    			newTextName.setFont(new Font("Arial", 16));
-    			newTextCost.setFont(new Font("Arial", 16));
-    			newTextLeps.setFont(new Font("Arial", 16));
-    			newTextName.setMaxWidth(200);
-    			newTextCost.setMaxWidth(200);
-    			newTextLeps.setMaxWidth(200);
-    			newTextName.setMinWidth(200);
-    			newTextCost.setMinWidth(200);
-    			newTextLeps.setMinWidth(200);
-    	    	plantBox = new HBox();
-    	    	plantBox.setAlignment(Pos.CENTER);
-    	    	plantBox.setSpacing(25);
-    	    	plantBox.getChildren().addAll(newTextName, newTextCost, newTextLeps);
-    			budgetbar.setProgress(r);
-    			vbox.getChildren().addAll(plantBox);
-           }
-            /*
-    	}
-    	*/
-		//vboxMiddle.getChildren().addAll(scrollPanePlants);
-			/*
-			for(String name: plantsInGardenName) {
-				if(commonname.equals(name) && plantsInGardenName != null) {
-					Unique = false;
-				}
-			}		
-			
-			if(Unique) {
-				scrollPanePlants.getChildren().addAll(newText);
-			}
-			*/
-			//Unique = true;
-			//plantsInGardenName.add(commonname);
-		//}
+		newTextName = new Label(commonname);
+		newTextCost = new Label(cost);
+		newTextLeps = new Label(leps);
+		newTextName.setFont(new Font("Arial", 16));
+		newTextCost.setFont(new Font("Arial", 16));
+		newTextLeps.setFont(new Font("Arial", 16));
+		newTextName.setMaxWidth(200);
+		newTextCost.setMaxWidth(200);
+		newTextLeps.setMaxWidth(200);
+		newTextName.setMinWidth(200);
+		newTextCost.setMinWidth(200);
+		newTextLeps.setMinWidth(200);
+		plantBox = new HBox();
+		plantBox.setAlignment(Pos.CENTER);
+		plantBox.setSpacing(25);
+		plantBox.getChildren().addAll(newTextName, newTextCost, newTextLeps);
+		budgetbar.setProgress(r);
+		vbox.getChildren().addAll(plantBox);
+	}
 	
 	public void updatePage(){};
 }
