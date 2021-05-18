@@ -1,12 +1,12 @@
-import java.awt.TextArea;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.*;
-import javafx.scene.text.Text;
 
+/**
+* @author	Kush Patel
+* @author	Himanshu Patel
+*/
 public class GuideScreen extends Screen {
 	
 	public void updatePage(){}
@@ -15,11 +15,10 @@ public class GuideScreen extends Screen {
 	ImageView backgroundimgview;
 	
 	/**
-	 * Constructor for GuideScreen. Used to create the scene for guide screen
-	 * 
-	 * @param v takes in the instance of View accessed in Screen
-	 * @author Kush Patel
-	 */
+	* Constructor for GuideScreen. Used to create the scene for guide screen.
+	* 
+	* @param  v  the instance of View accessed in Screen
+	*/
 	public GuideScreen(View v) {
 		super(v, PagesEnum.GuideScreen);
 		

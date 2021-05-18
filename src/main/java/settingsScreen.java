@@ -2,17 +2,16 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
+/**
+* @author	Kush Patel
+* @author	Himanshu Patel
+*/
 public class settingsScreen extends Screen {
 	
 	public void updatePage(){}
@@ -30,11 +29,10 @@ public class settingsScreen extends Screen {
     Button returnToMenuButton;
 	
 	/**
-	 * Constructor for settingsScreen. Used to create the scene for settings screen
-	 * 
-	 * @param v takes in the instance of View accessed in Screen
-	 * @author Kush Patel
-	 */
+	* Constructor for settingsScreen. Used to create the scene for settings screen.
+	* 
+	* @param  v  the instance of View accessed in Screen
+	*/
     public settingsScreen(View v) {
         super(v, PagesEnum.SettingsScreen);	
     	
@@ -71,9 +69,8 @@ public class settingsScreen extends Screen {
     }
     
 	/**
-	 * Assigns the exitButton a value and assigns the screen to swap to upon button press
-	 * @author Kush Patel
-	 */
+	* Assigns the exitButton a value and assigns the screen to swap to previous screen upon button press.
+	*/
     public void exitButton() {
     	exitButton = new Button("Exit");
     	exitButton.setFont(new Font("Arial", 20));
@@ -81,10 +78,9 @@ public class settingsScreen extends Screen {
     }
     
 	/**
-	 * Assigns values to the dark and light mode button as well as changing the theme
-	 * on the appropriate button press
-	 * @author Kush Patel
-	 */
+	* Assigns values to the dark and light mode button as well as changing the theme
+	* on the appropriate button press.
+	*/
     public void changeTheme() {
         dchangeThemebutton = new Button("Dark");
         dchangeThemebutton.setFont(new Font("Arial", 20));
@@ -95,11 +91,11 @@ public class settingsScreen extends Screen {
     }
     
 	/**
-	 * Assigns the returnToMenuButton a value and assigns the screen to swap to upon button press
-	 * @param s changes the theme of every screen in the program by access the HashMap of every screen and setting
-	 * their layout theme to the new theme
-	 * @author Kush Patel
-	 */
+	* Changes the theme of every screen in the program by accessing the HashMap of every screen and setting
+	* their layout theme to the new theme.
+	* 
+	* @param  s  the theme of the screen, dark or light
+	*/
     public void applyTheme(String s) {
     	view.nameToScreenMap.forEach((name, screen) -> {
     		screen.changeTheme(s);
@@ -107,12 +103,11 @@ public class settingsScreen extends Screen {
     }
     
 	/**
-	 * Assigns the returnToMenuButton a value and assigns the screen to swap to upon button press
-	 * @author Kush Patel
-	 */
+	* Assigns the returnToMenuButton a value and assigns the screen to swap to Introduction Screen upon button press.
+	*/
     public void returnToMenuButton() {
     	returnToMenuButton = new Button("Return To Menu");
     	returnToMenuButton.setFont(new Font("Arial", 20));
     	returnToMenuButton.setOnAction(e -> view.switchPage(PagesEnum.IntroScreen));
-    } 
+    }
 }

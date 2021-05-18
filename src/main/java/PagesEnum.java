@@ -1,7 +1,8 @@
-	/**
-	 * Used to create the enum associated to all screen
-	 * @author Kush Patel
-	 */
+/**
+* Used to create the enum associated to all the screens.
+* 
+* @author	Kush Patel
+*/
 public enum PagesEnum {
 	
     IntroScreen("intro"),
@@ -17,21 +18,20 @@ public enum PagesEnum {
 	private String name = null;
 	
 	/**
-	 * Takes in the name of a garden screen
-	 * @param s Takes in the name of a garden screen
-	 * @author Kush Patel
-	 */
-	private PagesEnum(String s){
+	* Takes in the name of a garden screen and assigns it to name.
+	* 
+	* @param  s  the name of a garden screen
+	*/
+	private PagesEnum(String s) {
 		name = s;
 	}
 
 	/**
-	 * Gets the name of a garden screen
-	 * @return returns the name of a garden screen
-	 * @author Kush Patel
-	 */
+	* Gets the name of a garden screen.
+	* 
+	* @return the name of a garden screen
+	*/
 	public String getName() {
 		return name;
 	}
-    
 }

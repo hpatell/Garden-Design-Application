@@ -1,7 +1,6 @@
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 import javafx.scene.control.Label;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,16 +10,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 
-
+/**
+* @author	Kush Patel
+* @author	Himanshu Patel
+*/
 public class SummaryScreen extends Screen {
+	
+	View view;
 	
 	HBox hboxtop;
 	HBox hboxbottom;
@@ -50,8 +49,6 @@ public class SummaryScreen extends Screen {
 	Label newTextLeps;
 	
 	Boolean Unique;
-	
-	View view;
 	
 	ArrayList<String> plantsInGardenName;
 		

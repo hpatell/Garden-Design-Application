@@ -91,7 +91,7 @@ public class ModifyPlotScreen extends Screen {
 	
 	/**
 	* Constructor for ModifyPlotScreen, assigns new instance of Controller to imc.
-	* Create the scene for ModifyPlotScreen.
+	* Creates the scene for ModifyPlotScreen.
 	* 
 	* @param  v  takes in the instance of View accessed in Screen
 	*/

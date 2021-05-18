@@ -3,11 +3,11 @@ import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Map.Entry;
 
-import javafx.event.ActionEvent;
-import javafx.scene.image.ImageView;
-
+/**
+* @author	Himanshu Patel
+* @author	Kush Patel
+*/
 public class Model {
 
 	private double x = 100;
@@ -16,47 +16,42 @@ public class Model {
 	double currentBudget;
 	double remainingBudget;
 	boolean initialbudget;
+	String commonname;
 	HashMap<String, Plant> plants = new HashMap<>();
 	
 	Collection<String> Woody;
 	Collection<String> Herbaceous;
 	
-	String commonname;
-	
 	/**
-	 * Constructor for Model
-	 * 
-	 * @author Himanshu Patel
-	 */
+	* Constructor for Model. Calls addPlants method to add all the plants to the Application.
+	* Initializes the values for leps, current budget, remaining budget and initial budget.
+	*/
 	public Model()
 	{
-		testPlants();
+		addPlants();
 		leps = 0;
 		currentBudget = 0;
 		remainingBudget = currentBudget;
 		initialbudget = true;
 	}
 	
-	public void testPlants()
-	{
-		//Plant strawberry = new Plant("Fragaria", "Strawberry", "herbaceous", 63, 6, "Sunny", "Dry", "Decent");
-		//Plant sunflower = new Plant("Helianthus", "Sunflower", "herbaceous", 57, 6, "Rainy", "Medium", "Medium");
-		//Plant willow = new Plant("Salix", "Willow", "woody", 292, 20, "Cloudy", "Moist", "Good");
-		
-		//plants.put("Fragaria", strawberry);
-		//plants.put("Helianthus", sunflower);
-		//plants.put("Salix", willow);
-		
+	/**
+	* Calls makeHashSet method to make the HashSet of all the plants in the Application.
+	* Try, catch block prints error message if there is an Exception and loading file fails.
+	*/
+	public void addPlants()
+	{	
 		try {makeHashSet();}
-        catch(Exception ex) {System.out.println("Loading file error with: " + ex.toString());}
-		
+        catch(Exception ex) {System.out.println("Loading file error with: " + ex.toString());}	
 	}
 	
 	/**
-	 * Reads a text file containing the plants and their info and creates objects with that info to add to a HashMap
-	 * 
-	 * @author Himanshu Patel
-	 */
+	* Reads/scans a text file containing all the plants and their information. Creates Plant objects 
+	* with that information and adds all the plants to a HashMap. Plant information is parsed/separated
+	* by a ',' indicating a split.
+	* 
+	* @throws FileNotFoundException thrown when attempting to access a file that doesn't exist
+	*/
 	public void makeHashSet() throws FileNotFoundException
 	{
 		File file = new File("Plants.txt");
@@ -71,28 +66,26 @@ public class Model {
 				plantType = "woody";
 			}
 			plants.put(array[1], new Plant(array[0], array[1], plantType, Integer.parseInt(array[2]), Integer.parseInt(array[3]), array[5], array[6], array[7]));
-			
-			//System.out.println(array[1]);
 		}
 	}
 	
-	
 	/**
-	 * Getter for the HashMap of all plants
-	 * 
-	 * @author Himanshu Patel
-	 */
+	* Getter for the HashMap of all the plants in the Application.
+	* 
+	* @return the HashMap of all the plants in the Application
+	*/
 	public HashMap<String, Plant> getPlants() 
     {
 		return plants;
     }	
 	
 	/**
-	 * Updates the lep count when a plant is added or removed from the garden
-	 * 
-	 * @param plantname takes in commonname of a plant, remove takes in a boolean identify if plant is being added/removed
-	 * @author Kush Patel
-	 */
+	* Updates the lep count when a plant is added or removed from the garden.
+	* 
+	* @param  plantname  common name of a plant
+	* @param  remove     a boolean identify if the plant is being added/removed
+	* @return            the total lep count
+	*/
     public int calculateLeps(String plantname, Boolean remove) {
     	if(remove) {
     		leps = leps - plants.get(plantname).lepsSupported;
@@ -104,11 +97,12 @@ public class Model {
     }
 
 	/**
-	 * Updates the budget when a plant is added or removed from the garden
-	 * 
-	 * @param plantname takes in commonname of a plant, remove takes in a boolean identify if plant is being added/removed
-	 * @author Kush Patel
-	 */
+	* Updates the budget when a plant is added or removed from the garden.
+	* 
+	* @param  plantname  common name of a plant
+	* @param  remove     a boolean identify if the plant is being added/removed
+	* @return            the remaining budget
+	*/
     public double calculateBudget(String plantname, Boolean remove) {
     	if(initialbudget) {
     		remainingBudget = currentBudget;
@@ -123,6 +117,7 @@ public class Model {
     	}
     	return remainingBudget;
     }
+    
     /*
     public Collection<String> checkWoody() {
     	for(Entry<String, Plant> mapElement : plants.entrySet()) {
@@ -148,35 +143,35 @@ public class Model {
     */
     
 	/**
-	 * Sets the current budget
-	 * 
-	 * @param budget, takes in an int value of the currentbudget for the garden
-	 * @author Kush Patel
-	 */
+	* Sets the current budget.
+	* 
+	* @param  budget  an int value of the current budget for the garden
+	*/
     public void setCurrentBudget(int budget) {
     	currentBudget = budget;
     }
     
+    /**
+	* Checks the compatibility of a plant.
+	* 
+	* @param  name  the name of the plant
+	* @return       false boolean value
+	*/
     public static boolean checkCompatability(String name) {
         return false;
     }
     
 	/**
-	 * Calculates the ratio of remaining budget over total budget
-	 * 
-	 * @param budget, takes in an int value of the currentbudget for the garden
-	 * @author Kush Patel
-	 */
+	* Calculates the ratio of remaining budget over total budget.
+	* 
+	* @return the ratio of remaining budget over total budget
+	*/
     public double calculateRemainOverTotalBudget() {
     	return remainingBudget/currentBudget;
     }
     
-	/**
-	 * Calculates the ratio of remaining budget over total budget
-	 * 
-	 * @param budget, takes in an int value of the currentbudget for the garden
-	 * @author Kush Patel
-	 */
+    
+    
     public static int calcUniqueplants() {
     	return 0;
     }
@@ -197,48 +192,50 @@ public class Model {
         
     }
     
+    
+    
 	/**
-	 * Sets commonname of the current/latest plant edited in the garden
-	 * 
-	 * @param budget, takes in an int value of the currentbudget for the garden
-	 * @author Kush Patel
-	 */
+	* Sets common name of the current/latest plant edited in the garden.
+	* 
+	* @param  s  the current/latest plant edited in the garden
+	*/
     public void setCommonName(String s) {
     	commonname = s;
     }
     
 	/**
-	 * Gets the x of the current/latest plant edited in the garden
-	 * 
-	 */
+	* Gets the x position of the current/latest plant edited in the garden.
+	* 
+	* @return the x position of the current/latest plant edited in the garden
+	*/
     public double getX() {
 		return x;
 	}
 
 	/**
-	 * Sets the x of the current/latest plant edited in the garden
-	 * 
-	 * @param double x, x location of a plant
-	 */
+	* Sets the x position of the current/latest plant edited in the garden.
+	* 
+	* @param  x  the x location of a plant
+	*/
 	public void setX(double x) {
 		this.x = x;
 	}
 
 	/**
-	 * Gets the y location of the current/latest plant edited in the garden
-	 * 
-	 */
+	* Gets the y location of the current/latest plant edited in the garden.
+	* 
+	* @return the y location of the current/latest plant edited in the garden
+	*/
 	public double getY() {
 		return y;
 	}
 
 	/**
-	 * Sets the y location of the current/latest plant edited in the garden
-	 * 
-	 * @param y, y location 
-	 */
+	* Sets the y location of the current/latest plant edited in the garden.
+	* 
+	* @param  y  the y location of a plant
+	*/
 	public void setY(double y) {
 		this.y = y;
 	}
-
 }

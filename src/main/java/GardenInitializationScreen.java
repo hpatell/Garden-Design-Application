@@ -4,8 +4,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -13,12 +11,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.control.ComboBox;
 
+/**
+* @author	Kush Patel
+* @author	Himanshu Patel
+*/
 public class GardenInitializationScreen extends Screen {
 	
 	private Controller imc;
+	View view;
 	
 	Button createGardenButton;
-	
 	Label name;
 	TextField nametf;
 	Label budget;
@@ -31,26 +33,21 @@ public class GardenInitializationScreen extends Screen {
 	ComboBox<String> moisture;
 	
 	String gardenbudgetlocal;
-	
 	VBox vbox;
 	HBox hbox;
 	BorderPane borderPane;
 	StackPane hstackPane;	
 	StackPane vstackPane;
 	
-	View view;
-	
 	/**
-	 * Constructor for GardenInitializationScreen. Used to create the scene for create garden screen
-	 * 
-	 * @param v takes in the instance of View accessed in Screen
-	 * @author Kush Patel
-	 */
+	* Constructor for GardenInitializationScreen, assigns new instance of Controller to imc.
+	* Creates the scene for GardenInitializationScreen.
+	* 
+	* @param  v  the instance of View accessed in Screen
+	*/
 	public GardenInitializationScreen(View v) {
 		super(v, PagesEnum.InitializationScreen);
-		
 		view = v;
-		
 		imc = new Controller(v);
 		
 		borderPane = new BorderPane();
@@ -96,7 +93,7 @@ public class GardenInitializationScreen extends Screen {
 		nametf.setMaxWidth(canvasHeight/2);
 		plotSizetf.setMaxWidth(canvasHeight/2);
 		budgettf.setMaxWidth(canvasHeight/2);
-			
+		
     	createGardenButton.setOnAction(e -> {
     		if((nametf.getText() != null) && (budgettf.getText() != "") && (weather.getValue() != null) && (soil.getValue() != null) && (moisture.getValue() != null) && (plotSizetf.getText() != null)) {
     			if((Integer.parseInt(plotSizetf.getText()) <= 20) && (Integer.parseInt(plotSizetf.getText()) >= 5)) {
@@ -131,9 +128,8 @@ public class GardenInitializationScreen extends Screen {
 	}
 	
 	/**
-	 * Used to update the user input based variables in the garden, such as name, budget, and conditions in modify plot
-	 * @author Kush Patel
-	 */
+	* Used to update the user input based variables in the garden, such as name, budget, and conditions in modify plot screen.
+	*/
 	public void updatePage() {
 		view.modify.gardenNameLabel.setText(gardenname);
 		view.modify.gardenBudgetLabel.setText("Total Budget: $" + gardenbudgetlocal);
