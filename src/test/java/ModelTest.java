@@ -1,92 +1,93 @@
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//import org.junit.jupiter.api.Test;
-//
-//class ModelTest {
-//	
-//	@Test
-//	public void testModel() {
-//		
-//		Model model = new Model();
-//		fail("Not yet implemented");
-//	}
-//	
-//	@Test
-//	public void testCalculateLeps() {
-//		
-//		assertEquals(1, Model.calculateLeps("test"));
-//	}
-//
-//	@Test
-//	public void testCalculateBudget() {
-//        
-//		assertEquals(1, Model.calculateBudget(0));
-//    }
-//	
-//	@Test
-//	public void testCheckCompatability() {
-//        
-//		assertEquals(true, Model.checkCompatability("Test"));
-//    }
-//	
-//	@Test
-//	public void testCalcUniqueplants() {
-//        
-//		assertEquals(1, Model.calcUniqueplants());
-//    }
-//	
-//	@Test
-//	public void testReadSettings() {
-//		
-//		Model.readSettings();
-//		fail("Not yet implemented");
-//	}
-//	
-//	@Test
-//	public void testWriteSettings() {
-//		
-//		Model.writeSettings();
-//		fail("Not yet implemented");
-//	}
-//	
-//	@Test
-//	public void testReadGradenFile() {
-//		
-//		Model.readGradenFile();
-//		fail("Not yet implemented");
-//	}
-//	
-//	@Test
-//	public void testWriteGardenFile() {
-//		
-//		Model.writeGardenFile();
-//		fail("Not yet implemented");
-//	}
-//	
-//	@Test
-//	public void testGetX() {
-//		
-//		assertEquals(1, Model.getX());
-//	}
-//	
-//	@Test
-//	public void testSetX() {
-//		
-//		Model.setX(1);
-//		fail("Not yet implemented");
-//	}
-//	
-//	@Test
-//	public void testGetY() {
-//		
-//		assertEquals(1, Model.getY());
-//	}
-//	
-//	@Test
-//	public void testSetY() {
-//		
-//		Model.setY(1);
-//		fail("Not yet implemented");
-//	}
-//	
-//}
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.FileNotFoundException;
+
+import org.junit.jupiter.api.Test;
+
+class ModelTest {
+	
+	Model model = new Model();
+	
+	@Test
+	public void testModel() {
+		
+		model = new Model();
+	}
+	
+	@Test
+	public void testAddPlants() {
+		
+		model.addPlants();
+	}
+	
+	@Test
+	public void testMakeHashSet() throws FileNotFoundException {
+		
+		model.makeHashSet();
+	}
+	
+	@Test
+	public void testGetPlants() {
+		
+		assertEquals(model.plants, model.getPlants());
+	}
+	
+	@Test
+	public void testCalculateLeps() {
+		
+		assertEquals(5, model.calculateLeps("copperleaf", false));
+	}
+	
+	@Test
+	public void testCalculateBudget() {
+        
+		assertEquals(-6, model.calculateBudget("copperleaf", false));
+    }
+	
+	@Test
+	public void testSetCurrentBudget() {
+        
+		model.setCurrentBudget(10);
+		assertEquals(10, model.currentBudget);
+    }
+	
+	@Test
+	public void testCalculateRemainOverTotalBudget() {
+        
+		model.remainingBudget = 10;
+		model.currentBudget = 5;
+		assertEquals(2, model.calculateRemainOverTotalBudget());
+    }
+	
+	@Test
+	public void testSetCommonName() {
+        
+		model.setCommonName("copperleaf");
+		assertEquals("copperleaf", model.commonname);
+    }
+	
+	@Test
+	public void testGetX() {
+		
+		assertEquals(100, model.getX());
+	}
+	
+	@Test
+	public void testSetX() {
+		
+		model.setX(275);
+		assertEquals(275, model.getX());
+	}
+	
+	@Test
+	public void testGetY() {
+		
+		assertEquals(200, model.getY());
+	}
+
+	@Test
+	public void testSetY() {
+		
+		model.setY(361);
+		assertEquals(361, model.getY());
+	}
+}

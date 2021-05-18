@@ -1,15 +1,16 @@
-//import static org.junit.Assert.*;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//import org.junit.Test;
-//
-//public class PlantTest {
-//
-//	@Test
-//	public void testPlant() {
-//		
-//		Plant plant = new Plant(" ", " ", 1.0, 1.0, 1, 1);
-//		fail("Not yet implemented");
-//	}
-//
-//}
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class PlantTest {
+
+	Model model = new Model();
+	
+	@Test
+	public void testPlant() {
+		
+		Plant plant = new Plant("Acalypha virginica", "copperleaf", "herbaceous", 5, 6, "Full Sun", "Medium", "Sand");
+		
+		assertEquals(plant.scientificName, model.plants.get("copperleaf").scientificName);
+	}
+
+}

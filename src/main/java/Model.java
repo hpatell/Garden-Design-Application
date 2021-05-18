@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -18,9 +17,6 @@ public class Model {
 	boolean initialbudget;
 	String commonname;
 	HashMap<String, Plant> plants = new HashMap<>();
-	
-	Collection<String> Woody;
-	Collection<String> Herbaceous;
 	
 	/**
 	* Constructor for Model. Calls addPlants method to add all the plants to the Application.
@@ -117,31 +113,7 @@ public class Model {
     	}
     	return remainingBudget;
     }
-    
-    /*
-    public Collection<String> checkWoody() {
-    	for(Entry<String, Plant> mapElement : plants.entrySet()) {
-            String key = mapElement.getKey();           
-            Plant value = mapElement.getValue();
-            if(plants.get(key).plantType == "woody") {
-            	Woody.add(plants.get(key).commonName);
-            }          
-    	}
-    	return Woody;
-    }
-    
-    public Collection<String> checkHerbaceous() {
-    	for(Entry<String, Plant> mapElement : plants.entrySet()) {
-            String key = mapElement.getKey();           
-            Plant value = mapElement.getValue();
-            if(plants.get(key).plantType == "herbaceous") {
-            	Herbaceous.add(plants.get(key).commonName);
-            }          
-    	}
-    	return Herbaceous;
-    }
-    */
-    
+
 	/**
 	* Sets the current budget.
 	* 
@@ -150,17 +122,7 @@ public class Model {
     public void setCurrentBudget(int budget) {
     	currentBudget = budget;
     }
-    
-    /**
-	* Checks the compatibility of a plant.
-	* 
-	* @param  name  the name of the plant
-	* @return       false boolean value
-	*/
-    public static boolean checkCompatability(String name) {
-        return false;
-    }
-    
+        
 	/**
 	* Calculates the ratio of remaining budget over total budget.
 	* 
@@ -169,31 +131,7 @@ public class Model {
     public double calculateRemainOverTotalBudget() {
     	return remainingBudget/currentBudget;
     }
-    
-    
-    
-    public static int calcUniqueplants() {
-    	return 0;
-    }
-
-    public static void readSettings() {
-
-    }
-
-    public static void writeSettings() {
-
-    }
-
-    public static void readGradenFile() {
-
-    }
-
-    public static void writeGardenFile() {
         
-    }
-    
-    
-    
 	/**
 	* Sets common name of the current/latest plant edited in the garden.
 	* 
